@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/requestTest/requestTest",
+    "pages/componentShow/componentShow",
+    "pages/nvueTest/nvueTest",
+    "pages/home/home",
+    "pages/person/person",
+    "pages/shoppingCart/shoppingCart",
+    "pages/photo/photo",
+    "pages/otherPage/otherPage",
+    "components/banner/banner",
+    "components/wxpay/wxpay"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "吴同岳",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home_c.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "iconPath": "static/shopping_cart.png",
+        "selectedIconPath": "static/shopping_cart_c.png"
+      },
+      {
+        "text": "相机",
+        "pagePath": "pages/photo/photo",
+        "iconPath": "static/photo.png",
+        "selectedIconPath": "static/photo_c.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/person/person",
+        "iconPath": "static/person.png",
+        "selectedIconPath": "static/person_c.png"
+      }
+    ],
+    "color": "#000",
+    "selectedColor": "#1afa29",
+    "backgroundColor": "#F7F7F7",
+    "borderStyle": "white"
+  },
+  "usingComponents": {}
+}

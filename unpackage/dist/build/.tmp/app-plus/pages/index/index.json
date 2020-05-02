@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "未知页",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "uni-tag": "/components/uni-tag/uni-tag",
+    "my-wxpay": "/components/pay/wxpay",
+    "weixin-app-pay": "/components/pay/appPay"
+  }
+}

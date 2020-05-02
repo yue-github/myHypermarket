@@ -1,0 +1,42 @@
+{
+	"pages": [
+		{
+			"path": "pages/app/index",
+			"style": {
+				"navigationBarTitleText": "基础架构",
+				"enablePullDownRefresh": false
+			}
+		},
+		{"path": "pages/home/sort"},
+		{"path": "pages/home/search"},
+		{"path": "pages/home/sort_list"},
+		{"path": "pages/goods/reward"},
+		{"path": "pages/goods/goods"},
+		{"path": "pages/goods/second_hand"},
+		{"path": "pages/goods/second_terrace"},
+		{"path": "pages/goods/my_cart"},
+		{"path": "pages/goods/settlement"},
+		{"path": "pages/goods/pay"},
+		{"path": "pages/status/pay_status"},
+		{"path": "pages/news/notice"},
+		{"path": "pages/news/details"},
+		{"path": "pages/news/chat"},
+		{"path": "pages/my/footmark"},
+		{"path": "pages/my/login"},
+		{"path": "pages/real_name/index"},
+		{"path": "pages/real_name/form"},
+		{"path": "pages/order/list"},
+		{"path": "pages/order/whereabouts"},
+		{"path": "pages/order/details"},
+		{"path": "pages/order/appraise"},
+		{"path": "pages/order/view_appraise"},
+		{"path": "pages/order/add_appraise"}
+	],
+	"globalStyle": {
+		"navigationStyle": "custom",
+		"mp-alipay": {
+			"allowsBounceVertical": "NO",
+			"transparentTitle": "always"
+		}
+	}
+}

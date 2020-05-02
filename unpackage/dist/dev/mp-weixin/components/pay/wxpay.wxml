@@ -1,0 +1,1 @@
+<view><uni-tag style="margin-top:10rpx;" vue-id="1" text="微信支付" type="primary" data-event-opts="{{[['^click',[['wxpay']]]]}}" bind:click="__e" bind:__l="__l"></uni-tag><view class="param_err">{{''+data+''}}</view></view>

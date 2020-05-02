@@ -1,0 +1,182 @@
+{
+  "@platforms": [
+    "android",
+    "iPhone",
+    "iPad"
+  ],
+  "id": "__UNI__9BE2053",
+  "name": "no",
+  "version": {
+    "name": "1.0.0",
+    "code": "100"
+  },
+  "description": "",
+  "launch_path": "__uniappview.html",
+  "developer": {
+    "name": "",
+    "email": "",
+    "url": ""
+  },
+  "permissions": {
+    "Speech": {},
+    "VideoPlayer": {},
+    "Push": {},
+    "Fingerprint": {},
+    "Contacts": {},
+    "Bluetooth": {},
+    "Maps": {
+      "coordType": "gcj02"
+    },
+    "Payment": {},
+    "OAuth": {},
+    "Share": {},
+    "UniNView": {
+      "description": "UniNView原生渲染"
+    }
+  },
+  "plus": {
+    "useragent": {
+      "value": "uni-app",
+      "concatenate": true
+    },
+    "splashscreen": {
+      "target": "id:1",
+      "autoclose": true,
+      "waiting": true,
+      "delay": 0
+    },
+    "popGesture": "close",
+    "launchwebview": {
+      "id": "1",
+      "kernel": "WKWebview",
+      "uni-app": "auto"
+    },
+    "statusbar": {
+      "immersed": "supportedDevice",
+      "style": "dark",
+      "background": "#F8F8F8"
+    },
+    "usingComponents": true,
+    "nvueCompiler": "weex",
+    "distribute": {
+      "icons": {
+        "android": {
+          "hdpi": "static/main/1.png",
+          "xhdpi": "static/main/2.png",
+          "xxhdpi": "static/main/3.png",
+          "xxxhdpi": "static/main/4.png"
+        },
+        "ios": {
+          "appstore": "static/main/3.png"
+        }
+      },
+      "google": {
+        "permissions": [
+          "<uses-feature android:name=\"android.hardware.camera\"/>",
+          "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+          "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+          "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+          "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+          "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+          "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+          "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+          "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+          "<uses-permission android:name=\"android.permission.USE_FINGERPRINT\"/>",
+          "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+          "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+          "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+        ]
+      },
+      "apple": {},
+      "plugins": {
+        "payment": {
+          "alipay": {},
+          "weixin": {
+            "appid": "wxde28eec7c493e34f",
+            "UniversalLinks": ""
+          }
+        },
+        "speech": {
+          "ifly": {}
+        },
+        "maps": {
+          "amap": {
+            "appkey_ios": "6ee1e1dede4234444da4efdb12b4cd4e",
+            "appkey_android": "7ecd4e07892dd67710c6728eab605015"
+          }
+        },
+        "share": {
+          "weixin": {
+            "appid": "wxde28eec7c493e34f",
+            "UniversalLinks": ""
+          }
+        },
+        "ad": null,
+        "audio": {
+          "mp3": {
+            "description": "Android平台录音支持MP3格式文件"
+          }
+        }
+      }
+    },
+    "allowsInlineMediaPlayback": true,
+    "safearea": {
+      "background": "#F7F7F7",
+      "bottom": {
+        "offset": "auto"
+      }
+    },
+    "uni-app": {
+      "compilerVersion": "2.6.0",
+      "control": "v8",
+      "nvueCompiler": "weex",
+      "renderer": "auto"
+    },
+    "tabBar": {
+      "list": [
+        {
+          "text": "主页",
+          "pagePath": "pages/home/home",
+          "iconPath": "static/tabbar/home.png",
+          "selectedIconPath": "static/tabbar/home_c.png"
+        },
+        {
+          "text": "购物车",
+          "pagePath": "pages/shoppingCart/shoppingCart",
+          "iconPath": "static/tabbar/shopping_cart.png",
+          "selectedIconPath": "static/tabbar/shopping_cart_c.png"
+        },
+        {
+          "text": "相机",
+          "pagePath": "pages/photo/photo",
+          "iconPath": "static/tabbar/photo.png",
+          "selectedIconPath": "static/tabbar/photo_c.png"
+        },
+        {
+          "text": "个人中心",
+          "pagePath": "pages/person/person",
+          "iconPath": "static/tabbar/person.png",
+          "selectedIconPath": "static/tabbar/person_c.png"
+        }
+      ],
+      "color": "#000",
+      "selectedColor": "#1afa29",
+      "backgroundColor": "#F7F7F7",
+      "borderStyle": "rgba(255,255,255,0.4)",
+      "height": "50px"
+    }
+  },
+  "usingComponents": {}
+}

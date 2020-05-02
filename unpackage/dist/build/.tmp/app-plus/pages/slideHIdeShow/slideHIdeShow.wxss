@@ -1,0 +1,99 @@
+
+.scroll-home-main.data-v-24103a39 {
+	width:100%;
+	position: absolute;
+	z-index: 1;
+	margin-top:15vh;
+}
+.scroll-home.data-v-24103a39 {
+	width: 710rpx !important;
+	height:85vh!important;
+	position: relative;
+	margin: 0 auto;
+}
+.home-scroll-block.data-v-24103a39 {
+	height: 200px;
+	border-radius: 8px 8px 0px 0px;
+	background: #F0F0F0;
+	margin-top:110px;
+}
+.home-top.data-v-24103a39 {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.home-top-pos-detail.data-v-24103a39{
+}
+.home-top-pos.data-v-24103a39 {
+	width: 100%;
+	height: 15vh;
+	background: green;
+}
+.home-top-nav-main.data-v-24103a39 {
+	width: 100%;
+	height: 110px;
+	/* background:blue; */
+	position: relative;
+	z-index:2;
+}
+.home-top-bottom.data-v-24103a39 {
+	width: 100%;
+	height: 110px;
+	background-image: -webkit-linear-gradient(#E50112, #fff, #fff, #fff);
+	background-image: linear-gradient(#E50112, #fff, #fff, #fff);
+}
+.home-top-nav.data-v-24103a39 {
+	width: 100%;
+	height: 80px;
+	position: relative;
+	position: absolute;
+	bottom:8px;
+}
+.home-top-nav-detail.data-v-24103a39 {
+	width: 680rpx;
+	position: relative;
+	margin: 0 auto;
+	background: pink;
+	overflow: hidden;
+}
+.home-top-nav-detail-content.data-v-24103a39 {
+	width: 680rpx;
+	height: 75px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	position: absolute;
+}
+.home-top-nav-detail-con-sel.data-v-24103a39 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	color: #fff;
+	font-size: 14px;
+}
+.home-top-nav-detail-con-sel-img.data-v-24103a39 {
+	width: 40px;
+	height: 40px;
+	margin-bottom:5px;
+}
+
+
+
+

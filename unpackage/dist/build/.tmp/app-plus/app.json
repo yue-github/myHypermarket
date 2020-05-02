@@ -1,0 +1,81 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/requestTest/requestTest",
+    "pages/slideShowHide/slideShowHide",
+    "pages/slideHIdeShow/slideHIdeShow",
+    "pages/index/index",
+    "pages/home/home",
+    "components/banner/banner",
+    "pages/componentShow/componentShow",
+    "pages/person/person",
+    "pages/shoppingCart/shoppingCart",
+    "pages/photo/photo",
+    "pages/otherPage/otherPage",
+    "components/pay/wxpay"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "吴同岳",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home_c.png"
+      },
+      {
+        "text": "购物车",
+        "pagePath": "pages/shoppingCart/shoppingCart",
+        "iconPath": "static/tabbar/shopping_cart.png",
+        "selectedIconPath": "static/tabbar/shopping_cart_c.png"
+      },
+      {
+        "text": "相机",
+        "pagePath": "pages/photo/photo",
+        "iconPath": "static/tabbar/photo.png",
+        "selectedIconPath": "static/tabbar/photo_c.png"
+      },
+      {
+        "text": "个人中心",
+        "pagePath": "pages/person/person",
+        "iconPath": "static/tabbar/person.png",
+        "selectedIconPath": "static/tabbar/person_c.png"
+      }
+    ],
+    "color": "#000",
+    "selectedColor": "#1afa29",
+    "backgroundColor": "#F7F7F7",
+    "borderStyle": "white"
+  },
+  "nvue": {
+    "pages": {
+      "pages/androidTest/androidTest.html": {
+        "window": {
+          "usingComponents": {}
+        },
+        "nvue": true
+      },
+      "pages/nvueTest/nvueTest.html": {
+        "window": {
+          "usingComponents": {}
+        },
+        "nvue": true
+      }
+    }
+  },
+  "nvueCompiler": "weex",
+  "renderer": "auto",
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "no",
+  "compilerVersion": "2.6.0",
+  "usingComponents": {}
+}
