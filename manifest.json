@@ -45,7 +45,7 @@
                 "idfa" : false
             },
             "sdkConfigs" : {
-                "ad" : null,
+                "ad" : {},
                 "maps" : {
                     "amap" : {
                         "appkey_ios" : "6ee1e1dede4234444da4efdb12b4cd4e",

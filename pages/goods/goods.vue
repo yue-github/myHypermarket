@@ -336,147 +336,163 @@
 		</view>
 		
 		<!--弹出框-->
-		<view class="cu-modal bottom-modal zaiui-bottom-modal-box" :class="bottomModal?'show':''">
-			<view class="cu-dialog bg-white">
-				<!--标题-->
-				<view class="text-black text-center margin-tb text-lg zaiui-title-bar">
-					<text>{{modalTitle}}</text>
-					<text class="cuIcon-close close-icon" @tap="hideModal"></text>
-				</view>
-				
-				<!--内容区域-->
-				<view class="zaiui-modal-content">
-					
-					<!--服务区域-->
-					<view class="zaiui-view-box service" v-if="modalType=='service'">
-						<view class="text-view">
-							<text class="cuIcon-title text-red"/>
-							<text class="text-cut text-black">已验机</text>
-						</view>
-						<view class="text-sm text-list-view">
-							<view class="margin-left text-cut text-gray">转转&富士康联合制定验机标准，对设备进行专业质检</view>
-						</view>
-						<view class="text-view">
-							<text class="cuIcon-title text-red"/>
-							<text class="text-cut text-black">7天无理由</text>
-						</view>
-						<view class="text-sm text-list-view">
-							<view class="margin-left text-cut text-gray">自收到商品7天内，不喜欢可以申请退货，并自付邮费寄回</view>
-						</view>
-						<view class="text-view">
-							<text class="cuIcon-title text-red"/>
-							<text class="text-cut text-black">180天质保</text>
-						</view>
-						<view class="text-sm text-list-view">
-							<view class="margin-left text-cut text-gray">自订单确认收货起180天,提供免费质保</view>
-						</view>
-						<view class="text-view">
-							<text class="cuIcon-title text-red"/>
-							<text class="text-cut text-black">顺丰包邮</text>
-						</view>
-						<view class="text-sm text-list-view">
-							<view class="margin-left text-cut text-gray">16:00前下单，今日发货，顺丰包邮(偏远地区邮政包邮)</view>
-						</view>
-						<view class="text-view">
-							<text class="cuIcon-title text-red"/>
-							<text class="text-cut text-black">半年电池免费换新</text>
-						</view>
-						<view class="text-sm text-list-view">
-							<view class="margin-left text-cut text-gray">自订单确认收货起半年，如果电池电量低于60%，可申请免费更换原厂品质电池</view>
-						</view>
+		<luPopupWrapper ref="luPopupWrapper"
+			:type="modalObj.type"
+			:transition="modalObj.transition"
+			:backgroundColor="modalObj.backgroundColor"
+			:active="modalObj.active"
+			:height="modalObj.height"
+			:width="modalObj.width"
+			:popupId="modalObj.popupId"
+			:maskShow="modalObj.maskShow"
+			:maskClick="modalObj.maskClick"
+			:closeCallback="closeCallback"
+			>
+			<view class="cu-modal bottom-modal zaiui-bottom-modal-box show" style="height:100%">
+			<view class="cu-dialog bg-white" style="height:100%;border-radius:0">
+				<view class="mycontent">
+					<!--标题-->
+					<view class="text-black text-center margin-tb text-lg zaiui-title-bar">
+						<text>{{modalTitle}}</text>
+						<text class="cuIcon-close close-icon" @tap="hideModal"></text>
 					</view>
 					
-					<!--促销区域-->
-					<view class="zaiui-view-box promotion" v-if="modalType=='promotion'">
-						<view class="text-view">
-							<text class="cu-tag line-orange radius sm">赠品</text>
-							<text class="margin-left-xs text-cut text-black">品胜充电器套装</text>
+					<!--内容区域-->
+					<view class="zaiui-modal-content">
+						
+						<!--服务区域-->
+						<view class="zaiui-view-box service" v-if="modalType=='service'">
+							<view class="text-view">
+								<text class="cuIcon-title text-red"/>
+								<text class="text-cut text-black">已验机</text>
+							</view>
+							<view class="text-sm text-list-view">
+								<view class="margin-left text-cut text-gray">转转&富士康联合制定验机标准，对设备进行专业质检</view>
+							</view>
+							<view class="text-view">
+								<text class="cuIcon-title text-red"/>
+								<text class="text-cut text-black">7天无理由</text>
+							</view>
+							<view class="text-sm text-list-view">
+								<view class="margin-left text-cut text-gray">自收到商品7天内，不喜欢可以申请退货，并自付邮费寄回</view>
+							</view>
+							<view class="text-view">
+								<text class="cuIcon-title text-red"/>
+								<text class="text-cut text-black">180天质保</text>
+							</view>
+							<view class="text-sm text-list-view">
+								<view class="margin-left text-cut text-gray">自订单确认收货起180天,提供免费质保</view>
+							</view>
+							<view class="text-view">
+								<text class="cuIcon-title text-red"/>
+								<text class="text-cut text-black">顺丰包邮</text>
+							</view>
+							<view class="text-sm text-list-view">
+								<view class="margin-left text-cut text-gray">16:00前下单，今日发货，顺丰包邮(偏远地区邮政包邮)</view>
+							</view>
+							<view class="text-view">
+								<text class="cuIcon-title text-red"/>
+								<text class="text-cut text-black">半年电池免费换新</text>
+							</view>
+							<view class="text-sm text-list-view">
+								<view class="margin-left text-cut text-gray">自订单确认收货起半年，如果电池电量低于60%，可申请免费更换原厂品质电池</view>
+							</view>
 						</view>
 						
-						<view class="text-sm text-list-view">
-							<view class="text-cut">充电头+数据线</view>
-							<text class="text-right-view">价值￥99</text>
+						<!--促销区域-->
+						<view class="zaiui-view-box promotion" v-if="modalType=='promotion'">
+							<view class="text-view">
+								<text class="cu-tag line-orange radius sm">赠品</text>
+								<text class="margin-left-xs text-cut text-black">品胜充电器套装</text>
+							</view>
+							
+							<view class="text-sm text-list-view">
+								<view class="text-cut">充电头+数据线</view>
+								<text class="text-right-view">价值￥99</text>
+							</view>
+							
+							<view class="text-view">
+								<text class="cu-tag line-orange radius sm">分期</text>
+								<text class="margin-left-xs text-cut text-black">￥318元/月花呗/京东/微信组合支付</text>
+							</view>
 						</view>
 						
-						<view class="text-view">
-							<text class="cu-tag line-orange radius sm">分期</text>
-							<text class="margin-left-xs text-cut text-black">￥318元/月花呗/京东/微信组合支付</text>
-						</view>
-					</view>
-					
-					<!--选择规格-->
-					<view class="zaiui-view-box select" v-if="modalType=='select'">
-						<!--商品信息-->
-						<view class="cu-list menu-avatar">
-							<view class="cu-item">
-								<view class="cu-avatar radius lg" style="background-image:url(/static/images/home/goods/1.png);"/>
-								<view class="content">
-									<view class="text-price-view">
-										<text class="text-price text-red margin-right-xs">2699</text>
-										<text class="text-sm text-gray text-through">￥6999</text>
-										<text class="cu-tag bg-gradual-red radius sm">
-											<text class="cuIcon-hotfill"/>
-											<text>秒杀中</text>
-										</text>
+						<!--选择规格-->
+						<view class="zaiui-view-box select" v-if="modalType=='select'">
+							<!--商品信息-->
+							<view class="cu-list menu-avatar">
+								<view class="cu-item">
+									<view class="cu-avatar radius lg" style="background-image:url(/static/images/home/goods/1.png);"/>
+									<view class="content">
+										<view class="text-price-view">
+											<text class="text-price text-red margin-right-xs">2699</text>
+											<text class="text-sm text-gray text-through">￥6999</text>
+											<text class="cu-tag bg-gradual-red radius sm">
+												<text class="cuIcon-hotfill"/>
+												<text>秒杀中</text>
+											</text>
+										</view>
+										<view class="text-black text-sm flex">
+											<view class="text-cut">已选: 99新深空灰色64G国行三网通</view>
+										</view>
 									</view>
-									<view class="text-black text-sm flex">
-										<view class="text-cut">已选: 99新深空灰色64G国行三网通</view>
+								</view>
+							</view>
+							
+							<!--规格数据-->
+							<view class="zaiui-select-btn-list-boox">
+								<view class="select-item">
+									<view class="text-black">成色</view>
+									<view class="select-btn">
+										<button class="cu-btn">95新</button>
+										<button class="cu-btn">9成新</button>
+										<button class="cu-btn light bg-red">99新</button>
 									</view>
 								</view>
-							</view>
-						</view>
-						
-						<!--规格数据-->
-						<view class="zaiui-select-btn-list-boox">
-							<view class="select-item">
-								<view class="text-black">成色</view>
-								<view class="select-btn">
-									<button class="cu-btn">95新</button>
-									<button class="cu-btn">9成新</button>
-									<button class="cu-btn light bg-red">99新</button>
+								
+								<view class="select-item">
+									<view class="text-black">颜色</view>
+									<view class="select-btn">
+										<button class="cu-btn light bg-red">深空灰色</button>
+										<button class="cu-btn" disabled>银色</button>
+									</view>
 								</view>
-							</view>
-							
-							<view class="select-item">
-								<view class="text-black">颜色</view>
-								<view class="select-btn">
-									<button class="cu-btn light bg-red">深空灰色</button>
-									<button class="cu-btn" disabled>银色</button>
+								
+								<view class="select-item">
+									<view class="text-black">容量</view>
+									<view class="select-btn">
+										<button class="cu-btn" disabled>256G</button>
+										<button class="cu-btn light bg-red">64G</button>
+									</view>
 								</view>
-							</view>
-							
-							<view class="select-item">
-								<view class="text-black">容量</view>
-								<view class="select-btn">
-									<button class="cu-btn" disabled>256G</button>
-									<button class="cu-btn light bg-red">64G</button>
+								
+								<view class="select-item">
+									<view class="text-black">版本</view>
+									<view class="select-btn">
+										<button class="cu-btn">港澳版移动4G/联通4G</button>
+										<button class="cu-btn">其他版本移动4G/联通4G</button>
+										<button class="cu-btn">其他版本三网通</button>
+										<button class="cu-btn light bg-red">国行三网通</button>
+									</view>
 								</view>
-							</view>
-							
-							<view class="select-item">
-								<view class="text-black">版本</view>
-								<view class="select-btn">
-									<button class="cu-btn">港澳版移动4G/联通4G</button>
-									<button class="cu-btn">其他版本移动4G/联通4G</button>
-									<button class="cu-btn">其他版本三网通</button>
-									<button class="cu-btn light bg-red">国行三网通</button>
-								</view>
+								
 							</view>
 							
 						</view>
 						
-					</view>
-					
-					<!--公共按钮-->
-					<view class="zaiui-footer-fixed">
-						<view class="flex flex-direction">
-							<button class="cu-btn bg-red lg">确定</button>
+						<!--公共按钮-->
+						<view class="zaiui-footer-fixed">
+							<view class="flex flex-direction">
+								<button class="cu-btn bg-red lg">确定</button>
+							</view>
 						</view>
+						
 					</view>
-					
 				</view>
 			</view>
-		</view>
+			</view>
+		</luPopupWrapper>
+		 
 		
 	</view>
 </template>
@@ -485,9 +501,11 @@
 	import barTitle from '@/components/zaiui-common/basics/bar-title';
 	import _goods_data from '@/static/zaiui/data/goods.js';	//虚拟数据
 	import _tool from '@/utils/tools.js';	//工具函数
+	import luPopupWrapper from "@/components/lu-popup-wrapper/lu-popup-wrapper.vue";
 	export default {
 		components: {
 			barTitle,
+			luPopupWrapper
 		},
 		data() {
 			return {
@@ -498,6 +516,17 @@
 				circular:true,
 				bannerCur: 0, bannerList: [], bottomModal: false, modalTitle: '', modalType: 'promotion', selectType: '',
 				goodsList: [],
+				modalObj:{
+					type:"bottom",// left right top bottom center
+					transition:"slider",//none slider fade
+					backgroundColor:'#fff',
+					active:false,
+					height:"680upx",
+					width:"100%",
+					popupId:1,
+					maskShow:true,
+					maskClick:true
+				}
 			}
 		},
 		onLoad() {
@@ -512,12 +541,20 @@
 			});
 		},
 		methods: {
+			// 弹窗关闭回调
+			closeCallback:function() {
+				console.log("关闭后回调");
+			},
 			bannerSwiper(e) {
 				this.bannerCur = e.detail.current;
 			},
 			serviceTap() {
 				this.modalTitle = "服务";
 				this.modalType = 'service';
+				this.modalObj.width ="100%";
+				this.modalObj.height ="900upx";
+				this.modalObj.transition = "slider";
+				this.modalObj.type = "bottom";
 				this.showModal();
 			},
 			promotionTap() {
@@ -532,12 +569,14 @@
 				this.showModal();
 			},
 			showModal() {
-				this.bottomModal = true;
+				// this.bottomModal = true;
+				this.$refs.luPopupWrapper.show();
 			},
 			hideModal(e) {
-				this.bottomModal = false;
+				// this.bottomModal = false;
 				this.modalTitle = "";
 				this.modalType = '';
+				this.$refs.luPopupWrapper.close();
 			},
 			myCartTap(){
 				uni.navigateTo({

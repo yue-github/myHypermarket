@@ -14,7 +14,7 @@
 				<block v-for="(item,index) in goodsList" :key="item.id">
 					<view class="padding zaiui-checkbox-title-view">
 						<checkbox class='round red sm zaiui-checked' :class="item.checked?'checked':''"
-						 :checked="item.checked?true:false" :value="item.id + ''"/>
+						 :checked="item.checked?true:false" :value="item.id + ''" @tap="checkGoods(item)"/>
 						<view class="text-black text-lg shop-title">{{item.name}}</view>
 					</view>
 					<block v-for="(items,indexs) in item.goods" :key="items.id">
@@ -53,7 +53,7 @@
 		<view class="bg-white zaiui-footer-fixed zaiui-foot-padding-bottom">
 			<view class="cu-bar padding-lr">
 				<view class="checked-view" @tap="tapChecked"> 
-					<checkbox class='round red sm zaiui-checked' :class="checkAll?'checked':''" :checked="checkAll"></checkbox>
+					<checkbox class='round red sm zaiui-checked' :class="checkAll?'checked':''" :checked="checkAll" @tap="checkAllDo"></checkbox>
 					<text class="text-black text-lg text-bold">全选</text>
 				</view>
 				<view class="price-view">
@@ -102,6 +102,41 @@
 			});
 		},
 		methods: {
+			// 处理店铺全选-tongYue-2020-5-4
+			checkGoods(i){
+				if(!i.checked)
+					i.goods.forEach(i=>{
+						i.checked = false;
+					})
+				else
+					i.goods.forEach(i=>{
+						i.checked = true;
+					})
+			},
+			// 处理全选-tongYue-2020-5-4
+			checkAllDo(){
+				//店铺处理
+				let items = this.goodsList;
+				
+				if(this.checkAll)
+					items.forEach(i=>{
+						i.checked = false;
+						//商品处理
+						let goods = i.goods;
+						goods.forEach(i=>{
+							i.checked = false;
+						})
+					})
+				else
+					items.forEach(i=>{
+						i.checked = true;
+						//商品处理
+						let goods = i.goods;
+						goods.forEach(i=>{
+							i.checked = true;
+						})
+					})
+			},
 			CheckboxChange(e) {
 				let items = this.goodsList, values = e.detail.value;
 				for (let i = 0; i < items.length; i++) {
@@ -154,4 +189,5 @@
 		@import "../../static/zaiui/style/app.scss";
 	/* #endif */
 	@import "../../static/zaiui/style/my_cart.scss";
+	 
 </style>

@@ -54,7 +54,7 @@
 					padding-left: 272.72rpx;
 					height: 45.45rpx;
 					.zaiui-btn {
-						border: 2rpx solid rgba(113, 113, 113, 0.2);
+						border: 1px solid rgba(113, 113, 113, 0.2);
 						position: absolute;
 						background: initial;
 						text-align: center;
@@ -64,7 +64,13 @@
 						height: 45.45rpx;
 						width: 45.45rpx;
 						right: 123.63rpx;
-					    padding: 0;
+					    padding: 0px;
+						box-sizing: border-box;
+						display:flex;
+						justify-content: center;
+						align-items: center;
+						width:21.5px;
+						height:21.5px;
 						&:after {
 							width: 0;
 							height: 0;

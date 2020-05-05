@@ -1,7 +1,7 @@
 <template>
 	<view class="zaiui-home-box" :class="show?'show':''">
 		<!--欢迎-->
-		<welcome-tip content="中午好，仔仔" :show="true" :c_s="3000" @closeFinish="welcomeClose"/>
+		<welcome-tip content="中午好，lowingshan" :show="true" :c_s="3000" @closeFinish="welcomeClose"/>
 		
 		<!--轮播背景-->
 		<swiper-background :list_data="swiperInfo.list" :indexs="swiperInfo.index" :show="swiperInfo.show" :welcome="swiperInfo.welcome"/>
