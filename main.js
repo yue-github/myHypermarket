@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import App from './App'
 import store from './store'
+import { axios } from '@/utils/request.js';
 Vue.prototype.$store = store
+Vue.prototype.$axios = axios
  
 Vue.config.productionTip = false
 

@@ -61,7 +61,7 @@
                     "xxxhdpi" : "static/main/4.png"
                 },
                 "ios" : {
-                    "appstore" : "static/main/3.png"
+                    "appstore" : "static/main/1024.png"
                 }
             }
         },
@@ -73,7 +73,8 @@
     "mp-weixin" : {
         "appid" : "wxb80067a54a64a6bd",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "postcss" : false
         },
         "usingComponents" : true
     },
@@ -87,11 +88,16 @@
         "usingComponents" : true
     },
     "h5" : {
+        "title" : "wutongyue",
         "sdkConfigs" : {
             "maps" : {}
         },
         "router" : {
-            "mode" : "history"
+            "mode" : "hash",
+            "base" : ""
+        },
+        "devServer" : {
+            "port" : 8080
         }
     }
 }

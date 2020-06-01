@@ -1,0 +1,97 @@
+<wxs module="QSGradientSwiperWXS">
+var gradientList_wxs = [];
+var circularGradient_wxs = [];
+var itemMoveDistance = 0;
+var char1 = "|";
+var char2 = ",";
+var swiperId = "#swiper";
+var backgroundId = "#background";
+
+function gradientList_wxs_Change(n, o, ins){
+	var newArr = [];
+	var data = n.split(char1);
+	for(var i = 0; i < data.length; i++) {
+		newArr.push(data[i].split(char2));
+	}
+	gradientList_wxs = newArr;
+	
+	var swiper = ins.selectComponent(swiperId);
+	var dataset = swiper.getDataset();
+	var swiperCurrent = dataset.swipercurrent;
+	changeBackgroundColor(ins, gradientList_wxs[swiperCurrent][0]);
+}
+
+function circularGradient_wxs_Change(n, o, ins) {
+	circularGradient_wxs = n.split(char2);
+}
+
+function itemMoveDistance_Change(n) {
+	itemMoveDistance = parseFloat(n);
+}
+
+function transition(e, ins) {
+	var DX = e.detail.dx;
+	var swiper = ins.selectComponent(swiperId);
+	var dataset = swiper.getDataset();
+	var swiperCurrent = parseInt(dataset.swipercurrent);
+	var isCircular = ((''+dataset.iscircular)==='true');
+	var gradientItem;
+	var itemCurrent;
+	var addC = Math.floor(Math.abs(DX)/itemMoveDistance);
+	addC = addC - (Math.floor(addC/(gradientList_wxs.length))*(gradientList_wxs.length));
+	var addDistance = (addC*itemMoveDistance);
+	swiperCurrent += addC;
+	if (DX >= 0) {
+		DX -= addDistance;
+		itemCurrent = Math.round(DX);
+		var abl = swiperCurrent == (gradientList_wxs.length - 1);
+		if (abl && (abl || isCircular)) {
+			// console.log('DX大于零， 选择circularGradient_wxs')
+			gradientItem = circularGradient_wxs;
+		} else {
+			// console.log('DX大于零， 选择gradientList_wxs')
+			gradientItem = gradientList_wxs[swiperCurrent] || gradientList_wxs[gradientList_wxs.length -1];
+		}
+	} else {
+		DX += addDistance;
+		itemCurrent = Math.round(itemMoveDistance + DX);
+		var bbl_s = swiperCurrent == 0;
+		if (bbl_s && (bbl_s || isCircular)) {
+			// console.log(' bbl_s DX小于零， 选择circularGradient_wxs, swiperCurrent:' + swiperCurrent)
+			gradientItem = circularGradient_wxs;
+		} else {
+			if(swiperCurrent == (gradientList_wxs.length)) {
+				// console.log(' bbl_e DX小于零， 选择circularGradient_wxs, swiperCurrent:' + swiperCurrent)
+				gradientItem = circularGradient_wxs;
+			}else{
+				// console.log('DX小于零， 选择gradientList_wxs, swiperCurrent:' + swiperCurrent)
+				gradientItem = gradientList_wxs[swiperCurrent - 1] || gradientList_wxs[0];
+			}
+		}
+	}
+	itemCurrent = itemCurrent>(gradientItem.length-1)?(gradientItem.length-1):itemCurrent<0?0:itemCurrent;
+	var color = gradientItem[itemCurrent];
+	changeBackgroundColor(ins, color);
+}
+
+function animationfinish(e, ins) {
+	ins.callMethod('animationfinish_wxs', e.detail);
+	changeBackgroundColor(ins, gradientList_wxs[e.detail.current][0]);
+}
+
+function changeBackgroundColor(ins, color) {
+	var background = ins.selectComponent(backgroundId);
+	background.setStyle({
+		'background-color': 'transparent'
+	})
+}
+
+module.exports = {
+	transition: transition,
+	animationfinish: animationfinish,
+	circularGradient_wxs_Change: circularGradient_wxs_Change,
+	gradientList_wxs_Change: gradientList_wxs_Change,
+	itemMoveDistance_Change: itemMoveDistance_Change
+}
+</wxs>
+<view class="QSGradientSwiper data-v-43a7e7f0" style="{{'height:'+(height+'px')+';'+('width:'+(width+'')+';')}}" id="QSGradientSwiper"><view class="background data-v-43a7e7f0" style="{{'height:'+(getHeight*$root.m0+'px')+';'+('border-bottom-left-radius:'+(borderBottomRadius)+';')+('border-bottom-right-radius:'+(borderBottomRadius)+';')+('background:'+('transparent')+';')}}" id="background"></view><swiper class="square-dot data-v-43a7e7f0" style="{{'height:'+(height+'px')+';'}}" id="swiper" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}" next-margin="{{nextMargin}}" circular="{{isCircular}}" current="{{swiperCurrent}}" circularGradient_wxs="{{circularGradient_wxs}}" gradientList_wxs="{{gradientList_wxs}}" itemMoveDistance="{{itemMoveDistance}}" change:circularGradient_wxs="{{QSGradientSwiperWXS.circularGradient_wxs_Change}}" change:gradientList_wxs="{{QSGradientSwiperWXS.gradientList_wxs_Change}}" change:itemMoveDistance="{{QSGradientSwiperWXS.itemMoveDistance_Change}}" data-swipercurrent="{{swiperCurrent}}" data-iscircular="{{isCircular}}" data-event-opts="{{[['change',[['bannerChange',['$event']]]]]}}" bindchange="__e" bindtransition="{{QSGradientSwiperWXS.transition}}" bindanimationfinish="{{QSGradientSwiperWXS.animationfinish}}"><block wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index"><swiper-item class="data-v-43a7e7f0"><view class="swiper-item data-v-43a7e7f0"><q-s-gradient-swiper-item vue-id="{{'5fc8aa69-1-'+index}}" item="{{item}}" index="{{index}}" class="data-v-43a7e7f0" bind:__l="__l"></q-s-gradient-swiper-item></view></swiper-item></block></swiper></view>

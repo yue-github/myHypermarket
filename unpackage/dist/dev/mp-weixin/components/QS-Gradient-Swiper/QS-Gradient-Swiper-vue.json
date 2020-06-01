@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "q-s-gradient-swiper-item": "/components/QS-Gradient-Swiper/component/QS-Gradient-Swiper-Item"
+  }
+}

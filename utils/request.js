@@ -80,7 +80,7 @@ export function get (url,data,callBack,f) {
 }
 
 // 支持异步
-export function axios (url,type,data,callBack) {
+export function axios (url,type = 'GET',data = {},callBack) {
 	showLoading();
 	let token;
 	
@@ -102,7 +102,7 @@ export function axios (url,type,data,callBack) {
 	let promise=new Promise((resolve,reject)=>{
 		uni.request({
 			url: (url.includes('yue')||url.includes('http'))?url:baseUrl+url, //仅为示例，并非真实接口地址。
-			data:data?data:{},
+			data:data,
 			method:type,
 			header: {
 				'Authorization': token, //自定义请求头信息

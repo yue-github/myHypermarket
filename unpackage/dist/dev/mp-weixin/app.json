@@ -1,59 +1,34 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/requestTest/requestTest",
-    "pages/slideShowHide/slideShowHide",
-    "pages/slideHIdeShow/slideHIdeShow",
-    "pages/home/home",
-    "components/banner/banner",
-    "pages/androidTest/androidTest",
-    "pages/componentShow/componentShow",
-    "pages/nvueTest/nvueTest",
-    "pages/person/person",
-    "pages/shoppingCart/shoppingCart",
-    "pages/photo/photo",
-    "pages/otherPage/otherPage",
-    "components/pay/wxpay"
+    "pages/app/index",
+    "pages/home/sort",
+    "pages/home/search",
+    "pages/home/sort_list",
+    "pages/goods/reward",
+    "pages/goods/goods",
+    "pages/goods/second_hand",
+    "pages/goods/second_terrace",
+    "pages/goods/my_cart",
+    "pages/goods/settlement",
+    "pages/goods/pay",
+    "pages/status/pay_status",
+    "pages/news/notice",
+    "pages/news/details",
+    "pages/news/chat",
+    "pages/my/footmark",
+    "pages/my/login",
+    "pages/real_name/index",
+    "pages/real_name/form",
+    "pages/order/list",
+    "pages/order/whereabouts",
+    "pages/order/details",
+    "pages/order/appraise",
+    "pages/order/view_appraise",
+    "pages/order/add_appraise"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "吴同岳",
-    "navigationBarBackgroundColor": "#F8F8F8",
-    "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "text": "主页",
-        "pagePath": "pages/home/home",
-        "iconPath": "static/tabbar/home.png",
-        "selectedIconPath": "static/tabbar/home_c.png"
-      },
-      {
-        "text": "购物车",
-        "pagePath": "pages/shoppingCart/shoppingCart",
-        "iconPath": "static/tabbar/shopping_cart.png",
-        "selectedIconPath": "static/tabbar/shopping_cart_c.png"
-      },
-      {
-        "text": "相机",
-        "pagePath": "pages/photo/photo",
-        "iconPath": "static/tabbar/photo.png",
-        "selectedIconPath": "static/tabbar/photo_c.png"
-      },
-      {
-        "text": "个人中心",
-        "pagePath": "pages/person/person",
-        "iconPath": "static/tabbar/person.png",
-        "selectedIconPath": "static/tabbar/person_c.png"
-      }
-    ],
-    "color": "#000",
-    "selectedColor": "#1afa29",
-    "backgroundColor": "#F7F7F7",
-    "borderStyle": "white"
   },
   "usingComponents": {}
 }

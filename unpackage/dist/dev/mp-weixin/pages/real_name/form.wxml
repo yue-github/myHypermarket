@@ -1,0 +1,5 @@
+<view><bar-title vue-id="abaed134-1" bgColor="bg-white" isBack bind:__l="__l" vue-slots="{{['content']}}"><view slot="content">实人认证</view></bar-title><view class="text-black text-xl zaiui-title-view">为提升交易可靠性，请进行实人认证</view><view class="text-gray zaiui-content-view">实人认证是由转转合作的第三方提供的一项个人身份
+		认证服务,通过与公安网数据校验并使用全球领先的
+		人脸识别技术,保障个人身份真实性。转转平台将逐
+		步推进全平台实人认证，为用户创造更加安全的交易
+		环境。</view><view class="cu-form-view margin-top-lg"><input placeholder="请输入真实姓名"/></view><view class="cu-form-view"><input placeholder="请输入18位身份证号"/></view><view class="bg-white zaiui-btn-view zaiui-foot-padding-bottom"><view class="flex flex-direction"><button class="cu-btn bg-red">开始验证</button></view></view></view>

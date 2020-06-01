@@ -1,0 +1,374 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.zaiui-goods-synopsis-view .user-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-goods-synopsis-view .user-view .cu-avatar {
+  position: absolute;
+}
+.zaiui-goods-synopsis-view .user-view .text-name {
+  position: relative;
+  padding: 0 181.81rpx 0 61.81rpx;
+  line-height: 47.27rpx;
+  height: 47.27rpx;
+}
+.zaiui-goods-synopsis-view .user-view .text-right-view {
+  border-radius: 54.54rpx 0 0 54.54rpx;
+  padding: 0px 27.27rpx;
+  position: absolute;
+  right: -29.09rpx;
+  top: 0;
+}
+.zaiui-goods-synopsis-view .user-view .text-right-view .icon-text {
+  position: relative;
+  top: 2rpx;
+}
+.zaiui-goods-synopsis-view .price-view {
+  position: relative;
+}
+.zaiui-goods-synopsis-view .price-view .text-price {
+  font-size: 54.54rpx;
+}
+.zaiui-goods-synopsis-view .price-view text {
+  margin-right: 18.18rpx;
+}
+.zaiui-goods-synopsis-view .price-view .cu-tag {
+  position: relative;
+  top: -9.09rpx;
+}
+.zaiui-goods-synopsis-view .price-view .cu-tag .icon-text {
+  position: relative;
+  margin-right: 3.63rpx;
+  top: 2rpx;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box {
+  position: relative;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .flex .basis-1 {
+  -webkit-flex-basis: 10%;
+          flex-basis: 10%;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .flex .basis-8 {
+  -webkit-flex-basis: 80%;
+          flex-basis: 80%;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .tag-view-box {
+  position: relative;
+  margin-bottom: 10.9rpx;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .tag-view-box .cu-tag {
+  position: relative;
+  top: -2rpx;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .icon-view {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.zaiui-goods-synopsis-view .zaiui-hot-view-box .icon-view .icon {
+  position: absolute;
+  right: 15px;
+}
+.zaiui-service-view-box {
+  position: relative;
+  padding-bottom: 18.18rpx;
+}
+.zaiui-service-view-box .flex .basis-1 {
+  -webkit-flex-basis: 10%;
+          flex-basis: 10%;
+}
+.zaiui-service-view-box .flex .basis-8 {
+  -webkit-flex-basis: 80%;
+          flex-basis: 80%;
+}
+.zaiui-service-view-box .tag-view-box {
+  position: relative;
+  top: -3.63rpx;
+}
+.zaiui-service-view-box .tag-view-box .tag-view {
+  margin-right: 18.18rpx;
+  padding: 0;
+}
+.zaiui-service-view-box .tag-view-box .cu-tag + .cu-tag {
+  margin-left: 0;
+}
+.zaiui-service-view-box .icon-view {
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.zaiui-service-view-box .icon-view .icon {
+  position: absolute;
+  right: 15px;
+}
+.zaiui-details-view-box {
+  position: relative;
+}
+.zaiui-details-view-box .title-view {
+  padding: 9.09rpx 0 18.18rpx;
+}
+.zaiui-details-view-box .col-item {
+  margin: 9.09rpx 0;
+}
+.zaiui-details-view-box .zaiui-text-content-view {
+  margin: 27.27rpx 0;
+}
+.zaiui-details-view-box .zaiui-img-box {
+  position: relative;
+  width: 100%;
+}
+.zaiui-details-view-box .zaiui-img-box image {
+  width: 100%;
+  border-radius: 18.18rpx;
+}
+.zaiui-details-view-box .zaiui-img-box image + image {
+  margin-top: 18.18rpx;
+}
+.zaiui-details-view-box .zaiui-bubble-view {
+  position: relative;
+  margin-top: 36.36rpx;
+  background-color: #F8F8F8;
+  width: 100%;
+}
+.zaiui-details-view-box .zaiui-bubble-view .usefull-icon {
+  position: absolute;
+  font-size: 32.72rpx;
+  top: -21.81rpx;
+  color: #F8F8F8;
+  left: 18.18rpx;
+}
+.zaiui-footer-fixed {
+  -webkit-box-shadow: 0 -2rpx 9.09rpx 0 #ececec;
+          box-shadow: 0 -2rpx 9.09rpx 0 #ececec;
+}
+.zaiui-footer-fixed .cu-bar, .zaiui-footer-fixed .flex-wrap {
+  width: 100%;
+}
+.zaiui-footer-fixed .cu-bar {
+  padding-right: 18.18rpx;
+}
+.zaiui-footer-fixed .cu-bar .basis-xs {
+  -webkit-flex-basis: 15%;
+          flex-basis: 15%;
+}
+.zaiui-footer-fixed .cu-bar .basis-sm {
+  -webkit-flex-basis: 35%;
+          flex-basis: 35%;
+}
+.zaiui-footer-fixed .cu-bar .btn-view {
+  padding: 0 18.18rpx;
+}
+.zaiui-footer-fixed .cu-bar .btn-view .cu-btn {
+  width: 100%;
+}
+.zaiui-border-view {
+  position: relative;
+  background: #efebeb;
+  margin: 36.36rpx 0;
+  height: 2rpx;
+  width: 100%;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item {
+  height: 99.99rpx;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item .content {
+  left: 127.27rpx;
+  width: calc(100% - 94.54rpx - 127.27rpx);
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item .content .cu-tag.sm {
+  line-height: 29.09rpx;
+  padding: 0 5.45rpx;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item .content .cu-tag.sm .margin-left-xs {
+  margin-left: 3.63rpx;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item .content .cu-tag.sm.just {
+  padding: 0;
+  width: 27.27rpx;
+  height: 27.27rpx;
+  text-align: center;
+  line-height: 27.27rpx;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item:after {
+  width: 0;
+  height: 0;
+  border-bottom: 0;
+}
+.zaiui-selll-user-view-box .cu-list.menu-avatar > .cu-item > .cu-avatar {
+  width: 72.72rpx;
+  height: 72.72rpx;
+}
+.zaiui-selll-user-view-box .zaiui-grid-tab-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-selll-user-view-box .zaiui-grid-tab-view .grid {
+  border-radius: 9.09rpx;
+}
+.zaiui-selll-user-view-box .zaiui-grid-tab-view .grid .item-view {
+  position: relative;
+  padding: 14.54rpx 0;
+}
+.zaiui-selll-user-view-box .zaiui-grid-tab-view .grid .item-view + .item-view:before {
+  content: "";
+  position: absolute;
+  background: #e2e2e2;
+  height: 45.45rpx;
+  top: 27.27rpx;
+  width: 2rpx;
+  z-index: 0;
+  left: 0;
+}
+.zaiui-selll-user-view-box .zaiui-goods-swiper-view .goods-item {
+  position: relative;
+  text-align: center;
+}
+.zaiui-selll-user-view-box .zaiui-goods-swiper-view .goods-item .text-price-view {
+  position: absolute;
+  bottom: 3.63rpx;
+  left: 36.36rpx;
+  color: #fff;
+}
+.zaiui-selll-user-view-box .zaiui-goods-swiper-view .screen-swiper {
+  min-height: 145.45rpx;
+  height: 172.72rpx;
+}
+.zaiui-interaction-view-box .zaiui-null-view {
+  position: relative;
+  text-align: center;
+  height: 218.18rpx;
+  width: 100%;
+}
+.zaiui-interaction-view-box .zaiui-null-view .text-view-box {
+  padding: 45.45rpx 0 36.36rpx 0;
+}
+.zaiui-interaction-view-box .zaiui-null-view .cu-btn {
+  height: 61.81rpx;
+  font-size: 23.63rpx;
+  padding: 0 45.45rpx;
+}
+.zaiui-interaction-view-box .zaiui-interaction-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-interaction-view-box .flex .basis-1 {
+  -webkit-flex-basis: 10%;
+          flex-basis: 10%;
+}
+.zaiui-interaction-view-box .flex .basis-9 {
+  -webkit-flex-basis: 90%;
+          flex-basis: 90%;
+}
+.zaiui-interaction-view-box .zaiui-border-view {
+  position: relative;
+  background: #efebeb;
+  margin: 21.81rpx 0;
+  height: 2rpx;
+  width: 100%;
+}
+.zaiui-interaction-view-box .zaiui-tag-text-view-box {
+  position: relative;
+  padding: 18.18rpx 0;
+}
+.zaiui-interaction-view-box .zaiui-tag-text-view-box .text-cut {
+  padding: 9.09rpx 0;
+}
+.zaiui-interaction-view-box .zaiui-tag-text-view-box .text-cut .cu-tag {
+  position: relative;
+  top: -3.63rpx;
+}
+.zaiui-resemble-goods-box {
+  position: relative;
+}
+.zaiui-resemble-goods-box .flex .img-aau {
+  width: 81.81rpx;
+  margin-top: 12.72rpx;
+}
+.zaiui-resemble-goods-box .flex .text-right .img-aau {
+  margin-right: 14.54rpx;
+}
+.zaiui-resemble-goods-box .flex .text-left .img-aau {
+  margin-left: 14.54rpx;
+}
+.zaiui-resemble-goods-box .grid {
+  padding: 0 18.18rpx;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box {
+  padding: 9.09rpx;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view {
+  border-radius: 10.9rpx;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .cu-avatar {
+  width: 100%;
+  height: 309.09rpx;
+  border-radius: 10.9rpx 10.9rpx 0 0;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view {
+  line-height: 1.6;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view .tag-view-box text {
+  margin-right: 9.09rpx;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view .text-price-view {
+  position: relative;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view .text-price-view .cu-tag {
+  position: absolute;
+  top: 9.09rpx;
+  right: 0;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view .gps-right-view {
+  position: relative;
+}
+.zaiui-resemble-goods-box .grid .grid-item-box .item-view .zaiui-text-view .gps-right-view .text-right {
+  position: absolute;
+  right: 0;
+  top: 7.27rpx;
+}
+.zaiui-scroll-tab-view {
+  -webkit-box-shadow: 0 2rpx 21.81rpx 0 rgba(136, 136, 136, 0.29);
+          box-shadow: 0 2rpx 21.81rpx 0 rgba(136, 136, 136, 0.29);
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+}
+.zaiui-scroll-height-view {
+  position: relative;
+  height: 63.63rpx;
+  width: 100%;
+}
+

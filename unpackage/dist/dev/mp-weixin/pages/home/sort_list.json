@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bar-search-title": "/components/zaiui-common/basics/bar-search-title",
+    "goods-sort-list": "/components/zaiui-common/list/goods-sort-list"
+  }
+}

@@ -1,8 +1,0 @@
-
-.param_err{
-	width:100%;
-	background:red;
-	white-space: normal;
-	word-break: break-word;
-}
-

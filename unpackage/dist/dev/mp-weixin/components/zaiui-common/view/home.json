@@ -1,0 +1,18 @@
+{
+  "component": true,
+  "usingComponents": {
+    "welcome-tip": "/components/zaiui-common/basics/welcome-tip",
+    "swiper-background": "/components/zaiui-common/basics/swiper-background",
+    "grid-menu-list": "/components/zaiui-common/list/grid-menu-list",
+    "identify-list": "/components/zaiui-common/list/identify-list",
+    "sell-quickly-list": "/components/zaiui-common/list/sell-quickly-list",
+    "activity-list": "/components/zaiui-common/list/activity-list",
+    "goods-list": "/components/zaiui-common/list/goods-list",
+    "live-list": "/components/zaiui-common/list/live-list",
+    "video-list": "/components/zaiui-common/list/video-list",
+    "footer-tabbar": "/components/zaiui-common/footer/footer-tabbar",
+    "grid-sort-list": "/components/zaiui-common/list/grid-sort-list",
+    "modal-img": "/components/zaiui-common/basics/modal-img",
+    "my-swiper": "/components/QS-Gradient-Swiper/QS-Gradient-Swiper-vue"
+  }
+}

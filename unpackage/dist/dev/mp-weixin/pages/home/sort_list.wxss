@@ -1,0 +1,296 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.zaiui-swiper-box {
+  width: 100%;
+}
+.zaiui-swiper-box .screen-swiper {
+  height: 196.36rpx;
+  min-height: 196.36rpx;
+}
+.zaiui-swiper-box .screen-swiper .swiper-padding {
+  padding: 0 25rpx;
+}
+.zaiui-invest-title-box {
+  position: relative;
+  padding: 18.18rpx 21.81rpx;
+}
+.zaiui-invest-title-box .text-box .cuIcon-title {
+  font-size: 20rpx;
+}
+.zaiui-invest-title-box .img {
+  position: absolute;
+  background-size: 100% 100%;
+  right: 23.63rpx;
+  width: 90.9rpx;
+  height: 34.54rpx;
+  top: 23.63rpx;
+}
+.zaiui-grid-round-box .cu-list.grid {
+  background-color: inherit;
+}
+.zaiui-grid-round-box .cu-list.grid .grid-icon {
+  margin: 0 30rpx;
+}
+.zaiui-grid-round-box .cu-list.grid .grid-icon .icon {
+  border-radius: 100%;
+}
+.zaiui-grid-round-box .cu-list.grid > .cu-item text {
+  color: #333333;
+}
+.zaiui-grid-round-box .cu-list.grid > .cu-item .cu-tag {
+  right: auto;
+  left: 45%;
+  margin-left: 0;
+  top: -9.09rpx;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+.zaiui-grid-round-box .cu-list.grid.no-border {
+  padding: 18.18rpx 9.09rpx 0;
+}
+.zaiui-grid-sm-box .cu-list.grid {
+  background-color: inherit;
+}
+.zaiui-grid-sm-box .cu-list.grid .grid-icon {
+  margin: 0 30rpx;
+}
+.zaiui-seckill-list-view-box {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#ffffff), to(#FAFAFA));
+  background-image: -webkit-linear-gradient(bottom, #ffffff, #FAFAFA);
+  background-image: linear-gradient(0deg, #ffffff, #FAFAFA);
+  padding: 0 29.09rpx 29.09rpx;
+}
+.zaiui-seckill-list-view-box .list-title-box {
+  position: relative;
+  width: 100%;
+}
+.zaiui-seckill-list-view-box .list-title-box .text-view .text-bold {
+  margin-right: 18.18rpx;
+}
+.zaiui-seckill-list-view-box .list-title-box .text-view .cu-tag {
+  position: relative;
+  margin: 0 5.45rpx;
+  top: -5.45rpx;
+}
+.zaiui-seckill-list-view-box .list-title-box .text-view .colon {
+  position: relative;
+  top: -3.63rpx;
+}
+.zaiui-seckill-list-view-box .list-title-box .text-right-view {
+  position: absolute;
+  right: 0;
+  top: 3.63rpx;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll {
+  position: relative;
+  height: 381.81rpx;
+  white-space: nowrap;
+  width: 100%;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll .recommend-scroll-item {
+  display: inline-block;
+  padding-top: 27.27rpx;
+  width: 199.99rpx;
+  padding-right: 18.18rpx;
+  white-space: initial;
+  position: relative;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll .recommend-scroll-item .goods-img-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll .recommend-scroll-item .goods-img-view .cu-avatar {
+  width: 181.81rpx;
+  height: 181.81rpx;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll .recommend-scroll-item .goods-img-view .cu-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.zaiui-seckill-list-view-box .seckill-goods-list-view .recommend-scroll .recommend-scroll-item .rob-tag {
+  position: absolute;
+  bottom: 10.9rpx;
+  right: 21.81rpx;
+  width: 36.36rpx;
+  height: 36.36rpx;
+  padding: 0;
+  line-height: 36.36rpx;
+}
+.zaiui-gird-hot-goods-box .margin, .zaiui-gird-hot-goods-box .cu-list.grid {
+  border-radius: 10px;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item {
+  padding: 18.18rpx;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item::after {
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  content: " ";
+  position: absolute;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  pointer-events: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: inherit;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item:nth-of-type(1)::after {
+  border-right: 2rpx solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item:nth-of-type(2)::after {
+  border-right: 0;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.1);
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item:nth-of-type(3)::after {
+  border-right: 2rpx solid rgba(0, 0, 0, 0.1);
+  border-bottom: 0;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item:nth-of-type(4)::after {
+  border-right: 0;
+  border-bottom: 0;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view {
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view .text-title {
+  display: initial;
+  margin-top: 0;
+  color: #333333;
+  font-size: 30.9rpx;
+  line-height: initial;
+  font-weight: bold;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view .text-right-view {
+  position: absolute;
+  right: 0;
+  top: 3.63rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view .text-right-view .text-m {
+  display: initial;
+  margin-top: 0;
+  color: #aaaaaa;
+  font-size: 23.63rpx;
+  line-height: initial;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view .text-right-view .icon {
+  position: relative;
+  display: initial;
+  margin-top: 0;
+  width: auto;
+  top: 5.45rpx;
+  font-size: 23.63rpx;
+  line-height: initial;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .text-view .cu-tag {
+  right: initial;
+  left: 0;
+  margin-left: 9.09rpx;
+  display: initial;
+  margin-top: 0;
+  color: aliceblue;
+  font-size: 23.63rpx;
+  line-height: initial;
+  position: relative;
+  top: -3.63rpx;
+  padding: 3.63rpx 10.9rpx;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .goods-item .goods-img-view {
+  position: relative;
+  width: 100%;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .goods-item .text-goods-title {
+  color: #333333;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .goods-img-view {
+  position: relative;
+  width: 100%;
+  height: 127.27rpx;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .goods-img-view .cu-avatar {
+  position: absolute;
+  left: 0;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .goods-img-view .zaiui-text-view {
+  position: relative;
+  padding-left: 136.36rpx;
+  text-align: left;
+  height: 127.27rpx;
+  line-height: 1.6;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .goods-img-view .zaiui-text-view .text-lg {
+  font-size: 36.36rpx;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .text-goods-title {
+  color: #333333;
+  text-align: left;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .text-goods-title .text-title-1 {
+  display: inherit;
+  margin-top: 0;
+  color: #e54d42;
+  font-size: 21.81rpx;
+  line-height: 40rpx;
+}
+.zaiui-gird-hot-goods-box .cu-list.grid > .cu-item .zaiui-list-2-view .text-goods-title .text-title-2 {
+  display: inherit;
+  margin-top: 0;
+  color: #333333;
+  font-size: 25.45rpx;
+  line-height: inherit;
+  margin-left: 18.18rpx;
+}
+.zaiui-add-btn-view-box {
+  bottom: calc(env(safe-area-inset-bottom) / 2);
+  text-align: center;
+}
+.zaiui-add-btn-view-box .cu-btn {
+  margin: auto;
+  width: 81.81rpx;
+  height: 81.81rpx;
+  font-weight: 800;
+  border-radius: 50%;
+  font-size: 49.09rpx;
+  border: 9.09rpx solid #fff;
+  -webkit-box-shadow: 0 0 14.54rpx 7.27rpx #d0d0d0;
+          box-shadow: 0 0 14.54rpx 7.27rpx #d0d0d0;
+}
+

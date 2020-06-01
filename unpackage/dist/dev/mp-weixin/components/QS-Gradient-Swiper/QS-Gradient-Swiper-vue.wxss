@@ -1,0 +1,17 @@
+
+.QSGradientSwiper.data-v-43a7e7f0 {
+	position: relative;
+}
+.background.data-v-43a7e7f0 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 750rpx;
+}
+.swiper-item.data-v-43a7e7f0{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+ 
+

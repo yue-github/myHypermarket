@@ -2,12 +2,15 @@
 	<view>
 		<!--标题栏-->
 		<bar-title bgColor="bg-red">
-			<block slot="content">打赏</block>
+			<block slot="content">活动</block>
 		</bar-title>
 		
 		<view class="padding bg-white">
-			<image src="/static/images/reward/zfb.png" mode="widthFix"/>
-			<image src="/static/images/reward/wx.png" mode="widthFix"/>
+			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
+			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
+			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
+			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
+			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
 		</view>
 		
 	</view>

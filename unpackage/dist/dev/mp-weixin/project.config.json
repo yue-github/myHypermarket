@@ -4,12 +4,13 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": false
+    "urlCheck": false,
+    "postcss": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.9.2",
   "appid": "wxb80067a54a64a6bd",
-  "projectname": "no",
+  "projectname": "wutongyue",
   "condition": {
     "search": {
       "current": -1,

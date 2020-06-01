@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "trends-list": "/components/zaiui-common/list/trends-list",
+    "hot-topic-list": "/components/zaiui-common/list/hot-topic-list",
+    "recommend-scroll-list": "/components/zaiui-common/list/recommend-scroll-list",
+    "topic-grid-list": "/components/zaiui-common/list/topic-grid-list",
+    "topic-card-list": "/components/zaiui-common/list/topic-card-list"
+  }
+}

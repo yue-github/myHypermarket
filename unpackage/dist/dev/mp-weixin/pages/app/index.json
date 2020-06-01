@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "基础架构",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "home": "/components/zaiui-common/view/home",
+    "find": "/components/zaiui-common/view/find",
+    "sell": "/components/zaiui-common/view/sell",
+    "news": "/components/zaiui-common/view/news",
+    "my": "/components/zaiui-common/view/my",
+    "footer-tabbar": "/components/zaiui-common/footer/footer-tabbar",
+    "click-circle": "/components/clickCircle"
+  }
+}

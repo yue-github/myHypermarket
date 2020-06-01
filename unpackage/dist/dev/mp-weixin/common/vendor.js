@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -241,17 +241,23 @@ var promiseInterceptor = {
 
 
 var SYNC_API_RE =
-/^\$|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
+/^\$|sendNativeEvent|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
 
 var CONTEXT_API_RE = /^create|Manager$/;
 
-var CALLBACK_API_RE = /^on/;
+// Context例外情况
+var CONTEXT_API_RE_EXC = ['createBLEConnection'];
+
+// 同步例外情况
+var ASYNC_API = ['createBLEConnection'];
+
+var CALLBACK_API_RE = /^on|^off/;
 
 function isContextApi(name) {
-  return CONTEXT_API_RE.test(name);
+  return CONTEXT_API_RE.test(name) && CONTEXT_API_RE_EXC.indexOf(name) === -1;
 }
 function isSyncApi(name) {
-  return SYNC_API_RE.test(name);
+  return SYNC_API_RE.test(name) && ASYNC_API.indexOf(name) === -1;
 }
 
 function isCallbackApi(name) {
@@ -276,6 +282,19 @@ function shouldPromise(name) {
   return true;
 }
 
+/* eslint-disable no-extend-native */
+if (!Promise.prototype.finally) {
+  Promise.prototype.finally = function (callback) {
+    var promise = this.constructor;
+    return this.then(
+    function (value) {return promise.resolve(callback()).then(function () {return value;});},
+    function (reason) {return promise.resolve(callback()).then(function () {
+        throw reason;
+      });});
+
+  };
+}
+
 function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
@@ -289,18 +308,6 @@ function promisify(name, api) {
         success: resolve,
         fail: reject })].concat(
       params));
-      /* eslint-disable no-extend-native */
-      if (!Promise.prototype.finally) {
-        Promise.prototype.finally = function (callback) {
-          var promise = this.constructor;
-          return this.then(
-          function (value) {return promise.resolve(callback()).then(function () {return value;});},
-          function (reason) {return promise.resolve(callback()).then(function () {
-              throw reason;
-            });});
-
-        };
-      }
     })));
   };
 }
@@ -351,14 +358,12 @@ var interceptors = {
   promiseInterceptor: promiseInterceptor };
 
 
-
-
 var baseApi = /*#__PURE__*/Object.freeze({
   __proto__: null,
   upx2px: upx2px,
-  interceptors: interceptors,
   addInterceptor: addInterceptor,
-  removeInterceptor: removeInterceptor });
+  removeInterceptor: removeInterceptor,
+  interceptors: interceptors });
 
 
 var previewImage = {
@@ -601,8 +606,6 @@ var eventApi = /*#__PURE__*/Object.freeze({
   $emit: $emit });
 
 
-
-
 var api = /*#__PURE__*/Object.freeze({
   __proto__: null });
 
@@ -789,14 +792,14 @@ function createObserver(name) {
 }
 
 function initBehaviors(vueOptions, initBehavior) {
-  var vueBehaviors = vueOptions['behaviors'];
-  var vueExtends = vueOptions['extends'];
-  var vueMixins = vueOptions['mixins'];
+  var vueBehaviors = vueOptions.behaviors;
+  var vueExtends = vueOptions.extends;
+  var vueMixins = vueOptions.mixins;
 
-  var vueProps = vueOptions['props'];
+  var vueProps = vueOptions.props;
 
   if (!vueProps) {
-    vueOptions['props'] = vueProps = [];
+    vueOptions.props = vueProps = [];
   }
 
   var behaviors = [];
@@ -808,11 +811,11 @@ function initBehaviors(vueOptions, initBehavior) {
           vueProps.push('name');
           vueProps.push('value');
         } else {
-          vueProps['name'] = {
+          vueProps.name = {
             type: String,
             default: '' };
 
-          vueProps['value'] = {
+          vueProps.value = {
             type: [String, Number, Boolean, Array, Object, Date],
             default: '' };
 
@@ -881,7 +884,7 @@ function initProperties(props) {var isBehavior = arguments.length > 1 && argumen
     Object.keys(props).forEach(function (key) {
       var opts = props[key];
       if (isPlainObject(opts)) {// title:{type:String,default:''}
-        var value = opts['default'];
+        var value = opts.default;
         if (isFn(value)) {
           value = value();
         }
@@ -918,6 +921,11 @@ function wrapper$1(event) {
 
   if (!hasOwn(event, 'detail')) {
     event.detail = {};
+  }
+
+  if (hasOwn(event, 'markerId')) {
+    event.detail = typeof event.detail === 'object' ? event.detail : {};
+    event.detail.markerId = event.markerId;
   }
 
   if (isPlainObject(event.detail)) {
@@ -1072,11 +1080,11 @@ function handleEvent(event) {var _this = this;
   // [['tap',[['handle',[1,2,a]],['handle1',[1,2,a]]]]]
   var dataset = (event.currentTarget || event.target).dataset;
   if (!dataset) {
-    return console.warn("\u4E8B\u4EF6\u4FE1\u606F\u4E0D\u5B58\u5728");
+    return console.warn('事件信息不存在');
   }
   var eventOpts = dataset.eventOpts || dataset['event-opts']; // 支付宝 web-view 组件 dataset 非驼峰
   if (!eventOpts) {
-    return console.warn("\u4E8B\u4EF6\u4FE1\u606F\u4E0D\u5B58\u5728");
+    return console.warn('事件信息不存在');
   }
 
   // [['handle',[1,2,a]],['handle1',[1,2,a]]]
@@ -1327,15 +1335,16 @@ function parseBaseComponent(vueComponentOptions)
 {var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},isPage = _ref5.isPage,initRelation = _ref5.initRelation;var _initVueComponent =
   initVueComponent(_vue.default, vueComponentOptions),_initVueComponent2 = _slicedToArray(_initVueComponent, 2),VueComponent = _initVueComponent2[0],vueOptions = _initVueComponent2[1];
 
-  var options = {
+  var options = _objectSpread({
     multipleSlots: true,
-    addGlobalClass: true };
+    addGlobalClass: true },
+  vueOptions.options || {});
 
 
   {
     // 微信 multipleSlots 部分情况有 bug，导致内容顺序错乱 如 u-list，提供覆盖选项
-    if (vueOptions['mp-weixin'] && vueOptions['mp-weixin']['options']) {
-      Object.assign(options, vueOptions['mp-weixin']['options']);
+    if (vueOptions['mp-weixin'] && vueOptions['mp-weixin'].options) {
+      Object.assign(options, vueOptions['mp-weixin'].options);
     }
   }
 
@@ -1551,1087 +1560,1430 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
+/***/ 105:
+/*!************************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/my_cart.js ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _my_cart_data = {
+  goodsListData: function goodsListData() {
+    return [{
+      id: 1,
+      checked: true,
+      name: '仔仔店铺1',
+      goods: [{
+        id: 3,
+        num: 1,
+        max: 10,
+        checked: true,
+        price: '2999.00',
+        price_tag: '秒杀价',
+        tag: '比加入时降￥50元',
+        rule: '移动4G 联通4G 电信4G',
+        name: '商品名称 99新 苹果 iPhoneX 256G 银色',
+        img: '/static/images/home/goods/1.png' },
+      {
+        id: 4,
+        num: 1,
+        max: 14,
+        checked: true,
+        price: '1999.00',
+        price_tag: '',
+        tag: '',
+        rule: '移动5G 联通5G 电信5G',
+        name: '商品名称 99新 小米 XiaoMI10 256G 银色',
+        img: '/static/images/home/goods/2.png' },
+      {
+        id: 5,
+        num: 1,
+        max: 14,
+        checked: true,
+        price: '3999.00',
+        price_tag: '',
+        tag: '比加入时降￥50元',
+        rule: '移动4G 联通3G 电信5G',
+        name: '商品名称 99新 三星 XiaoMI10 256G 银色',
+        img: '/static/images/home/goods/3.png' }] },
+
+    {
+      id: 2,
+      checked: true,
+      name: '仔仔店铺22',
+      goods: [{
+        id: 6,
+        num: 1,
+        max: 10,
+        checked: true,
+        price: '4999.00',
+        price_tag: '秒杀价',
+        tag: '比加入时降￥50元',
+        rule: '移动4G 联通4G 电信4G',
+        name: '商品名称 99新 苹果 iPhoneX 256G 银色',
+        img: '/static/images/home/goods/4.png' },
+      {
+        id: 7,
+        num: 1,
+        max: 14,
+        checked: true,
+        price: '5999.00',
+        price_tag: '',
+        tag: '',
+        rule: '移动5G 联通5G 电信5G',
+        name: '商品名称 99新 小米 XiaoMI10 256G 银色',
+        img: '/static/images/home/goods/5.png' },
+      {
+        id: 8,
+        num: 1,
+        max: 14,
+        checked: true,
+        price: '6999.00',
+        price_tag: '',
+        tag: '比加入时降￥50元',
+        rule: '移动4G 联通3G 电信5G',
+        name: '商品名称 99新 三星 XiaoMI10 256G 银色',
+        img: '/static/images/home/goods/6.png' }] }];
+
+
+  } };var _default =
+
+
+_my_cart_data;exports.default = _default;
+
+/***/ }),
+
 /***/ 12:
-/*!*********************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/index.js ***!
-  \*********************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/utils/tools.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _user = _interopRequireDefault(__webpack_require__(/*! @/api/user */ 13));
-var _test = _interopRequireDefault(__webpack_require__(/*! @/api/test */ 18));
-var _pay = _interopRequireDefault(__webpack_require__(/*! @/api/pay */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-// 汇集所有api接口函数
-var ApiFunList = _objectSpread({},
-_user.default,
-_test.default,
-_pay.default);
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //工具函数库，仔仔、同岳编写。
 
-/**
-                * @param {Object} data
-                * @param {Object} callBack
-                * 函数导出
-                */
-// 全量导出
-var _default = ApiFunList;exports.default = _default;
-
-/***/ }),
-
-/***/ 13:
-/*!**************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/user/index.js ***!
-  \**************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var all = _interopRequireWildcard(__webpack_require__(/*! ./user */ 14));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}
-
-// 全量导出
-var _default = all;exports.default = _default;
-
-/***/ }),
-
-/***/ 14:
-/*!*************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/user/user.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.loginWx = loginWx;exports.login = login;var _request = __webpack_require__(/*! @/utils/request.js */ 15);
-
-// 微信登录
-function loginWx(data, callBack) {
-  return (0, _request.axios)('wx/wx_login', 'POST', data, callBack);
-}
-
-// 普通登录
-function login(data, callBack) {
-  return (0, _request.axios)('login', 'POST', data, callBack);
-}
-
-/***/ }),
-
-/***/ 143:
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ 144);
-
-
-/***/ }),
-
-/***/ 144:
-/*!************************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// This method of obtaining a reference to the global object needs to be
-// kept identical to the way it is obtained in runtime.js
-var g = (function() {
-  return this || (typeof self === "object" && self);
-})() || Function("return this")();
-
-// Use `getOwnPropertyNames` because not all browsers support calling
-// `hasOwnProperty` on the global `self` object in a worker. See #183.
-var hadRuntime = g.regeneratorRuntime &&
-  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
-
-// Save the old regeneratorRuntime in case it needs to be restored later.
-var oldRuntime = hadRuntime && g.regeneratorRuntime;
-
-// Force reevalutation of runtime.js.
-g.regeneratorRuntime = undefined;
-
-module.exports = __webpack_require__(/*! ./runtime */ 145);
-
-if (hadRuntime) {
-  // Restore the original runtime.
-  g.regeneratorRuntime = oldRuntime;
-} else {
-  // Remove the global property added by runtime.js.
-  try {
-    delete g.regeneratorRuntime;
-  } catch(e) {
-    g.regeneratorRuntime = undefined;
-  }
-}
-
-
-/***/ }),
-
-/***/ 145:
-/*!*****************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime.js ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-!(function(global) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  var inModule = typeof module === "object";
-  var runtime = global.regeneratorRuntime;
-  if (runtime) {
-    if (inModule) {
-      // If regeneratorRuntime is defined globally and we're in a module,
-      // make the exports object identical to regeneratorRuntime.
-      module.exports = runtime;
-    }
-    // Don't bother evaluating the rest of this file if the runtime was
-    // already defined globally.
-    return;
-  }
-
-  // Define the runtime globally (as expected by generated code) as either
-  // module.exports (if we're in a module) or a new, empty object.
-  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  runtime.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
-  };
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunctionPrototype[toStringTagSymbol] =
-    GeneratorFunction.displayName = "GeneratorFunction";
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      prototype[method] = function(arg) {
-        return this._invoke(method, arg);
-      };
-    });
-  }
-
-  runtime.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  runtime.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+var _tool = {
+  //获取字符串的真实长度（字节长度）
+  strLeng: function strLeng(str) {
+    if (str) {
+      var len = str.length,truelen = 0;
+      for (var x = 0; x < len; x++) {
+        if (str.charCodeAt(x) > 128) {
+          truelen += 2;
+        } else {
+          truelen += 1;
+        }
+      }
+      return truelen;
     } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      if (!(toStringTagSymbol in genFun)) {
-        genFun[toStringTagSymbol] = "GeneratorFunction";
+      return 0;
+    }
+  },
+  //计算页数
+  getPageNum: function getPageNum(total, row) {
+    var num = Number(total) / Number(row);
+    //是否为整数
+    if (num % 1 !== 0) {
+      var b = num.toString(); //转字符串
+      var a = parseInt(b.substring(0, b.indexOf('.'))); //取小数点前
+      var s = b.replace(/\d+\.(\d*)/, '$1'); //取小数点后
+      if (s > 0) {
+        num = a + 1;
       }
     }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  runtime.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return Promise.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return Promise.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration.
-          result.value = unwrapped;
-          resolve(result);
-        }, function(error) {
-          // If a rejected Promise was yielded, throw the rejection back
-          // into the async generator function so it can be handled there.
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new Promise(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-    return this;
-  };
-  runtime.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList)
-    );
-
-    return runtime.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        if (delegate.iterator.return) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
+    return num;
+  },
+  //设置手机通知栏字体颜色
+  setBarColor: function setBarColor() {var black = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    if (black) {
+      uni.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: '#FAFAFA' });
 
     } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
+      uni.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#FAFAFA' });
+
     }
+  },
+  yue_log: function yue_log(v) {
+    console.warn("如果您运行的时候，出现了报错，请自行解决,我使用的HBX版本号：" + v);
+    console.info("QQ：1079051908");
+  } };var _default =
 
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
 
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  Gp[toStringTagSymbol] = "Generator";
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
-    return this;
-  };
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  runtime.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  runtime.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-})(
-  // In sloppy mode, unbound `this` refers to the global object, fallback to
-  // Function constructor if we're in global strict mode. That is sadly a form
-  // of indirect eval which violates Content Security Policy.
-  (function() {
-    return this || (typeof self === "object" && self);
-  })() || Function("return this")()
-);
-
+_tool;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
 /***/ 15:
-/*!*************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/utils/request.js ***!
-  \*************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*!**********************************************************************************************************!*\
+  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.post = post;exports.get = get;exports.axios = axios;var _request = _interopRequireDefault(__webpack_require__(/*! @/configs/request.js */ 16));
-var _animation = __webpack_require__(/*! ./animation.js */ 17);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
 
-// post请求，不支持异步.then操作
-function post(url, data, callBack, f) {
-  (0, _animation.showLoading)();
-  var token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
-  // 假定有token
-  token = token ? token : true;
-  // TOKEN拦截判断有无处理
-  if (token) {
-    token = 'Bearer ' + token;
-  } else {
-    // 跳转登录页面
-    return false;
-  }
-  if (typeof data == 'function') {
-    f = callBack;
-    callBack = data;
-  }
-  uni.request({
-    url: url.includes('http') || url.includes('yue') ? url : _request.default + url, //仅为示例，并非真实接口地址。
-    data: typeof data == 'object' ? data : {},
-    method: 'POST',
-    header: {
-      'Authorization': token, //自定义请求头信息
-      'content-type': 'application/x-www-form-urlencoded' },
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
 
-    success: function success(res) {
-      if (callBack) {
-        callBack(res.data);
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode, /* vue-cli only */
+  components, // fixed by xxxxxx auto components
+  renderjs // fixed by xxxxxx renderjs
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // fixed by xxxxxx auto components
+  if (components) {
+    if (!options.components) {
+      options.components = {}
+    }
+    var hasOwn = Object.prototype.hasOwnProperty
+    for (var name in components) {
+      if (hasOwn.call(components, name) && !hasOwn.call(options.components, name)) {
+        options.components[name] = components[name]
       }
-      (0, _animation.hideLoading)();
-    },
-    fail: function fail(res) {
-      (0, _animation.hideLoading)();
-      if (f)
-      f(res);
-    } });
-
-}
-
-// get请求，不支持异步.then操作
-function get(url, data, callBack, f) {
-  (0, _animation.showLoading)();
-  var token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
-  // 假定有token
-  token = true;
-  // TOKEN拦截判断有无处理
-  if (token) {
-    token = 'Bearer ' + token;
-  } else {
-    // 跳转登录页面
-    return false;
+    }
   }
-  if (typeof data == 'function') {
-    f = callBack;
-    callBack = data;
+  // fixed by xxxxxx renderjs
+  if (renderjs) {
+    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
+      this[renderjs.__module] = this
+    });
+    (options.mixins || (options.mixins = [])).push(renderjs)
   }
-  uni.request({
-    url: url.includes('http') || url.includes('yue') ? url : _request.default + url, //仅为示例，并非真实接口地址。
-    data: typeof data == 'object' ? data : {},
-    method: 'GET',
-    header: {
-      'Authorization': token //自定义请求头信息
-    },
-    success: function success(res) {
-      if (callBack) {
-        callBack(res.data);
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
       }
-    },
-    fail: function fail(res) {
-      if (f)
-      f(res);
-    },
-    complete: function complete() {
-      (0, _animation.hideLoading)();
-    } });
-
-}
-
-// 支持异步
-function axios(url, type, data, callBack) {
-  (0, _animation.showLoading)();
-  var token;
-
-  try {
-    token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
-  } catch (e) {
-    (0, _animation.hideLoading)();
-    token = "";
-    //TODO handle the exception
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
   }
 
-  // TOKEN拦截判断有无处理
-  if (token) {
-    token = 'Bearer ' + token;
-  } else {
-    // 跳转登录页面
-    // return false;
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
   }
-  var promise = new Promise(function (resolve, reject) {
-    uni.request({
-      url: url.includes('yue') || url.includes('http') ? url : _request.default + url, //仅为示例，并非真实接口地址。
-      data: data ? data : {},
-      method: type,
-      header: {
-        'Authorization': token, //自定义请求头信息
-        'content-type': 'application/x-www-form-urlencoded' },
 
-      success: function success(res) {
-        if (url == 'login') {
-          try {
-            uni.setStorageSync('token', res.data.token);
-          } catch (e) {
-            // error
-          }
-        }
-        if (callBack) {
-          callBack(res.data);
-        }
-        resolve(res.data);
-      },
-      fail: function fail() {
-        reject('fail');
-      },
-      complete: function complete() {
-        (0, _animation.hideLoading)();
-      } });
-
-  });
-  return promise;
+  return {
+    exports: scriptExports,
+    options: options
+  }
 }
-/**author:吴同岳
-   * 时间:2019-10-12
-   * contact:18814137320
-   * 微信:wty1079051908
-   * qq:1079051908
-   */
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
 
 /***/ }),
 
 /***/ 16:
-/*!***************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/configs/request.js ***!
-  \***************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/store/index.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var dev_boo = false,domain;
-dev_boo ? domain = 'http://localhost:7777/yes/public/api/' : domain = 'https://coral3.com/yes/public/api/';var _default =
-domain;exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 17));
+
+
+
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user */ 18));
+var _test = _interopRequireDefault(__webpack_require__(/*! ./test */ 24));
+var _pay = _interopRequireDefault(__webpack_require__(/*! ./pay */ 27));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.use(_vuex.default); // 导入状态管理分支
+/**
+ * 注意：vuex只在uni的vue文件互通
+ */
+var store = new _vuex.default.Store({
+  state: _objectSpread({},
+  _user.default.state, {},
+  _test.default.state, {},
+  _pay.default.state, {
+    getter: '这是测试getters' }),
+
+  mutations: _objectSpread({
+    // 测试
+    doMutations: function doMutations(state, data) {
+      state.getter = "hello world!";
+    } },
+  _user.default.mutations, {},
+  _test.default.mutations, {},
+  _pay.default.mutations),
+
+  actions: _objectSpread({
+    // 测试
+    DOACTIONS: function DOACTIONS(context, data) {
+      context.commit('doMutations');
+      console.log(context.getters.TOKEN);
+    } },
+  _user.default.actions, {},
+  _test.default.actions, {},
+  _pay.default.actions),
+
+  getters: {
+    GETTER: function GETTER(state) {return state.getter;},
+    TOKEN: function TOKEN(state) {return state.token;} } });var _default =
+
+
+
+store;exports.default = _default;
 
 /***/ }),
 
 /***/ 17:
-/*!***************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/utils/animation.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.showLoading = showLoading;exports.hideLoading = hideLoading;exports.showToast = showToast;function showLoading() {
-  uni.showLoading({
-    title: '加载中...',
-    mask: true });
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.0.1
+ * (c) 2017 Evan You
+ * @license MIT
+ */
+var applyMixin = function (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
 
-}
-function hideLoading() {
-  uni.hideLoading();
-}
-function showToast(title, type) {
-  uni.showToast({
-    title: title,
-    icon: type });
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
 
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+};
+
+var devtoolHook =
+  typeof window !== 'undefined' &&
+  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
 }
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  this._children = Object.create(null);
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors$1 = { namespaced: { configurable: true } };
+
+prototypeAccessors$1.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors$1 );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "Store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  var state = options.state; if ( state === void 0 ) state = {};
+  if (typeof state === 'function') {
+    state = state() || {};
+  }
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  if (Vue.config.devtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors = { state: { configurable: true } };
+
+prototypeAccessors.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors.state.set = function (v) {
+  if (true) {
+    assert(false, "Use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
+
+  return entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload)
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  return genericSubscribe(fn, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    computed[key] = function () { return fn(store); };
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.0.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
 
 /***/ }),
 
 /***/ 18:
-/*!**************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/test/index.js ***!
-  \**************************************************************************/
+/*!***************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/store/user/index.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var all = _interopRequireWildcard(__webpack_require__(/*! ./test */ 19));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _user = _interopRequireDefault(__webpack_require__(/*! @/api/user */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  state: {
+    token: '' },
+
+  mutations: {
+    SETTOKEN: function SETTOKEN(state, data) {
+      state.token = data.token;
+    } },
+
+  actions: {
+    LOGIN: function LOGIN(context, data) {
+      return _user.default.login(data).then(function (res) {
+        if (res.token) {
+          context.commit('SETTOKEN', { token: res.token });
+        }
+        return res;
+      });
+    },
+    LOGINWX: function LOGINWX() {
+      return _user.default.loginWx();
+    } },
+
+  getters: {} };exports.default = _default;
+
+/***/ }),
+
+/***/ 19:
+/*!*************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/user/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var all = _interopRequireWildcard(__webpack_require__(/*! ./user */ 20));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}
 
 // 全量导出
 var _default = all;exports.default = _default;
 
 /***/ }),
 
-/***/ 19:
-/*!*************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/test/test.js ***!
-  \*************************************************************************/
+/***/ 194:
+/*!***************************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/order_list.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.apiTest = apiTest;exports.needToken = needToken;var _request = __webpack_require__(/*! @/utils/request.js */ 15);
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _sort_grid = {
+  sortGridData: function sortGridData() {
+    return [{
+      title: '手机保卖',
+      img: '/static/images/home/goods/1.png' },
+    {
+      title: '数码保卖',
+      img: '/static/images/home/goods/2.png' },
+    {
+      title: '欢乐送',
+      img: '/static/images/home/goods/3.png' },
+    {
+      title: '美妆鉴别',
+      img: '/static/images/home/goods/4.png' },
+    {
+      title: '采货节',
+      img: '/static/images/home/goods/5.png' },
+    {
+      title: '测试的',
+      img: '/static/images/home/goods/6.png' },
+    {
+      title: '测试的1',
+      img: '/static/images/home/goods/7.png' },
+    {
+      title: '测试的2',
+      img: '/static/images/home/goods/8.png' }];
 
-// 测试接口
-function apiTest(data, callBack) {
-  return (0, _request.axios)('test', 'POST', data, callBack);
-}
-// 需要token才可以访问的测试接口
-function needToken(data, callBack) {
-  return (0, _request.axios)('needToken', 'POST', data, callBack);
-}
+  },
+  navListData: function navListData() {
+    return ['全部', '待付款', '待发货', '待收货', '待评价', '退款', '售后'];
+  },
+  orderListData: function orderListData() {
+    return [{
+      img: '/static/images/avatar/1.jpg',
+      name: '仔仔的店铺',
+      status: '交易成功',
+      price: "2238.00",
+      num: 12,
+      type: 1,
+      goods_list: [{
+        img: '/static/images/home/goods/1.png',
+        name: '百度网盘云盘租号在线极速发货 测试个测试的',
+        introduce: '测试副标题的内容',
+        tag: ['支持验机', '专业质检'],
+        price: "1.00" },
+      {
+        img: '/static/images/home/goods/2.png',
+        name: '苹果x iPhoneX256G无锁99新有 测试个测试的',
+        introduce: '',
+        tag: [],
+        price: "2237.00" }] },
+
+    {
+      img: '/static/images/avatar/2.jpg',
+      name: '仔仔科技运营部',
+      status: '交易关闭',
+      price: "2199.00",
+      num: 1,
+      type: 0,
+      goods_list: [{
+        img: '/static/images/home/goods/3.png',
+        name: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+        introduce: '',
+        tag: ['支持验机', '专业质检'],
+        price: "2199.00" }] }];
+
+
+  } };var _default =
+
+
+_sort_grid;exports.default = _default;
 
 /***/ }),
 
@@ -2646,7 +2998,7 @@ function needToken(data, callBack) {
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/*!
  * Vue.js v2.6.11
- * (c) 2014-2019 Evan You
+ * (c) 2014-2020 Evan You
  * Released under the MIT License.
  */
 /*  */
@@ -7606,10 +7958,10 @@ function initMixin (Vue) {
     initEvents(vm);
     initRender(vm);
     callHook(vm, 'beforeCreate');
-    vm.mpHost !== 'mp-toutiao' && initInjections(vm); // resolve injections before data/props  
+    !vm._$fallback && initInjections(vm); // resolve injections before data/props  
     initState(vm);
-    vm.mpHost !== 'mp-toutiao' && initProvide(vm); // resolve provide after data/props
-    vm.mpHost !== 'mp-toutiao' && callHook(vm, 'created');      
+    !vm._$fallback && initProvide(vm); // resolve provide after data/props
+    !vm._$fallback && callHook(vm, 'created');      
 
     /* istanbul ignore if */
     if ( true && config.performance && mark) {
@@ -8269,7 +8621,7 @@ var patch = function(oldVnode, vnode) {
     Object.keys(data).forEach(function (key) { //仅同步 data 中有的数据
       mpData[key] = mpInstance.data[key];
     });
-    var diffData = diff(data, mpData);
+    var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
       if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
@@ -8325,7 +8677,7 @@ function mountComponent$1(
     }
   }
   
-  vm.mpHost !== 'mp-toutiao' && callHook(vm, 'beforeMount');
+  !vm._$fallback && callHook(vm, 'beforeMount');
 
   var updateComponent = function () {
     vm._update(vm._render(), hydrating);
@@ -8444,12 +8796,11 @@ function getTarget(obj, path) {
 function internalMixin(Vue) {
 
   Vue.config.errorHandler = function(err) {
+    console.error(err);
     /* eslint-disable no-undef */
     var app = getApp();
     if (app && app.onError) {
       app.onError(err);
-    } else {
-      console.error(err);
     }
   };
 
@@ -8667,1238 +9018,228 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
-/*!*************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/pay/index.js ***!
-  \*************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/user/user.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var wxpay = _interopRequireWildcard(__webpack_require__(/*! ./wxpay */ 21));
-var alipay = _interopRequireWildcard(__webpack_require__(/*! ./alipay */ 22));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
-var all = _objectSpread({},
-wxpay,
-alipay);
+Object.defineProperty(exports, "__esModule", { value: true });exports.loginWx = loginWx;exports.login = login;var _request = __webpack_require__(/*! @/utils/request.js */ 21);
 
-// 全量导出
-var _default = all;exports.default = _default;
+// 微信登录
+function loginWx(data, callBack) {
+  return (0, _request.axios)('wx/wx_login', 'POST', data, callBack);
+}
+
+// 普通登录
+function login(data, callBack) {
+  return (0, _request.axios)('login', 'POST', data, callBack);
+}
 
 /***/ }),
 
 /***/ 21:
-/*!*************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/pay/wxpay.js ***!
-  \*************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/utils/request.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.wxpay = wxpay;exports.wxAppPay = wxAppPay;exports.wxMiniPay = wxMiniPay;var _request = __webpack_require__(/*! @/utils/request.js */ 15);
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.post = post;exports.get = get;exports.axios = axios;var _request = _interopRequireDefault(__webpack_require__(/*! @/configs/request.js */ 22));
+var _animation = __webpack_require__(/*! ./animation.js */ 23);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-// 微信支付接口
-function wxpay(data, callBack) {
-  return (0, _request.axios)('wxpay', 'POST', data, callBack);
-}
-// 微信app支付接口
-function wxAppPay(data, callBack) {
-  return (0, _request.axios)('https://springboot.coral3.com/unifiedOrder', 'POST', data, callBack);
+// post请求，不支持异步.then操作
+function post(url, data, callBack, f) {
+  (0, _animation.showLoading)();
+  var token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
+  // 假定有token
+  token = token ? token : true;
+  // TOKEN拦截判断有无处理
+  if (token) {
+    token = 'Bearer ' + token;
+  } else {
+    // 跳转登录页面
+    return false;
+  }
+  if (typeof data == 'function') {
+    f = callBack;
+    callBack = data;
+  }
+  uni.request({
+    url: url.includes('http') || url.includes('yue') ? url : _request.default + url, //仅为示例，并非真实接口地址。
+    data: typeof data == 'object' ? data : {},
+    method: 'POST',
+    header: {
+      'Authorization': token, //自定义请求头信息
+      'content-type': 'application/x-www-form-urlencoded' },
+
+    success: function success(res) {
+      if (callBack) {
+        callBack(res.data);
+      }
+      (0, _animation.hideLoading)();
+    },
+    fail: function fail(res) {
+      (0, _animation.hideLoading)();
+      if (f)
+      f(res);
+    } });
+
 }
 
-// 微信小程序支付接口
-function wxMiniPay(data, callBack) {
-  return (0, _request.axios)('http://localhost/coral3/createMiniProgramTradePay', 'POST', data, callBack);
+// get请求，不支持异步.then操作
+function get(url, data, callBack, f) {
+  (0, _animation.showLoading)();
+  var token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
+  // 假定有token
+  token = true;
+  // TOKEN拦截判断有无处理
+  if (token) {
+    token = 'Bearer ' + token;
+  } else {
+    // 跳转登录页面
+    return false;
+  }
+  if (typeof data == 'function') {
+    f = callBack;
+    callBack = data;
+  }
+  uni.request({
+    url: url.includes('http') || url.includes('yue') ? url : _request.default + url, //仅为示例，并非真实接口地址。
+    data: typeof data == 'object' ? data : {},
+    method: 'GET',
+    header: {
+      'Authorization': token //自定义请求头信息
+    },
+    success: function success(res) {
+      if (callBack) {
+        callBack(res.data);
+      }
+    },
+    fail: function fail(res) {
+      if (f)
+      f(res);
+    },
+    complete: function complete() {
+      (0, _animation.hideLoading)();
+    } });
+
 }
+
+// 支持异步
+function axios(url) {var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};var callBack = arguments.length > 3 ? arguments[3] : undefined;
+  (0, _animation.showLoading)();
+  var token;
+
+  try {
+    token = uni.getStorageSync('token') || this.$store.getters.TOKEN;
+  } catch (e) {
+    (0, _animation.hideLoading)();
+    token = "";
+    //TODO handle the exception
+  }
+
+  // TOKEN拦截判断有无处理
+  if (token) {
+    token = 'Bearer ' + token;
+  } else {
+    // 跳转登录页面
+    // return false;
+  }
+  var promise = new Promise(function (resolve, reject) {
+    uni.request({
+      url: url.includes('yue') || url.includes('http') ? url : _request.default + url, //仅为示例，并非真实接口地址。
+      data: data,
+      method: type,
+      header: {
+        'Authorization': token, //自定义请求头信息
+        'content-type': 'application/x-www-form-urlencoded' },
+
+      success: function success(res) {
+        if (url == 'login') {
+          try {
+            uni.setStorageSync('token', res.data.token);
+          } catch (e) {
+            // error
+          }
+        }
+        if (callBack) {
+          callBack(res.data);
+        }
+        resolve(res.data);
+      },
+      fail: function fail() {
+        reject('fail');
+      },
+      complete: function complete() {
+        (0, _animation.hideLoading)();
+      } });
+
+  });
+  return promise;
+}
+/**author:吴同岳
+   * 时间:2019-10-12
+   * contact:18814137320
+   * 微信:wty1079051908
+   * qq:1079051908
+   */
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
 /***/ 22:
-/*!**************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/api/pay/alipay.js ***!
-  \**************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/configs/request.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.aliAppPay = aliAppPay;var _request = __webpack_require__(/*! @/utils/request.js */ 15);
-
-// 支付宝app支付接口
-function aliAppPay(data, callBack) {
-  return (0, _request.axios)('https://springboot.coral3.com/createOrder', 'POST', data, callBack);
-}
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var dev_boo = false,domain;
+dev_boo ? domain = 'http://localhost:7777/yes/public/api/' : domain = 'https://coral3.com/yes/public/api/';var _default =
+domain;exports.default = _default;
 
 /***/ }),
 
-/***/ 25:
-/*!**********************************************************************************************************!*\
-  !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
-  \**********************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-function normalizeComponent (
-  scriptExports,
-  render,
-  staticRenderFns,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier, /* server only */
-  shadowMode, /* vue-cli only */
-  components, // fixed by xxxxxx auto components
-  renderjs // fixed by xxxxxx renderjs
-) {
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // fixed by xxxxxx auto components
-  if (components) {
-    options.components = Object.assign(components, options.components || {})
-  }
-  // fixed by xxxxxx renderjs
-  if (renderjs) {
-    (renderjs.beforeCreate || (renderjs.beforeCreate = [])).unshift(function() {
-      this[renderjs.__module] = this
-    });
-    (options.mixins || (options.mixins = [])).push(renderjs)
-  }
-
-  // render functions
-  if (render) {
-    options.render = render
-    options.staticRenderFns = staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = 'data-v-' + scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = shadowMode
-      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
-      : injectStyles
-  }
-
-  if (hook) {
-    if (options.functional) {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      var originalRender = options.render
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return originalRender(h, context)
-      }
-    } else {
-      // inject component registration as beforeCreate hook
-      var existing = options.beforeCreate
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    }
-  }
-
-  return {
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-
-/***/ 26:
-/*!***********************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/store/index.js ***!
-  \***********************************************************************/
+/***/ 23:
+/*!**************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/utils/animation.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 27));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.showLoading = showLoading;exports.hideLoading = hideLoading;exports.showToast = showToast;function showLoading() {
+  uni.showLoading({
+    title: '加载中...',
+    mask: true });
 
+}
+function hideLoading() {
+  uni.hideLoading();
+}
+function showToast(title, type) {
+  uni.showToast({
+    title: title,
+    icon: type });
 
-
-var _user = _interopRequireDefault(__webpack_require__(/*! ./user */ 28));
-var _test = _interopRequireDefault(__webpack_require__(/*! ./test */ 29));
-var _pay = _interopRequireDefault(__webpack_require__(/*! ./pay */ 30));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.use(_vuex.default); // 导入状态管理分支
-/**
- * 注意：vuex只在uni的vue文件互通
- */
-var store = new _vuex.default.Store({
-  state: _objectSpread({},
-  _user.default.state,
-  _test.default.state,
-  _pay.default.state, {
-    getter: '这是测试getters' }),
-
-  mutations: _objectSpread({
-    // 测试
-    doMutations: function doMutations(state, data) {
-      state.getter = "hello world!";
-    } },
-  _user.default.mutations,
-  _test.default.mutations,
-  _pay.default.mutations),
-
-  actions: _objectSpread({
-    // 测试
-    DOACTIONS: function DOACTIONS(context, data) {
-      context.commit('doMutations');
-      console.log(context.getters.TOKEN);
-    } },
-  _user.default.actions,
-  _test.default.actions,
-  _pay.default.actions),
-
-  getters: {
-    GETTER: function GETTER(state) {return state.getter;},
-    TOKEN: function TOKEN(state) {return state.token;} } });var _default =
-
-
-
-store;exports.default = _default;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
-/***/ 27:
-/*!********************************************!*\
-  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
-  \********************************************/
-/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
-/**
- * vuex v3.0.1
- * (c) 2017 Evan You
- * @license MIT
- */
-var applyMixin = function (Vue) {
-  var version = Number(Vue.version.split('.')[0]);
-
-  if (version >= 2) {
-    Vue.mixin({ beforeCreate: vuexInit });
-  } else {
-    // override init and inject vuex init procedure
-    // for 1.x backwards compatibility.
-    var _init = Vue.prototype._init;
-    Vue.prototype._init = function (options) {
-      if ( options === void 0 ) options = {};
-
-      options.init = options.init
-        ? [vuexInit].concat(options.init)
-        : vuexInit;
-      _init.call(this, options);
-    };
-  }
-
-  /**
-   * Vuex init hook, injected into each instances init hooks list.
-   */
-
-  function vuexInit () {
-    var options = this.$options;
-    // store injection
-    if (options.store) {
-      this.$store = typeof options.store === 'function'
-        ? options.store()
-        : options.store;
-    } else if (options.parent && options.parent.$store) {
-      this.$store = options.parent.$store;
-    }
-  }
-};
-
-var devtoolHook =
-  typeof window !== 'undefined' &&
-  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
-
-function devtoolPlugin (store) {
-  if (!devtoolHook) { return }
-
-  store._devtoolHook = devtoolHook;
-
-  devtoolHook.emit('vuex:init', store);
-
-  devtoolHook.on('vuex:travel-to-state', function (targetState) {
-    store.replaceState(targetState);
-  });
-
-  store.subscribe(function (mutation, state) {
-    devtoolHook.emit('vuex:mutation', mutation, state);
-  });
-}
-
-/**
- * Get the first item that pass the test
- * by second argument function
- *
- * @param {Array} list
- * @param {Function} f
- * @return {*}
- */
-/**
- * Deep copy the given object considering circular structure.
- * This function caches all nested objects and its copies.
- * If it detects circular structure, use cached copy to avoid infinite loop.
- *
- * @param {*} obj
- * @param {Array<Object>} cache
- * @return {*}
- */
-
-
-/**
- * forEach for object
- */
-function forEachValue (obj, fn) {
-  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
-}
-
-function isObject (obj) {
-  return obj !== null && typeof obj === 'object'
-}
-
-function isPromise (val) {
-  return val && typeof val.then === 'function'
-}
-
-function assert (condition, msg) {
-  if (!condition) { throw new Error(("[vuex] " + msg)) }
-}
-
-var Module = function Module (rawModule, runtime) {
-  this.runtime = runtime;
-  this._children = Object.create(null);
-  this._rawModule = rawModule;
-  var rawState = rawModule.state;
-  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
-};
-
-var prototypeAccessors$1 = { namespaced: { configurable: true } };
-
-prototypeAccessors$1.namespaced.get = function () {
-  return !!this._rawModule.namespaced
-};
-
-Module.prototype.addChild = function addChild (key, module) {
-  this._children[key] = module;
-};
-
-Module.prototype.removeChild = function removeChild (key) {
-  delete this._children[key];
-};
-
-Module.prototype.getChild = function getChild (key) {
-  return this._children[key]
-};
-
-Module.prototype.update = function update (rawModule) {
-  this._rawModule.namespaced = rawModule.namespaced;
-  if (rawModule.actions) {
-    this._rawModule.actions = rawModule.actions;
-  }
-  if (rawModule.mutations) {
-    this._rawModule.mutations = rawModule.mutations;
-  }
-  if (rawModule.getters) {
-    this._rawModule.getters = rawModule.getters;
-  }
-};
-
-Module.prototype.forEachChild = function forEachChild (fn) {
-  forEachValue(this._children, fn);
-};
-
-Module.prototype.forEachGetter = function forEachGetter (fn) {
-  if (this._rawModule.getters) {
-    forEachValue(this._rawModule.getters, fn);
-  }
-};
-
-Module.prototype.forEachAction = function forEachAction (fn) {
-  if (this._rawModule.actions) {
-    forEachValue(this._rawModule.actions, fn);
-  }
-};
-
-Module.prototype.forEachMutation = function forEachMutation (fn) {
-  if (this._rawModule.mutations) {
-    forEachValue(this._rawModule.mutations, fn);
-  }
-};
-
-Object.defineProperties( Module.prototype, prototypeAccessors$1 );
-
-var ModuleCollection = function ModuleCollection (rawRootModule) {
-  // register root module (Vuex.Store options)
-  this.register([], rawRootModule, false);
-};
-
-ModuleCollection.prototype.get = function get (path) {
-  return path.reduce(function (module, key) {
-    return module.getChild(key)
-  }, this.root)
-};
-
-ModuleCollection.prototype.getNamespace = function getNamespace (path) {
-  var module = this.root;
-  return path.reduce(function (namespace, key) {
-    module = module.getChild(key);
-    return namespace + (module.namespaced ? key + '/' : '')
-  }, '')
-};
-
-ModuleCollection.prototype.update = function update$1 (rawRootModule) {
-  update([], this.root, rawRootModule);
-};
-
-ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
-    var this$1 = this;
-    if ( runtime === void 0 ) runtime = true;
-
-  if (true) {
-    assertRawModule(path, rawModule);
-  }
-
-  var newModule = new Module(rawModule, runtime);
-  if (path.length === 0) {
-    this.root = newModule;
-  } else {
-    var parent = this.get(path.slice(0, -1));
-    parent.addChild(path[path.length - 1], newModule);
-  }
-
-  // register nested modules
-  if (rawModule.modules) {
-    forEachValue(rawModule.modules, function (rawChildModule, key) {
-      this$1.register(path.concat(key), rawChildModule, runtime);
-    });
-  }
-};
-
-ModuleCollection.prototype.unregister = function unregister (path) {
-  var parent = this.get(path.slice(0, -1));
-  var key = path[path.length - 1];
-  if (!parent.getChild(key).runtime) { return }
-
-  parent.removeChild(key);
-};
-
-function update (path, targetModule, newModule) {
-  if (true) {
-    assertRawModule(path, newModule);
-  }
-
-  // update target module
-  targetModule.update(newModule);
-
-  // update nested modules
-  if (newModule.modules) {
-    for (var key in newModule.modules) {
-      if (!targetModule.getChild(key)) {
-        if (true) {
-          console.warn(
-            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
-            'manual reload is needed'
-          );
-        }
-        return
-      }
-      update(
-        path.concat(key),
-        targetModule.getChild(key),
-        newModule.modules[key]
-      );
-    }
-  }
-}
-
-var functionAssert = {
-  assert: function (value) { return typeof value === 'function'; },
-  expected: 'function'
-};
-
-var objectAssert = {
-  assert: function (value) { return typeof value === 'function' ||
-    (typeof value === 'object' && typeof value.handler === 'function'); },
-  expected: 'function or object with "handler" function'
-};
-
-var assertTypes = {
-  getters: functionAssert,
-  mutations: functionAssert,
-  actions: objectAssert
-};
-
-function assertRawModule (path, rawModule) {
-  Object.keys(assertTypes).forEach(function (key) {
-    if (!rawModule[key]) { return }
-
-    var assertOptions = assertTypes[key];
-
-    forEachValue(rawModule[key], function (value, type) {
-      assert(
-        assertOptions.assert(value),
-        makeAssertionMessage(path, key, type, value, assertOptions.expected)
-      );
-    });
-  });
-}
-
-function makeAssertionMessage (path, key, type, value, expected) {
-  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
-  if (path.length > 0) {
-    buf += " in module \"" + (path.join('.')) + "\"";
-  }
-  buf += " is " + (JSON.stringify(value)) + ".";
-  return buf
-}
-
-var Vue; // bind on install
-
-var Store = function Store (options) {
-  var this$1 = this;
-  if ( options === void 0 ) options = {};
-
-  // Auto install if it is not done yet and `window` has `Vue`.
-  // To allow users to avoid auto-installation in some cases,
-  // this code should be placed here. See #731
-  if (!Vue && typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue);
-  }
-
-  if (true) {
-    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
-    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
-    assert(this instanceof Store, "Store must be called with the new operator.");
-  }
-
-  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
-  var strict = options.strict; if ( strict === void 0 ) strict = false;
-
-  var state = options.state; if ( state === void 0 ) state = {};
-  if (typeof state === 'function') {
-    state = state() || {};
-  }
-
-  // store internal state
-  this._committing = false;
-  this._actions = Object.create(null);
-  this._actionSubscribers = [];
-  this._mutations = Object.create(null);
-  this._wrappedGetters = Object.create(null);
-  this._modules = new ModuleCollection(options);
-  this._modulesNamespaceMap = Object.create(null);
-  this._subscribers = [];
-  this._watcherVM = new Vue();
-
-  // bind commit and dispatch to self
-  var store = this;
-  var ref = this;
-  var dispatch = ref.dispatch;
-  var commit = ref.commit;
-  this.dispatch = function boundDispatch (type, payload) {
-    return dispatch.call(store, type, payload)
-  };
-  this.commit = function boundCommit (type, payload, options) {
-    return commit.call(store, type, payload, options)
-  };
-
-  // strict mode
-  this.strict = strict;
-
-  // init root module.
-  // this also recursively registers all sub-modules
-  // and collects all module getters inside this._wrappedGetters
-  installModule(this, state, [], this._modules.root);
-
-  // initialize the store vm, which is responsible for the reactivity
-  // (also registers _wrappedGetters as computed properties)
-  resetStoreVM(this, state);
-
-  // apply plugins
-  plugins.forEach(function (plugin) { return plugin(this$1); });
-
-  if (Vue.config.devtools) {
-    devtoolPlugin(this);
-  }
-};
-
-var prototypeAccessors = { state: { configurable: true } };
-
-prototypeAccessors.state.get = function () {
-  return this._vm._data.$$state
-};
-
-prototypeAccessors.state.set = function (v) {
-  if (true) {
-    assert(false, "Use store.replaceState() to explicit replace store state.");
-  }
-};
-
-Store.prototype.commit = function commit (_type, _payload, _options) {
-    var this$1 = this;
-
-  // check object-style commit
-  var ref = unifyObjectStyle(_type, _payload, _options);
-    var type = ref.type;
-    var payload = ref.payload;
-    var options = ref.options;
-
-  var mutation = { type: type, payload: payload };
-  var entry = this._mutations[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown mutation type: " + type));
-    }
-    return
-  }
-  this._withCommit(function () {
-    entry.forEach(function commitIterator (handler) {
-      handler(payload);
-    });
-  });
-  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
-
-  if (
-     true &&
-    options && options.silent
-  ) {
-    console.warn(
-      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
-      'Use the filter functionality in the vue-devtools'
-    );
-  }
-};
-
-Store.prototype.dispatch = function dispatch (_type, _payload) {
-    var this$1 = this;
-
-  // check object-style dispatch
-  var ref = unifyObjectStyle(_type, _payload);
-    var type = ref.type;
-    var payload = ref.payload;
-
-  var action = { type: type, payload: payload };
-  var entry = this._actions[type];
-  if (!entry) {
-    if (true) {
-      console.error(("[vuex] unknown action type: " + type));
-    }
-    return
-  }
-
-  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
-
-  return entry.length > 1
-    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
-    : entry[0](payload)
-};
-
-Store.prototype.subscribe = function subscribe (fn) {
-  return genericSubscribe(fn, this._subscribers)
-};
-
-Store.prototype.subscribeAction = function subscribeAction (fn) {
-  return genericSubscribe(fn, this._actionSubscribers)
-};
-
-Store.prototype.watch = function watch (getter, cb, options) {
-    var this$1 = this;
-
-  if (true) {
-    assert(typeof getter === 'function', "store.watch only accepts a function.");
-  }
-  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
-};
-
-Store.prototype.replaceState = function replaceState (state) {
-    var this$1 = this;
-
-  this._withCommit(function () {
-    this$1._vm._data.$$state = state;
-  });
-};
-
-Store.prototype.registerModule = function registerModule (path, rawModule, options) {
-    if ( options === void 0 ) options = {};
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-    assert(path.length > 0, 'cannot register the root module by using registerModule.');
-  }
-
-  this._modules.register(path, rawModule);
-  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
-  // reset store to update getters...
-  resetStoreVM(this, this.state);
-};
-
-Store.prototype.unregisterModule = function unregisterModule (path) {
-    var this$1 = this;
-
-  if (typeof path === 'string') { path = [path]; }
-
-  if (true) {
-    assert(Array.isArray(path), "module path must be a string or an Array.");
-  }
-
-  this._modules.unregister(path);
-  this._withCommit(function () {
-    var parentState = getNestedState(this$1.state, path.slice(0, -1));
-    Vue.delete(parentState, path[path.length - 1]);
-  });
-  resetStore(this);
-};
-
-Store.prototype.hotUpdate = function hotUpdate (newOptions) {
-  this._modules.update(newOptions);
-  resetStore(this, true);
-};
-
-Store.prototype._withCommit = function _withCommit (fn) {
-  var committing = this._committing;
-  this._committing = true;
-  fn();
-  this._committing = committing;
-};
-
-Object.defineProperties( Store.prototype, prototypeAccessors );
-
-function genericSubscribe (fn, subs) {
-  if (subs.indexOf(fn) < 0) {
-    subs.push(fn);
-  }
-  return function () {
-    var i = subs.indexOf(fn);
-    if (i > -1) {
-      subs.splice(i, 1);
-    }
-  }
-}
-
-function resetStore (store, hot) {
-  store._actions = Object.create(null);
-  store._mutations = Object.create(null);
-  store._wrappedGetters = Object.create(null);
-  store._modulesNamespaceMap = Object.create(null);
-  var state = store.state;
-  // init all modules
-  installModule(store, state, [], store._modules.root, true);
-  // reset vm
-  resetStoreVM(store, state, hot);
-}
-
-function resetStoreVM (store, state, hot) {
-  var oldVm = store._vm;
-
-  // bind store public getters
-  store.getters = {};
-  var wrappedGetters = store._wrappedGetters;
-  var computed = {};
-  forEachValue(wrappedGetters, function (fn, key) {
-    // use computed to leverage its lazy-caching mechanism
-    computed[key] = function () { return fn(store); };
-    Object.defineProperty(store.getters, key, {
-      get: function () { return store._vm[key]; },
-      enumerable: true // for local getters
-    });
-  });
-
-  // use a Vue instance to store the state tree
-  // suppress warnings just in case the user has added
-  // some funky global mixins
-  var silent = Vue.config.silent;
-  Vue.config.silent = true;
-  store._vm = new Vue({
-    data: {
-      $$state: state
-    },
-    computed: computed
-  });
-  Vue.config.silent = silent;
-
-  // enable strict mode for new vm
-  if (store.strict) {
-    enableStrictMode(store);
-  }
-
-  if (oldVm) {
-    if (hot) {
-      // dispatch changes in all subscribed watchers
-      // to force getter re-evaluation for hot reloading.
-      store._withCommit(function () {
-        oldVm._data.$$state = null;
-      });
-    }
-    Vue.nextTick(function () { return oldVm.$destroy(); });
-  }
-}
-
-function installModule (store, rootState, path, module, hot) {
-  var isRoot = !path.length;
-  var namespace = store._modules.getNamespace(path);
-
-  // register in namespace map
-  if (module.namespaced) {
-    store._modulesNamespaceMap[namespace] = module;
-  }
-
-  // set state
-  if (!isRoot && !hot) {
-    var parentState = getNestedState(rootState, path.slice(0, -1));
-    var moduleName = path[path.length - 1];
-    store._withCommit(function () {
-      Vue.set(parentState, moduleName, module.state);
-    });
-  }
-
-  var local = module.context = makeLocalContext(store, namespace, path);
-
-  module.forEachMutation(function (mutation, key) {
-    var namespacedType = namespace + key;
-    registerMutation(store, namespacedType, mutation, local);
-  });
-
-  module.forEachAction(function (action, key) {
-    var type = action.root ? key : namespace + key;
-    var handler = action.handler || action;
-    registerAction(store, type, handler, local);
-  });
-
-  module.forEachGetter(function (getter, key) {
-    var namespacedType = namespace + key;
-    registerGetter(store, namespacedType, getter, local);
-  });
-
-  module.forEachChild(function (child, key) {
-    installModule(store, rootState, path.concat(key), child, hot);
-  });
-}
-
-/**
- * make localized dispatch, commit, getters and state
- * if there is no namespace, just use root ones
- */
-function makeLocalContext (store, namespace, path) {
-  var noNamespace = namespace === '';
-
-  var local = {
-    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ( true && !store._actions[type]) {
-          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      return store.dispatch(type, payload)
-    },
-
-    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
-      var args = unifyObjectStyle(_type, _payload, _options);
-      var payload = args.payload;
-      var options = args.options;
-      var type = args.type;
-
-      if (!options || !options.root) {
-        type = namespace + type;
-        if ( true && !store._mutations[type]) {
-          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
-          return
-        }
-      }
-
-      store.commit(type, payload, options);
-    }
-  };
-
-  // getters and state object must be gotten lazily
-  // because they will be changed by vm update
-  Object.defineProperties(local, {
-    getters: {
-      get: noNamespace
-        ? function () { return store.getters; }
-        : function () { return makeLocalGetters(store, namespace); }
-    },
-    state: {
-      get: function () { return getNestedState(store.state, path); }
-    }
-  });
-
-  return local
-}
-
-function makeLocalGetters (store, namespace) {
-  var gettersProxy = {};
-
-  var splitPos = namespace.length;
-  Object.keys(store.getters).forEach(function (type) {
-    // skip if the target getter is not match this namespace
-    if (type.slice(0, splitPos) !== namespace) { return }
-
-    // extract local getter type
-    var localType = type.slice(splitPos);
-
-    // Add a port to the getters proxy.
-    // Define as getter property because
-    // we do not want to evaluate the getters in this time.
-    Object.defineProperty(gettersProxy, localType, {
-      get: function () { return store.getters[type]; },
-      enumerable: true
-    });
-  });
-
-  return gettersProxy
-}
-
-function registerMutation (store, type, handler, local) {
-  var entry = store._mutations[type] || (store._mutations[type] = []);
-  entry.push(function wrappedMutationHandler (payload) {
-    handler.call(store, local.state, payload);
-  });
-}
-
-function registerAction (store, type, handler, local) {
-  var entry = store._actions[type] || (store._actions[type] = []);
-  entry.push(function wrappedActionHandler (payload, cb) {
-    var res = handler.call(store, {
-      dispatch: local.dispatch,
-      commit: local.commit,
-      getters: local.getters,
-      state: local.state,
-      rootGetters: store.getters,
-      rootState: store.state
-    }, payload, cb);
-    if (!isPromise(res)) {
-      res = Promise.resolve(res);
-    }
-    if (store._devtoolHook) {
-      return res.catch(function (err) {
-        store._devtoolHook.emit('vuex:error', err);
-        throw err
-      })
-    } else {
-      return res
-    }
-  });
-}
-
-function registerGetter (store, type, rawGetter, local) {
-  if (store._wrappedGetters[type]) {
-    if (true) {
-      console.error(("[vuex] duplicate getter key: " + type));
-    }
-    return
-  }
-  store._wrappedGetters[type] = function wrappedGetter (store) {
-    return rawGetter(
-      local.state, // local state
-      local.getters, // local getters
-      store.state, // root state
-      store.getters // root getters
-    )
-  };
-}
-
-function enableStrictMode (store) {
-  store._vm.$watch(function () { return this._data.$$state }, function () {
-    if (true) {
-      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
-    }
-  }, { deep: true, sync: true });
-}
-
-function getNestedState (state, path) {
-  return path.length
-    ? path.reduce(function (state, key) { return state[key]; }, state)
-    : state
-}
-
-function unifyObjectStyle (type, payload, options) {
-  if (isObject(type) && type.type) {
-    options = payload;
-    payload = type;
-    type = type.type;
-  }
-
-  if (true) {
-    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
-  }
-
-  return { type: type, payload: payload, options: options }
-}
-
-function install (_Vue) {
-  if (Vue && _Vue === Vue) {
-    if (true) {
-      console.error(
-        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
-      );
-    }
-    return
-  }
-  Vue = _Vue;
-  applyMixin(Vue);
-}
-
-var mapState = normalizeNamespace(function (namespace, states) {
-  var res = {};
-  normalizeMap(states).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedState () {
-      var state = this.$store.state;
-      var getters = this.$store.getters;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
-        if (!module) {
-          return
-        }
-        state = module.context.state;
-        getters = module.context.getters;
-      }
-      return typeof val === 'function'
-        ? val.call(this, state, getters)
-        : state[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapMutations = normalizeNamespace(function (namespace, mutations) {
-  var res = {};
-  normalizeMap(mutations).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedMutation () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var commit = this.$store.commit;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
-        if (!module) {
-          return
-        }
-        commit = module.context.commit;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [commit].concat(args))
-        : commit.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var mapGetters = normalizeNamespace(function (namespace, getters) {
-  var res = {};
-  normalizeMap(getters).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    val = namespace + val;
-    res[key] = function mappedGetter () {
-      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
-        return
-      }
-      if ( true && !(val in this.$store.getters)) {
-        console.error(("[vuex] unknown getter: " + val));
-        return
-      }
-      return this.$store.getters[val]
-    };
-    // mark vuex getter for devtools
-    res[key].vuex = true;
-  });
-  return res
-});
-
-var mapActions = normalizeNamespace(function (namespace, actions) {
-  var res = {};
-  normalizeMap(actions).forEach(function (ref) {
-    var key = ref.key;
-    var val = ref.val;
-
-    res[key] = function mappedAction () {
-      var args = [], len = arguments.length;
-      while ( len-- ) args[ len ] = arguments[ len ];
-
-      var dispatch = this.$store.dispatch;
-      if (namespace) {
-        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
-        if (!module) {
-          return
-        }
-        dispatch = module.context.dispatch;
-      }
-      return typeof val === 'function'
-        ? val.apply(this, [dispatch].concat(args))
-        : dispatch.apply(this.$store, [val].concat(args))
-    };
-  });
-  return res
-});
-
-var createNamespacedHelpers = function (namespace) { return ({
-  mapState: mapState.bind(null, namespace),
-  mapGetters: mapGetters.bind(null, namespace),
-  mapMutations: mapMutations.bind(null, namespace),
-  mapActions: mapActions.bind(null, namespace)
-}); };
-
-function normalizeMap (map) {
-  return Array.isArray(map)
-    ? map.map(function (key) { return ({ key: key, val: key }); })
-    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
-}
-
-function normalizeNamespace (fn) {
-  return function (namespace, map) {
-    if (typeof namespace !== 'string') {
-      map = namespace;
-      namespace = '';
-    } else if (namespace.charAt(namespace.length - 1) !== '/') {
-      namespace += '/';
-    }
-    return fn(namespace, map)
-  }
-}
-
-function getModuleByNamespace (store, helper, namespace) {
-  var module = store._modulesNamespaceMap[namespace];
-  if ( true && !module) {
-    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
-  }
-  return module
-}
-
-var index_esm = {
-  Store: Store,
-  install: install,
-  version: '3.0.1',
-  mapState: mapState,
-  mapMutations: mapMutations,
-  mapGetters: mapGetters,
-  mapActions: mapActions,
-  createNamespacedHelpers: createNamespacedHelpers
-};
-
-
-/* harmony default export */ __webpack_exports__["default"] = (index_esm);
-
-
-/***/ }),
-
-/***/ 28:
-/*!****************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/store/user/index.js ***!
-  \****************************************************************************/
+/***/ 24:
+/*!***************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/store/test/index.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _user = _interopRequireDefault(__webpack_require__(/*! @/api/user */ 13));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  state: {
-    token: '' },
-
-  mutations: {
-    SETTOKEN: function SETTOKEN(state, data) {
-      state.token = data.token;
-    } },
-
-  actions: {
-    LOGIN: function LOGIN(context, data) {
-      return _user.default.login(data).then(function (res) {
-        if (res.token) {
-          context.commit('SETTOKEN', { token: res.token });
-        }
-        return res;
-      });
-    },
-    LOGINWX: function LOGINWX() {
-      return _user.default.loginWx();
-    } },
-
-  getters: {} };exports.default = _default;
-
-/***/ }),
-
-/***/ 29:
-/*!****************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/store/test/index.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _test = _interopRequireDefault(__webpack_require__(/*! @/api/test */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _test = _interopRequireDefault(__webpack_require__(/*! @/api/test */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   state: {},
 
@@ -9913,6 +9254,1532 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     } },
 
   getters: {} };exports.default = _default;
+
+/***/ }),
+
+/***/ 242:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/home.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //首页虚拟数据库，仔仔编写。
+
+var _home_data = {
+  tab: function tab() {
+    return ['首页', '服装鞋帽', '交通工具', '家电', '家居家具', '珠宝配饰', '美妆个护', '运动户外', '母婴用品', '玩具乐器', '手机', '数码', '电脑办公'];
+  },
+  swiper: function swiper() {
+    return [
+    {
+      swiper: '/static/images/home/swiper/swiper-1.png',
+      background: '/static/images/home/swiper/swiper-background-1.png' },
+
+    {
+      swiper: '/static/images/home/swiper/swiper-2.png',
+      background: '/static/images/home/swiper/swiper-background-2.png' },
+
+    {
+      swiper: '/static/images/home/swiper/swiper-3.png',
+      background: '/static/images/home/swiper/swiper-background-3.png' }];
+
+
+  },
+  nav: function nav() {
+    return [{
+      id: 1,
+      name: '手机',
+      color: 'orange',
+      badge: '同岳',
+      img: '/static/images/home/grid-icon/1.png' },
+    {
+      id: 2,
+      name: '平板',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/2.png' },
+    {
+      id: 3,
+      name: '电脑',
+      color: 'orange',
+      badge: '热卖',
+      img: '/static/images/home/grid-icon/3.png' },
+    {
+      id: 4,
+      name: '数码',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/4.png' },
+    {
+      id: 5,
+      name: '家电',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/5.png' },
+    {
+      id: 6,
+      name: '新人红包',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/6.png' },
+    {
+      id: 7,
+      name: '手机直播',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/7.png' },
+    {
+      id: 8,
+      name: '自营图书',
+      color: 'red',
+      badge: '必看',
+      img: '/static/images/home/grid-icon/8.png' },
+    {
+      id: 9,
+      name: '游戏',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/9.png' },
+    {
+      id: 10,
+      name: '二手车',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/10.png' },
+    {
+      id: 11,
+      name: '文玩玉翠',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/11.png' },
+    {
+      id: 12,
+      name: '免费领',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/12.png' },
+    {
+      id: 13,
+      name: '借钱',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/13.png' },
+    {
+      id: 14,
+      name: '拍卖',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/14.png' },
+    {
+      id: 15,
+      name: '分期商城',
+      color: '',
+      badge: '',
+      img: '/static/images/home/grid-icon/15.png' }];
+
+  },
+  live: function live() {
+    return [
+    {
+      id: 1,
+      name: '图文鉴别',
+      text: '验过的更放心',
+      img: '/static/images/home/sundry/3.png' },
+
+    {
+      id: 2,
+      name: '免费鉴别',
+      text: '专家24h在线',
+      img: '/static/images/home/sundry/4.png' },
+
+    {
+      id: 3,
+      name: '连麦鉴别',
+      text: '2114人正在看',
+      img: '/static/images/home/sundry/5.png' }];
+
+
+  },
+  earn: function earn() {
+    return [
+    {
+      text: '吴同岳赚了560元',
+      img: '/static/images/avatar/1.jpg' },
+
+    {
+      text: 'lowingshan赚了3元',
+      img: '/static/images/avatar/2.jpg' },
+
+    {
+      text: '卢3赚了20元',
+      img: '/static/images/avatar/3.jpg' },
+
+    {
+      text: '珊赚了98元',
+      img: '/static/images/avatar/4.jpg' },
+
+    {
+      text: 'xx赚了0.1元',
+      img: '/static/images/avatar/5.jpg' }];
+
+
+  },
+  sellQuickly: function sellQuickly() {
+    return [
+    {
+      id: 1,
+      title: '手机保卖',
+      text: '99%卖出',
+      img: '/static/images/home/sundry/6.png' },
+
+    {
+      id: 2,
+      title: '拍卖报名',
+      text: '24小时高价卖',
+      img: '/static/images/home/sundry/7.png' },
+
+    {
+      id: 3,
+      title: '扫码读书',
+      text: '好书高价卖',
+      img: '/static/images/home/sundry/8.png' }];
+
+
+  },
+  activity: function activity() {
+    return [
+    {
+      id: 1,
+      title: '转转社区',
+      text: '发现有趣',
+      img: '/static/images/home/sundry/11.png' },
+
+    {
+      id: 2,
+      title: '手机直播',
+      text: '直降400元',
+      img: '/static/images/home/sundry/10.png' },
+
+    {
+      id: 3,
+      title: '新人专享',
+      text: '',
+      img: '/static/images/home/sundry/12.png' },
+
+    {
+      id: 4,
+      title: '爆款大促',
+      text: '',
+      img: '/static/images/home/sundry/13.png' },
+
+    {
+      id: 5,
+      title: '5元3本',
+      text: '',
+      img: '/static/images/home/sundry/14.png' },
+
+    {
+      id: 6,
+      title: '全新拍卖',
+      text: '',
+      img: '/static/images/home/sundry/15.png' }];
+
+
+  },
+  goodsTab: function goodsTab() {
+    return [
+    {
+      title: '看推荐',
+      tag: '' },
+
+    {
+      title: '逛附近',
+      tag: '' },
+
+    {
+      title: '直播',
+      tag: '秒杀中' },
+    {
+      title: '实惠好货',
+      tag: '' },
+    {
+      title: '短视频',
+      tag: '' }];
+
+
+  },
+  goodsList: function goodsList() {
+    return [
+    {
+      v: false,
+      pay: true,
+      type: '', //空为正常数据，recommend 为推荐感兴趣的，可以此扩展。
+      mold: [],
+      service: ['支持验机', '专业质检'],
+      price: '2280',
+      servicePlus: '',
+      username: '仔仔',
+      time: '1个小时前来过',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/1.png',
+      avatar: '/static/images/avatar/1.jpg' },
+
+    {
+      v: true,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'red', title: '自营' }],
+      service: [],
+      price: '5049',
+      servicePlus: '支持验机',
+      username: '正品保障',
+      time: '7天无理由',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/2.png',
+      avatar: '/static/images/avatar/2.jpg' },
+
+    {
+      v: false,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'blue', title: '寄卖' }],
+      service: [],
+      price: '2980',
+      servicePlus: '已验机',
+      username: '仔仔',
+      time: '当前在线',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/3.png',
+      avatar: '/static/images/avatar/3.jpg' },
+
+    {
+      v: false,
+      pay: true,
+      type: '',
+      mold: [],
+      service: ['支持验机', '专业质检'],
+      price: '2280',
+      servicePlus: '',
+      username: '仔仔',
+      time: '1个小时前来过',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/4.png',
+      avatar: '/static/images/avatar/4.jpg' },
+
+    {
+      v: true,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'red', title: '自营' }],
+      service: [],
+      price: '5049',
+      servicePlus: '支持验机',
+      username: '正品保障',
+      time: '7天无理由',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/5.png',
+      avatar: '/static/images/avatar/5.jpg' },
+
+    {
+      v: false,
+      pay: false,
+      type: '',
+      mold: [],
+      service: [],
+      price: '2980',
+      servicePlus: '已验机',
+      username: '仔仔',
+      time: '当前在线',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/6.png',
+      avatar: '/static/images/avatar/6.jpg' },
+
+    {
+      v: false,
+      pay: true,
+      type: '',
+      mold: [],
+      service: ['支持验机', '专业质检'],
+      price: '2280',
+      servicePlus: '',
+      username: '仔仔',
+      time: '1个小时前来过',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/7.png',
+      avatar: '/static/images/avatar/7.jpg' },
+
+    {
+      v: true,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'red', title: '自营' }],
+      service: [],
+      price: '5049',
+      servicePlus: '支持验机',
+      username: '正品保障',
+      time: '7天无理由',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/8.png',
+      avatar: '/static/images/avatar/8.jpg' },
+
+    {
+      v: false,
+      pay: false,
+      type: '',
+      mold: [],
+      service: [],
+      price: '2980',
+      servicePlus: '已验机',
+      username: '仔仔',
+      time: '当前在线',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/9.png',
+      avatar: '/static/images/avatar/1.jpg' },
+
+    {
+      v: false,
+      pay: true,
+      type: '',
+      mold: [],
+      service: ['支持验机', '专业质检'],
+      price: '2280',
+      servicePlus: '',
+      username: '仔仔',
+      time: '1个小时前来过',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/10.png',
+      avatar: '/static/images/avatar/2.jpg' },
+
+    {
+      v: true,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'red', title: '自营' }],
+      service: [],
+      price: '5049',
+      servicePlus: '支持验机',
+      username: '正品保障',
+      time: '7天无理由',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/11.png',
+      avatar: '/static/images/avatar/3.jpg' },
+
+    {
+      v: false,
+      pay: false,
+      type: '',
+      mold: [],
+      service: [],
+      price: '2980',
+      servicePlus: '已验机',
+      username: '仔仔',
+      time: '当前在线',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/12.png',
+      avatar: '/static/images/avatar/4.jpg' },
+
+    {
+      v: false,
+      pay: true,
+      type: '',
+      mold: [],
+      service: ['支持验机', '专业质检'],
+      price: '2280',
+      servicePlus: '',
+      username: '仔仔',
+      time: '1个小时前来过',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/13.png',
+      avatar: '/static/images/avatar/5.jpg' },
+
+    {
+      v: true,
+      pay: false,
+      type: '',
+      mold: [{ bg: 'red', title: '自营' }],
+      service: [],
+      price: '5049',
+      servicePlus: '支持验机',
+      username: '正品保障',
+      time: '7天无理由',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/14.png',
+      avatar: '/static/images/avatar/6.jpg' },
+
+    {
+      v: false,
+      pay: false,
+      type: '',
+      mold: [],
+      service: [],
+      price: '2980',
+      servicePlus: '已验机',
+      username: '仔仔',
+      time: '当前在线',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/15.png',
+      avatar: '/static/images/avatar/7.jpg' }];
+
+
+  },
+  recommend: function recommend() {
+    return {
+      type: 'recommend',
+      list: [
+      {
+        title: '商品标题',
+        img: '/static/images/home/goods/16.png' },
+
+      {
+        title: '商品标题',
+        img: '/static/images/home/goods/15.png' },
+
+      {
+        title: '商品标题',
+        img: '/static/images/home/goods/14.png' },
+      {
+        title: '商品标题',
+        img: '/static/images/home/goods/13.png' }] };
+
+
+
+  },
+  liveData: function liveData() {
+    //	tag、tag_title、tag_time 三个参数中，选一个即可。
+    //	tag_red、tag_red_bg 两个参数中，选一个即可。
+    //	多个填写的话，会显示错位，如有需要，可自行修改。
+    return [
+    {
+      tag: '630万人',
+      tag_title: [],
+      tag_time: '',
+      tag_red: '抢100元红包',
+      tag_red_bg: '',
+      title: '莫山山的直播',
+      name: '大河国莫山山',
+      appreciate: '7.5万',
+      avatar: '/static/images/avatar/1.jpg',
+      cover_img: '/static/images/home/live/1.jpg' },
+
+    {
+      tag: '',
+      tag_title: [],
+      tag_time: '',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '',
+      name: '',
+      appreciate: '',
+      avatar: '',
+      cover_img: '/static/images/home/live/2.jpg' },
+
+    {
+      tag: '630万人',
+      tag_title: [],
+      tag_time: '',
+      tag_red: '',
+      tag_red_bg: '特惠秒杀 00:07:05',
+      title: 'XXXX的直播',
+      name: 'XXXX',
+      appreciate: '100万+',
+      avatar: '/static/images/avatar/2.jpg',
+      cover_img: '/static/images/home/live/3.jpg' },
+
+    {
+      tag: '',
+      tag_title: ['鉴别中', '演戏'],
+      tag_time: '',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '刘诗诗的直播',
+      name: '刘诗诗',
+      appreciate: '98.8万',
+      avatar: '/static/images/avatar/3.jpg',
+      cover_img: '/static/images/home/live/4.jpg' },
+
+    {
+      tag: '',
+      tag_title: [],
+      tag_time: '预约中 - 02/28 22:00',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '某某某的直播',
+      name: '某某某',
+      appreciate: '2345',
+      avatar: '/static/images/avatar/4.jpg',
+      cover_img: '/static/images/home/live/5.jpg' },
+
+    {
+      tag: '',
+      tag_title: [],
+      tag_time: '鉴别预约中 - 唱歌',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '某某的直播',
+      name: '某某-某某',
+      appreciate: '9812',
+      avatar: '/static/images/avatar/5.jpg',
+      cover_img: '/static/images/home/live/6.jpg' },
+
+    {
+      tag: '630万人',
+      tag_title: [],
+      tag_time: '',
+      tag_red: '抢100元红包',
+      tag_red_bg: '',
+      title: '莫山山的直播',
+      name: '大河国莫山山',
+      appreciate: '7.5万',
+      avatar: '/static/images/avatar/6.jpg',
+      cover_img: '/static/images/home/live/7.jpg' },
+
+    {
+      tag: '630万人',
+      tag_title: [],
+      tag_time: '',
+      tag_red: '',
+      tag_red_bg: '特惠秒杀 00:07:05',
+      title: 'XXXX的直播',
+      name: 'XXXX',
+      appreciate: '100万+',
+      avatar: '/static/images/avatar/7.jpg',
+      cover_img: '/static/images/home/live/8.jpg' },
+
+    {
+      tag: '',
+      tag_title: ['鉴别中', '演戏'],
+      tag_time: '',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '刘诗诗的直播',
+      name: '刘诗诗',
+      appreciate: '98.8万',
+      avatar: '/static/images/avatar/8.jpg',
+      cover_img: '/static/images/home/live/9.jpg' },
+
+    {
+      tag: '',
+      tag_title: [],
+      tag_time: '预约中 - 02/28 22:00',
+      tag_red: '',
+      tag_red_bg: '',
+      title: '某某某的直播',
+      name: '某某某',
+      appreciate: '2345',
+      avatar: '/static/images/avatar/1.jpg',
+      cover_img: '/static/images/home/live/10.jpg' }];
+
+
+  },
+  videoData: function videoData() {
+    return [
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/1.jpg',
+      cover_img: '/static/images/home/video/1.jpg' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/2.jpg',
+      cover_img: '/static/images/home/video/2.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/3.jpg',
+      cover_img: '/static/images/home/video/3.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/4.jpg',
+      cover_img: '/static/images/home/video/4.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/5.jpg',
+      cover_img: '/static/images/home/video/5.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/6.jpg',
+      cover_img: '/static/images/home/video/6.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/7.jpg',
+      cover_img: '/static/images/home/video/7.jpg' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/8.jpg',
+      cover_img: '/static/images/home/video/8.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/1.jpg',
+      cover_img: '/static/images/home/video/9.gif' },
+
+    {
+      title: '某某某的视频',
+      name: '某某某',
+      appreciate: '499',
+      avatar: '/static/images/avatar/2.jpg',
+      cover_img: '/static/images/home/video/10.gif' }];
+
+
+  },
+  gridSortData: function gridSortData() {
+    return [{
+      id: 1,
+      name: '手机',
+      img: '/static/images/home/grid-icon/16.png' },
+    {
+      id: 2,
+      name: '平板',
+      img: '/static/images/home/grid-icon/17.png' },
+    {
+      id: 3,
+      name: '电脑',
+      img: '/static/images/home/grid-icon/18.png' },
+    {
+      id: 4,
+      name: '数码',
+      img: '/static/images/home/grid-icon/19.png' },
+    {
+      id: 5,
+      name: '家电',
+      img: '/static/images/home/grid-icon/20.png' },
+    {
+      id: 6,
+      name: '新人红包',
+      img: '/static/images/home/grid-icon/21.png' },
+    {
+      id: 7,
+      name: '手机直播',
+      img: '/static/images/home/grid-icon/22.png' },
+    {
+      id: 8,
+      name: '自营图书',
+      img: '/static/images/home/grid-icon/23.png' },
+    {
+      id: 9,
+      name: '游戏',
+      img: '/static/images/home/grid-icon/24.png' }];
+
+  } };var _default =
+
+
+_home_data;exports.default = _default;
+
+/***/ }),
+
+/***/ 25:
+/*!*************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/test/index.js ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var all = _interopRequireWildcard(__webpack_require__(/*! ./test */ 26));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}
+
+// 全量导出
+var _default = all;exports.default = _default;
+
+/***/ }),
+
+/***/ 250:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/find.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _find_data = {
+  followTrendsData: function followTrendsData() {
+    return [{
+      id: 1,
+      avatar: '/static/images/avatar/1.jpg',
+      username: '仔仔',
+      time: '1个月前',
+      text: '测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: false,
+      comment: '2',
+      appreciate: '8',
+      appreciate_btn: false,
+      img: [],
+      cover: '/static/images/home/goods/2.png',
+      video: 'https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20181126.mp4' },
+    {
+      id: 2,
+      avatar: '/static/images/avatar/2.jpg',
+      username: '仔仔ZaiZ',
+      time: '2小时前',
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: false,
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: [],
+      cover: '/static/images/home/goods/1.png',
+      video: 'https://img.cdn.aliyun.dcloud.net.cn/guide/uniapp/%E7%AC%AC1%E8%AE%B2%EF%BC%88uni-app%E4%BA%A7%E5%93%81%E4%BB%8B%E7%BB%8D%EF%BC%89-%20DCloud%E5%AE%98%E6%96%B9%E8%A7%86%E9%A2%91%E6%95%99%E7%A8%8B@20181126.mp4' },
+    {
+      id: 3,
+      avatar: '/static/images/avatar/3.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: ['/static/images/home/goods/1.png', '/static/images/home/goods/2.png'] },
+    {
+      id: 4,
+      avatar: '/static/images/avatar/4.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: ['/static/images/home/goods/1.png'] },
+    {
+      id: 5,
+      avatar: '/static/images/avatar/5.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png'] }];
+
+
+  },
+  trendsData: function trendsData() {
+    return [{
+      id: 1,
+      avatar: '/static/images/avatar/1.jpg',
+      username: '仔仔',
+      time: '1小时前',
+      follow: false,
+      text: '测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: false,
+      talk: '你在说些啥',
+      comment: '12',
+      appreciate: '80',
+      appreciate_btn: false,
+      img: ['/static/images/home/goods/1.png'] },
+    {
+      id: 2,
+      avatar: '/static/images/avatar/2.jpg',
+      username: '仔仔ZaiZ',
+      time: '2小时前',
+      follow: true,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: ['/static/images/home/goods/1.png', '/static/images/home/goods/2.png'] },
+    {
+      id: 3,
+      avatar: '/static/images/avatar/3.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: ['/static/images/home/goods/1.png', '/static/images/home/goods/2.png', '/static/images/home/goods/3.png'] },
+    {
+      id: 4,
+      avatar: '/static/images/avatar/4.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png'] },
+
+    {
+      id: 5,
+      avatar: '/static/images/avatar/5.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png',
+      '/static/images/home/goods/5.png'] },
+
+    {
+      id: 6,
+      avatar: '/static/images/avatar/6.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: true,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png',
+      '/static/images/home/goods/5.png',
+      '/static/images/home/goods/6.png'] },
+
+    {
+      id: 7,
+      avatar: '/static/images/avatar/7.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: false,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png',
+      '/static/images/home/goods/5.png',
+      '/static/images/home/goods/6.png',
+      '/static/images/home/goods/7.png'] },
+
+    {
+      id: 8,
+      avatar: '/static/images/avatar/8.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: false,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png',
+      '/static/images/home/goods/5.png',
+      '/static/images/home/goods/6.png',
+      '/static/images/home/goods/7.png',
+      '/static/images/home/goods/8.png'] },
+
+    {
+      id: 9,
+      avatar: '/static/images/avatar/1.jpg',
+      username: '仔仔ZaiZ',
+      time: '1年前',
+      follow: false,
+      text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
+      text_btn: true,
+      talk: '你在说些啥呢',
+      comment: '12万',
+      appreciate: '80万',
+      appreciate_btn: false,
+      img: [
+      '/static/images/home/goods/1.png',
+      '/static/images/home/goods/2.png',
+      '/static/images/home/goods/3.png',
+      '/static/images/home/goods/4.png',
+      '/static/images/home/goods/5.png',
+      '/static/images/home/goods/6.png',
+      '/static/images/home/goods/7.png',
+      '/static/images/home/goods/8.png',
+      '/static/images/home/goods/9.png'] }];
+
+
+  },
+  hotTopicData: function hotTopicData() {
+    return [{
+      id: 1,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/16.png' },
+    {
+      id: 2,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/17.png' },
+    {
+      id: 3,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/18.png' },
+    {
+      id: 4,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/19.png' },
+    {
+      id: 5,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/20.png' },
+    {
+      id: 6,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/21.png' },
+    {
+      id: 7,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/22.png' },
+    {
+      id: 8,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/23.png' },
+    {
+      id: 9,
+      title: '你在说些啥',
+      text: '你在说些啥呢？说些啥呢？',
+      num: '138篇内容',
+      img: '/static/images/home/grid-icon/24.png' }];
+
+  },
+  recommendScrollData: function recommendScrollData() {
+    return [{
+      id: 1,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/1.jpg' },
+    {
+      id: 2,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/2.jpg' },
+    {
+      id: 3,
+      name: '仔仔',
+      follow: true,
+      avatar: '/static/images/avatar/3.jpg' },
+    {
+      id: 4,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/4.jpg' },
+    {
+      id: 5,
+      name: '仔仔',
+      follow: true,
+      avatar: '/static/images/avatar/5.jpg' },
+    {
+      id: 6,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/6.jpg' },
+    {
+      id: 7,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/7.jpg' },
+    {
+      id: 8,
+      name: '仔仔',
+      follow: false,
+      avatar: '/static/images/avatar/8.jpg' }];
+
+  },
+  topicGridData: function topicGridData() {
+    return [{
+      id: 1,
+      title: '数码',
+      img: '/static/images/home/goods/1.png' },
+    {
+      id: 2,
+      title: '穿搭',
+      img: '/static/images/home/goods/2.png' },
+    {
+      id: 3,
+      title: '美妆',
+      img: '/static/images/home/goods/3.png' },
+    {
+      id: 4,
+      title: '文玩',
+      img: '/static/images/home/goods/4.png' },
+    {
+      id: 5,
+      title: '远动',
+      img: '/static/images/home/goods/5.png' },
+    {
+      id: 6,
+      title: '数码',
+      img: '/static/images/home/goods/6.png' },
+    {
+      id: 7,
+      title: '穿搭',
+      img: '/static/images/home/goods/7.png' },
+    {
+      id: 8,
+      title: '美妆',
+      img: '/static/images/home/goods/8.png' }];
+
+  },
+  topicCardData: function topicCardData() {
+    return [{
+      id: 1,
+      type: '数码',
+      type_text: '游戏玩家的法宝是什么',
+      bg_img: '/static/images/home/goods/1.png',
+      list: [{
+        id: 1,
+        img: '/static/images/home/goods/2.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 2,
+        img: '/static/images/home/goods/3.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 3,
+        img: '/static/images/home/goods/4.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 4,
+        img: '/static/images/home/goods/5.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 5,
+        img: '/static/images/home/goods/6.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' }] },
+
+    {
+      id: 2,
+      type: '测试',
+      type_text: '测试玩家的法宝是什么',
+      bg_img: '/static/images/home/goods/7.png',
+      list: [{
+        id: 1,
+        img: '/static/images/home/goods/8.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 2,
+        img: '/static/images/home/goods/9.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 3,
+        img: '/static/images/home/goods/10.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 4,
+        img: '/static/images/home/goods/11.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 5,
+        img: '/static/images/home/goods/12.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' }] },
+
+    {
+      id: 3,
+      type: '数码',
+      type_text: '游戏玩家的法宝是什么',
+      bg_img: '/static/images/home/goods/13.png',
+      list: [{
+        id: 1,
+        img: '/static/images/home/goods/14.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 2,
+        img: '/static/images/home/goods/15.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 3,
+        img: '/static/images/home/goods/16.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 4,
+        img: '/static/images/home/goods/17.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 5,
+        img: '/static/images/home/goods/18.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' }] },
+
+    {
+      id: 4,
+      type: '数码',
+      type_text: '游戏玩家的法宝是什么',
+      bg_img: '/static/images/home/goods/19.png',
+      list: [{
+        id: 1,
+        img: '/static/images/home/goods/20.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 2,
+        img: '/static/images/home/goods/1.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 3,
+        img: '/static/images/home/goods/2.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 4,
+        img: '/static/images/home/goods/3.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' },
+      {
+        id: 5,
+        img: '/static/images/home/goods/4.png',
+        title: '游戏玩家的至宝',
+        text: '110篇内容' }] }];
+
+
+  } };var _default =
+
+
+_find_data;exports.default = _default;
+
+/***/ }),
+
+/***/ 258:
+/*!*********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/sell.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _sell_data = {
+  typeListData: function typeListData() {
+    return [{
+      id: 1,
+      title: '手机',
+      text: 'iPhone/华为/小米/OPPO/vivo/三星',
+      img: '/static/images/home/goods/1.png' },
+    {
+      id: 2,
+      title: '图书影音',
+      text: '文学小说/教材教辅/唱片影片',
+      img: '/static/images/home/goods/2.png' },
+    {
+      id: 3,
+      title: '数码',
+      text: '摄影器材/耳机/智能穿戴/音箱/游戏机',
+      img: '/static/images/home/goods/3.png' },
+    {
+      id: 4,
+      title: '服装鞋帽',
+      text: '男装/女装/鞋/箱包/配饰',
+      img: '/static/images/home/goods/4.png' },
+    {
+      id: 5,
+      title: '交通工具',
+      text: '摩托车/电动车/自行车/汽车用品/汽车配件',
+      img: '/static/images/home/goods/5.png' },
+    {
+      id: 6,
+      title: '母婴用品',
+      text: '服饰/童车童床/玩具图书/洗护用品/孕妈用品',
+      img: '/static/images/home/goods/6.png' },
+    {
+      id: 7,
+      title: '家用电器',
+      text: '生活电器/厨房电器/电器配件',
+      img: '/static/images/home/goods/7.png' },
+    {
+      id: 8,
+      title: '家居家具',
+      text: '沙发桌椅/家装软饰/灯具照明/厨房卫浴',
+      img: '/static/images/home/goods/8.png' },
+    {
+      id: 9,
+      title: '手机',
+      text: 'iPhone/华为/小米/OPPO/vivo/三星',
+      img: '/static/images/home/goods/1.png' },
+    {
+      id: 10,
+      title: '图书影音',
+      text: '文学小说/教材教辅/唱片影片',
+      img: '/static/images/home/goods/2.png' },
+    {
+      id: 11,
+      title: '数码',
+      text: '摄影器材/耳机/智能穿戴/音箱/游戏机',
+      img: '/static/images/home/goods/3.png' },
+    {
+      id: 12,
+      title: '服装鞋帽',
+      text: '男装/女装/鞋/箱包/配饰',
+      img: '/static/images/home/goods/4.png' },
+    {
+      id: 13,
+      title: '交通工具',
+      text: '摩托车/电动车/自行车/汽车用品/汽车配件',
+      img: '/static/images/home/goods/5.png' },
+    {
+      id: 14,
+      title: '母婴用品',
+      text: '服饰/童车童床/玩具图书/洗护用品/孕妈用品',
+      img: '/static/images/home/goods/6.png' },
+    {
+      id: 15,
+      title: '家用电器',
+      text: '生活电器/厨房电器/电器配件',
+      img: '/static/images/home/goods/7.png' },
+    {
+      id: 16,
+      title: '家居家具',
+      text: '沙发桌椅/家装软饰/灯具照明/厨房卫浴',
+      img: '/static/images/home/goods/8.png' }];
+
+  } };var _default =
+
+
+_sell_data;exports.default = _default;
+
+/***/ }),
+
+/***/ 26:
+/*!************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/test/test.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.apiTest = apiTest;exports.needToken = needToken;var _request = __webpack_require__(/*! @/utils/request.js */ 21);
+
+// 测试接口
+function apiTest(data, callBack) {
+  return (0, _request.axios)('test', 'POST', data, callBack);
+}
+// 需要token才可以访问的测试接口
+function needToken(data, callBack) {
+  return (0, _request.axios)('needToken', 'POST', data, callBack);
+}
+
+/***/ }),
+
+/***/ 27:
+/*!**************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/store/pay/index.js ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _pay = _interopRequireDefault(__webpack_require__(/*! @/api/pay */ 28));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  state: {},
+
+  mutations: {},
+
+  actions: {
+    WXPAY: function WXPAY(context, data) {
+      return _pay.default.wxpay(data);
+    },
+    WXAPPPAY: function WXAPPPAY(context, data) {
+      return _pay.default.wxAppPay(data);
+    },
+    ALIAPPAY: function ALIAPPAY(context, data) {
+      return _pay.default.aliAppPay(data);
+    },
+    WXMINIPAY: function WXMINIPAY(context, data) {
+      return _pay.default.wxMiniPay(data);
+    } },
+
+  getters: {} };exports.default = _default;
+
+/***/ }),
+
+/***/ 273:
+/*!*******************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/my.js ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _my_data = {
+  toolsListData: function toolsListData() {
+    return [{
+      id: 1,
+      icon: 'service',
+      name: '客服中心' },
+    {
+      id: 2,
+      icon: 'squarecheck',
+      name: '我的订阅' },
+    {
+      id: 3,
+      icon: 'friend',
+      name: '我的拼团' },
+    {
+      id: 4,
+      icon: 'moneybag',
+      name: '借钱' },
+    {
+      id: 5,
+      icon: 'read',
+      name: '平台规则' },
+    {
+      id: 6,
+      icon: 'notification',
+      name: '活动报名' },
+    {
+      id: 7,
+      icon: 'redpacket',
+      name: '领新人红包' },
+    {
+      id: 8,
+      icon: 'vipcard',
+      name: '办信用卡' },
+    {
+      id: 9,
+      icon: 'scan',
+      name: '活动扫码' },
+    {
+      id: 10,
+      icon: 'present',
+      name: '签到送礼' },
+    {
+      id: 11,
+      icon: 'delete',
+      name: '垃圾分类' },
+    {
+      id: 12,
+      icon: 'mobile',
+      name: '租手机' }];
+
+  } };var _default =
+
+
+_my_data;exports.default = _default;
+
+/***/ }),
+
+/***/ 28:
+/*!************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/pay/index.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var wxpay = _interopRequireWildcard(__webpack_require__(/*! ./wxpay */ 29));
+var alipay = _interopRequireWildcard(__webpack_require__(/*! ./alipay */ 30));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function _getRequireWildcardCache() {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}if (obj === null || typeof obj !== "object" && typeof obj !== "function") {return { default: obj };}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}
+var all = _objectSpread({},
+wxpay, {},
+alipay);
+
+// 全量导出
+var _default = all;exports.default = _default;
+
+/***/ }),
+
+/***/ 29:
+/*!************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/pay/wxpay.js ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.wxpay = wxpay;exports.wxAppPay = wxAppPay;exports.wxMiniPay = wxMiniPay;var _request = __webpack_require__(/*! @/utils/request.js */ 21);
+
+// 微信支付接口
+function wxpay(data, callBack) {
+  return (0, _request.axios)('wxpay', 'POST', data, callBack);
+}
+// 微信app支付接口
+function wxAppPay(data, callBack) {
+  return (0, _request.axios)('https://springboot.coral3.com/unifiedOrder', 'POST', data, callBack);
+}
+
+// 微信小程序支付接口
+function wxMiniPay(data, callBack) {
+  return (0, _request.axios)('http://localhost/coral3/createMiniProgramTradePay', 'POST', data, callBack);
+}
 
 /***/ }),
 
@@ -9948,163 +10815,946 @@ module.exports = g;
 /***/ }),
 
 /***/ 30:
-/*!***************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/store/pay/index.js ***!
-  \***************************************************************************/
+/*!*************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/api/pay/alipay.js ***!
+  \*************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _pay = _interopRequireDefault(__webpack_require__(/*! @/api/pay */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  state: {},
+Object.defineProperty(exports, "__esModule", { value: true });exports.aliAppPay = aliAppPay;var _request = __webpack_require__(/*! @/utils/request.js */ 21);
 
-  mutations: {},
-
-  actions: {
-    WXPAY: function WXPAY(context, data) {
-      return _pay.default.wxpay(data);
-    },
-    WXAPPPAY: function WXAPPPAY(context, data) {
-      return _pay.default.wxAppPay(data);
-    },
-    ALIAPPAY: function ALIAPPAY(context, data) {
-      return _pay.default.aliAppPay(data);
-    },
-    WXMINIPAY: function WXMINIPAY(context, data) {
-      return _pay.default.wxMiniPay(data);
-    } },
-
-  getters: {} };exports.default = _default;
+// 支付宝app支付接口
+function aliAppPay(data, callBack) {
+  return (0, _request.axios)('https://springboot.coral3.com/createOrder', 'POST', data, callBack);
+}
 
 /***/ }),
 
 /***/ 37:
-/*!************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/utils/pageTo.js ***!
-  \************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/util/tools.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.reLaunch = reLaunch;exports.navigateTo = navigateTo;function reLaunch(url, data) {
-  // 关闭所有页面，打开到应用内的某个页面
-  var str = '';
-  for (var key in data) {
-    str += "".concat(key, "=").concat(data.key, "&");
-  }
-  data = str.substr(0, str.length - 1);
-  uni.reLaunch({
-    url: url + '?' + data });
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //工具函数库，仔仔编写。
 
-}
-function navigateTo(url, data) {
-  var str = '';
-  for (var key in data) {
-    str += "".concat(key, "=").concat(data.key, "&");
-  }
-  data = str.substr(0, str.length - 1);
-  uni.navigateTo({
-    url: url + '?' + data });
+var _tool = {
+  //获取字符串的真实长度（字节长度）
+  strLeng: function strLeng(str) {
+    if (str) {
+      var len = str.length,truelen = 0;
+      for (var x = 0; x < len; x++) {
+        if (str.charCodeAt(x) > 128) {
+          truelen += 2;
+        } else {
+          truelen += 1;
+        }
+      }
+      return truelen;
+    } else {
+      return 0;
+    }
+  },
+  //计算页数
+  getPageNum: function getPageNum(total, row) {
+    var num = Number(total) / Number(row);
+    //是否为整数
+    if (num % 1 !== 0) {
+      var b = num.toString(); //转字符串
+      var a = parseInt(b.substring(0, b.indexOf('.'))); //取小数点前
+      var s = b.replace(/\d+\.(\d*)/, '$1'); //取小数点后
+      if (s > 0) {
+        num = a + 1;
+      }
+    }
+    return num;
+  },
+  //设置手机通知栏字体颜色
+  setBarColor: function setBarColor() {var black = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    if (black) {
+      uni.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: '#FAFAFA' });
 
-}
+    } else {
+      uni.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#FAFAFA' });
+
+    }
+  },
+  zaiui_log: function zaiui_log(v) {
+    console.error("仅供学习交流，如作它用所承受的法律责任一概与作者无关!");
+    console.warn("如果您运行的时候，出现了报错，请自行解决,我使用的HBX版本号：" + v);
+    console.info("QQ交流群：707134214");
+  } };var _default =
+
+
+_tool;exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 398:
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/@vue/babel-preset-app/node_modules/@babel/runtime/regenerator/index.js ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ 399);
+
+/***/ }),
+
+/***/ 399:
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() {
+  return this || (typeof self === "object" && self);
+})() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(/*! ./runtime */ 400);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
 
 /***/ }),
 
 /***/ 4:
-/*!*******************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages.json ***!
-  \*******************************************************************/
+/*!******************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/pages.json ***!
+  \******************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
 
 
 /***/ }),
 
-/***/ 45:
-/*!***********************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/utils/jsTools/navigator.js ***!
-  \***********************************************************************************/
+/***/ 400:
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) { // nvue文件与vue文件互相跳转携带参数封装工具
-module.exports = {
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
-  navigateTo: function navigateTo(obj) {
-    this.setParameters(obj.url);
-    uni.navigateTo(obj);
-  },
+!(function(global) {
+  "use strict";
 
-  redirectTo: function redirectTo(obj) {
-    this.setParameters(obj.url);
-    uni.redirectTo(obj);
-  },
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
 
-  reLaunch: function reLaunch(obj) {
-    this.setParameters(obj.url);
-    uni.reLaunch(obj);
-  },
-
-  switchTab: function switchTab(obj) {
-    uni.switchTab(obj);
-  },
-
-  navigateBack: function (_navigateBack) {function navigateBack() {return _navigateBack.apply(this, arguments);}navigateBack.toString = function () {return _navigateBack.toString();};return navigateBack;}(function () {
-    uni.switchTab(navigateBack);
-  }),
-
-  setParameters: function setParameters(url) {
-    var urls = url.split('?');
-    if (urls.length < 2) {return false;}
-    var parameters = {};
-    urls = urls[1];
-    urls = urls.split('&');
-    for (var i = 0; i < urls.length; i++) {
-      var arr = urls[i].split('=');
-      parameters[arr[0]] = arr[1];
+  var inModule = typeof module === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
     }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  runtime.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
     try {
-      uni.setStorageSync('graceUIPageParameters', JSON.stringify(parameters));
-    } catch (e) {
-      //TODO handle the exception
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
     }
-  },
+  }
 
-  getParameters: function getParameters() {
-    try {
-      return JSON.parse(uni.getStorageSync('graceUIPageParameters'));
-    } catch (e) {
-      return null;
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  IteratorPrototype[iteratorSymbol] = function () {
+    return this;
+  };
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
+  GeneratorFunctionPrototype.constructor = GeneratorFunction;
+  GeneratorFunctionPrototype[toStringTagSymbol] =
+    GeneratorFunction.displayName = "GeneratorFunction";
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      prototype[method] = function(arg) {
+        return this._invoke(method, arg);
+      };
+    });
+  }
+
+  runtime.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  runtime.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      if (!(toStringTagSymbol in genFun)) {
+        genFun[toStringTagSymbol] = "GeneratorFunction";
+      }
     }
-  } };
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  runtime.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return Promise.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return Promise.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new Promise(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
+    return this;
+  };
+  runtime.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList)
+    );
+
+    return runtime.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        if (delegate.iterator.return) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  Gp[toStringTagSymbol] = "Generator";
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  Gp[iteratorSymbol] = function() {
+    return this;
+  };
+
+  Gp.toString = function() {
+    return "[object Generator]";
+  };
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  runtime.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  runtime.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+})(
+  // In sloppy mode, unbound `this` refers to the global object, fallback to
+  // Function constructor if we're in global strict mode. That is sadly a form
+  // of indirect eval which violates Content Security Policy.
+  (function() {
+    return this || (typeof self === "object" && self);
+  })() || Function("return this")()
+);
+
 
 /***/ }),
 
 /***/ 46:
-/*!********************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages/index/img/cat.png ***!
-  \********************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/sort_vue.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "data:image/png;base64,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"
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _sort_data = {
+  sortListData: function sortListData() {
+    return [{
+      id: 1,
+      name: '苹果',
+      img: '/static/images/home/grid-icon/30.png' },
+    {
+      id: 2,
+      name: '华为',
+      img: '/static/images/home/grid-icon/31.png' },
+    {
+      id: 3,
+      name: '小米',
+      img: '/static/images/home/grid-icon/32.png' },
+    {
+      id: 4,
+      name: 'vivo',
+      img: '/static/images/home/grid-icon/33.png' },
+    {
+      id: 5,
+      name: 'oppo',
+      img: '/static/images/home/grid-icon/34.png' },
+    {
+      id: 6,
+      name: '魅族',
+      img: '/static/images/home/grid-icon/35.png' },
+    {
+      id: 7,
+      name: '寄卖优选',
+      img: '/static/images/home/grid-icon/36.png' },
+    {
+      id: 8,
+      name: '验机特惠',
+      img: '/static/images/home/grid-icon/37.png' },
+    {
+      id: 9,
+      name: '直播特卖',
+      img: '/static/images/home/grid-icon/38.png' },
+    {
+      id: 10,
+      name: '更多分类',
+      img: '/static/images/home/grid-icon/39.png' }];
 
-/***/ }),
+  } };var _default =
 
-/***/ 47:
-/*!************************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages/index/img/red_cat.png ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,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"
+_sort_data;exports.default = _default;
 
 /***/ }),
 
@@ -10116,7 +11766,7 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACt
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
+/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _createSuper(Derived) {return function () {var Super = _getPrototypeOf(Derived),result;if (_isNativeReflectConstruct()) {var NewTarget = _getPrototypeOf(this).constructor;result = Reflect.construct(Super, arguments, NewTarget);} else {result = Super.apply(this, arguments);}return _possibleConstructorReturn(this, result);};}function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _isNativeReflectConstruct() {if (typeof Reflect === "undefined" || !Reflect.construct) return false;if (Reflect.construct.sham) return false;if (typeof Proxy === "function") return true;try {Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));return true;} catch (e) {return false;}}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
 
 var STAT_VERSION = _package.version;
 var STAT_URL = 'https://tongji.dcloud.io/uni/stat';
@@ -10806,7 +12456,7 @@ Util = /*#__PURE__*/function () {
 
 
 
-Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
+Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);var _super = _createSuper(Stat);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
     {
       if (!this.instance) {
         this.instance = new Stat();
@@ -10814,7 +12464,7 @@ Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, 
       return this.instance;
     } }]);
   function Stat() {var _this6;_classCallCheck(this, Stat);
-    _this6 = _possibleConstructorReturn(this, _getPrototypeOf(Stat).call(this));
+    _this6 = _super.call(this);
     _this6.instance = null;
     // 注册拦截器
     if (typeof uni.addInterceptor === 'function' && "development" !== 'development') {
@@ -11002,53 +12652,284 @@ main();
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, files, gitHead, homepage, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2.0.0-alpha-25720200116005","_inBundle":false,"_integrity":"sha512-RZFw3WAaS/CZTzzv9JPaWvmoNitojD/06vPdHSzlqZi8GbuE222lFuyochEjrGkG8rPPrWHAnwfoPBuQVtkfdg==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@alpha","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"alpha","saveSpec":null,"fetchSpec":"alpha"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-alpha-25720200116005.tgz","_shasum":"08bb17aba91c84a981f33d74153aa3dd07b578ad","_spec":"@dcloudio/uni-stat@alpha","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/alpha/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"a129bde60de35f7ef497f43d5a45b4556231995c","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-alpha-25720200116005"};
+module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-26920200424005","_inBundle":false,"_integrity":"sha512-FT8Z/C5xSmIxooqhV1v69jTkxATPz+FsRQIFOrbdlWekjGkrE73jfrdNMWm7gL5u41ALPJTVArxN1Re9by1bjQ==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-26920200424005.tgz","_shasum":"47f4375095eda3089cf4678b4b96fc656a7ab623","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"94494d54ed23e2dcf9ab8e3245b48b770b4e98a9","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-26920200424005"};
 
 /***/ }),
 
-/***/ 60:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages/slideShowHide/img/dunPai.png ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,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"
-
-/***/ }),
-
-/***/ 69:
-/*!*******************************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages/slideHIdeShow/img/dunPai.png ***!
-  \*******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAgAElEQVR4Xu2dB9glRZWGQdxdFPMaWVcHWMSArCiKykpaoghIVHIGyZIzOJJzkCAgMCAZBiSNRB2i5Ci44IJDFHXVVcCs+L1u3eXO73//26f6VHd13z7P088d+Cuc81V9HapOnTPrLJ3UisDLL7/8D1JgKV2r6Pqcrsd1XarrkllnnXVGrcp1nc8ya4dB9QiIFHOo188GUqyg3zcM0OKBQJZLRZYHq9e067EjSEVzQKR4q7paKZBiaf3+k7HrJ3pk0e9tIszLxvpd8QgEOoJEgFa0ikjxnkAIXp/+Q9dsResOKfcT/f2yQJgbRJY/OrXbNTMGgY4gzlNCpPhQHyk+6tz8eM39Wv/zqkCWaSLLSxX0OTJddAQpOdQiBBgu3EeKeUs2Wab671T5+kCWb4ksvyjTWFd3lu4jPWYSiBSvVr0lAilW1u+cMe0krvNntX9LIMtUkeWZxP21svnuCVJwWEWK16rocoEULMe+qWDVXIrdG8jCitjDuSiVux4dQSYYIZHizfpzb+VpGf37NbkPaEH9fhjIcol+7+xWxAaj1hFkDDYiBa9Lq4YnxaL65XWqzfKcjPtWIMx0keVPbTbWaltHECEmUvBhvXogxUL6HVVcfinbrwxkuUZk+Y11QrWt/KhOBEgBEdif4PpA2wbWwZ7fqo1rAlmuEFkgz8jJyBBEhGCTjlcmCPF5Xf86cqMdbzCvXTcGsvCRz2vZSEirCSJSzK5R5OMaUqyo658zHdWrpRcfzJfr4nWv92SbK1N97wxkYfmYD/7WSusIIlK8UaPFMiyTjGVZHANzkxel0LfDJLtKk4zd8L8T2fLvfWRZIDcjgj4/CHbwZLk7Ux2j1WoFQTSR3ikEeG2CFGzg4UKem/yPFOIJgSv7dZpMv7coKBsnqfxqwcZP6fdVlvoVlX1a/fRWxG6SjWxWNloaSxBNmHmEfG859pP6d462PNW7u+r3Fq8JI9vf3ndDWFL//scMZ+HPpdMVwX5WxEw3hFzsyXFSDcRGE2PBcAflSTF/LiCO0YNdap4SvHKwe51UhAlnSfpfKV+XtMO4xnGg5DsLXFgRG/eVMq7ptLWyJogGn9cI3MR7K0+T0sIR1TrnMnofrZwCrO2jVXhxxqR/UYIzKLkJrvnf1cWixGXC6/ncFOzXJzuCaJB5XeBAEaTAzeNtGQLIsuf0cEeEFNkNcljW/kzfzYWzKbkJN5fvBRx54nLcOCvJgiAaTF4Leq8Jy+vfr88Kpf9Thl3l3sbZ5RrMX2Wo40CVhPHHAlm48XwwU90f6iPL/TnoWBtBwhHU3soTQQty/NBk97j3oXm1SMF5i8ZLcK3prYh9XAbVNg8mAHNGjyz6vVXY/6UO4CsFJhxB7Q3MIjI4x6XKZ6VX7zjrd71WnuoY3CJ9BufM3sbkYqqTo3PmT6VXb4n8eo3JH4rY5lEmOUE0AB/ue7R/xEPpBG081vdovyNB+41oMrj343EAYZbVlaN7/wvSa1oYLzZZ2XRNJu4ECUdQ2cjq3ZXYr8hR7ukjxSM5KlinTuGAGCTpxevibExuwt7KDWEcOWLMZqyruBBEYLJzzYYVYHIElZ3t3IRd3ZsDmKw8dUdQC45QOGK8eBhfvhtzPGLMN8qtYXzxEWOTtrR4EWQjaXJ6aW38G+gFMeituXdBDEpiHN4QcglSMciaH4sgLiT2IsiG0vSMkth7Ve/C4HghWaAdEabqMEcFtJrlORHkX4oUHFbGiyAbqKMpwzpL+PcukFpCcIs2HVYpe9+enoHyiqrQK/eMCOJy3seLIOtLszOtVpQs34XiLAlgyuphn6tMqNUy6j0tgrh4DngRZD1Zc1YZiwrW7YI5FwQqp2IiC2dyCNLN04Wg3YOCdXup/ZQI8l6PxrwIsq6U+aaHQmPaYGWi56vDysSMBH10TVaIQFjx7KV74AnzjgTdz9BccTmN6UWQdWTk2U6Gskv6HV24RrO2zS5qJy1EIKyI4VHhfcT4R5o3c3tA5kWQtaXMOSUUKnQEtUT7XdUGIOB4xPgJEcRlg9qLIGsJ/3ONY1DqCKqxr654wxAIR4x7sco4MWrx23tcBPk3D5O9CPJFKXOeUaHPyQjC9nfSITAhAiLLbSqA+1JR+aHm1vuKFp6onBdBvqBOzjcqtKKMIIpfJx0CwwjCQg1PkaLymObWfEULV0GQNdXJBUaFVpIRnLXopENgGEFuVwHcW4rKo5pb7y9auAqCrKFOLjQqtLKMwMe/kw6BYQThCMInDDD9QHPL5dSk1ysWH1MXGQyg6OdlBAeTOukQGEYQgmJw8rGoPKK5hY9YafEiCKcELzZqs4qMIMhYJx0CwwhylwoQbLyoPKy55RIWyosgnBFgY88iq8oIax1L+yNXVqs9CwjT1uVTl12ENCXoRFF5UDgQtrW0eBGEnVDOXFhkNRlhrWNpf6TKQg4ZvJswxauhVSLbOP1pyRicHUFiniCrazCntmokazJGE4iA3ThyXiRMd6lJjWTdyj4iVBJVs6g8IBxc4h94PUE4Zmv9nlhDRli/W4oCNFLlNIGI10VExW2E6QltM1723SebLBP+fuFgIdRAyLwIglemdUVqTRlhXflq29iXtkeTZ281sn9oqJXeCbKRIHKWb4r7NLcsr2TJCUKoGOuexhdkhHXvpPSEalMDmjjEsSLObe9GN78wbV2KZ9nJ66MlP8o9wsGy6pWcIIQNte6KryUjrO4pbZrfpWwJAd9YserPmjW7MG1kmoGJwJCthCS1LNveLRws+ybJCcJpMatf1doywurgWGpStaVyCMOD+0X/0ufPhCd5Q1onsvf7Msqy8XeXsLDsvCcnCMcorZ6568gIq4t86wY/xiBNmFNUb7Mxdd0mRYxOKevIXl4bLa4jd2huWZwbkxOEiOyEg7TIujKizCErS1+tKavJMuj0Jku8OI22TmQzkS8tqbpvFxYW9/jkBCFZJkkpLbKejPA6pmvpt7FlNVGIc4zbBYlyxsrhwnPXxho3geKym0ShFu/c7wmLT3tg4bXMyxo8a/EWWV9GpAj0YNGhMWX7NgMHRevYWnie2BiDDIrK9v9Sccv5jtuEBWfdS4sXQcgIda1Rmw1kRBWhgoxq5Vm8bzNwkIIrCE/ra26exo7RSrY/qv9lOSFIwlSya5UWL4IQxuU6ozYbyoiqg80ZVcyjuCbIZGmy7xBtPig8eRVpnch+0lPMazDsZmGxqKH8wKJeBPlP9XC9UaGNZMQUY52RK67JwdOZ19dhY9XKPRAGXBiQGNUShIEc7WyilpZhoBfqQAaQ+oA8DRbZWEbkEvDaondlZYUr4TPZRX7TkE5/KixTBGCrzNaJOhIO/62/W8L4TBceS3go70UQlCHYm0U2kRE5pkyw2JCsrCYFORtZsSriYnGnsLSc2U6md4qGhQXZby2B4Eidx027tHgRZHFpgk+QRTaVEadZKoxSWU0KVvgI6VpELhSWRJZppQgLApVbQol+R3jw2l9avAjC+950ozabyYhvGOuMRHFNiC1k6NcNxh4mLHczlG9UUeHxIyk8yaD0DcKDhaPS4kUQVgxuNGqzuYw41Vin9cU1GXDTxs+KtHZFZUthaSFU0XazKCdMZkgRS7T264QHe3OlxYsgrDnfZNRmCxmBT1EnAQFNhLfon3joWrMjLS8sr24rkMLlSdlmyfdxrfAgAWlp8SII2YRIkGmRL8mIky0V2lxWk4CxYKFj8Qg7PyAs2W1upQgbEnJaMkZdIzxwfyotXgRhW/8Wozatfi0wYsFa/4Gqs6e1Xijf2j0Q7BM2T+vn3QZsvi2C4GFeWrwIgmMYKXgtspWMOMlSoa1lNQFiDpz14PiJcMwx7bbbcAkfUnZbXjunCRPOKJUWL4LgWkwEbou01rnOAoIGnw0wzly/zlKvr6zb2YfI/pNXE0bPqhNLWuerRBBuOqXFiyAcTiECt0VaGYHDAoAG/jUqT8wny1mHsV1coMlA+onWinB6Tsa9y2DglcKEOAmlxYsg7OKyNGmRbWXE8ZYKbSurgSeqC3GNy8ghwnGPMg3kXlc4/Vg6Wl4jLxcmhKIqLV4E4fwvEbgtsp2M+JqlQpvKatC3lj0eN4jWrwYKq+eFlcXX7DLNLYIZlhYvghBBggjcFtleRhxnqdCWspGbgYPMX044Wg+rNQpK4fUTKWwJSEHyV8LhlhYvghCDCMc6i+wgI46xVGhD2RKbgYPMf79w5EBRa0WY/UzGvdVg4CXChIwDpcWLIISfIQK3RXaUEUdbKjS9bMnNwEHmzyYcySffWhFuJHztj/81zNapwqTst93f+vAiCP5DrMZYZCcZcZSlQtPLaqAPkw2ewaWfF4aW1Z1GQijcfi7FccMpKhcLF7KelRYvghAomAjcFtlZRhxpqdDksiU3AweZ7ha9I2dshd0vpN+bDTq6hUDyIgiRt4nAbZFdRJAjLBWaWtZhM3CQ6ecJw7WbiktRvYXfL1V22KnK/ubc9oa8CELkbXaDLbKrBvdwS4UmlnXaDBxk+sHCMNZ/qzFwCsP/lbLkQCkq5wuXtYoWnqicF0E4FsrZaYuQDYl38laL02bgIIxG4siAMPyVAHiDYaK4PVm9CELEP2tuvN1FkEMNRjeuqAb2y1I65UrdssLQGo+siTj+Wkq/3qD4ucLFJRWdF0EITU+IeovsISMOsVRoUlmRA/80zsi8OqHe8wlDYka1WoTlCzLQ4sx5tnBZzwMUL4IQmp4Q9RbZU0YcbKnQlLIaUHZ9eaJa3CNizGv9HgigCM8X9TOHAaBvam6tbyg/sKgXQQhNb81stJeMOMjDiJza0GDOFp4cLtHFJ7DtOeFnOSORE0wmXYTpS6rwWkOls4TNBobyyQmCuzYh6i2yt4zgFF2rRIPJNwffHqnFLUBzakXLti9Mf6M2OBpQVKZobm1UtPBE5byeIISmt8aF3UdGHOBhRC5taCDx/6kqc6/bh2gu+A3SQ7j+Vn+b3aDnGZpbGxvKDyzqRRBC01uDBuwrI3rZWT1sqbUNDSI3CdxtLK8CZXQ+SPjtVaaBptQVtr+TruPlRBlkwunCZhMP+7wIQmh6q0fpfjLiqx5G1N2GBpAPSDZKLQGWy6o9MnHFhC+JSQnFWlRO09zatGjhicp5EYTQ9Nblxq/IiMkeRtTdhgaQFNguRzwNtiwj/KwpJwzN51NU+P5B2lgC6Z0qbDb3sMCLINw5CVFvkcky4iuWCjmW1eDhnVuHR8C8wo+o560XYfxHGWnZTzpF2BC+tbR4EYTIHNbB+qqM2K+0BTU2oIEjJjHB3l5VgxojsQcCrsL5T/ph+byonKy59aWihScq50UQQtMTot4i+8uIYVmTLO1VWlaDRhgaNgMtB3m8dHxW2FkCqXn1W0s7wvrPxpvQScJnKw9lvQgyl5QhRL1FDpAR+1gq5FJWA8bjnigunKSsQ24VdoR7HQkR3pyYtMzVE4UPQTFKi6XTgZ3JgEn6IyHqLXKgjNjbUiGXsrKXaCzb1KjPOcKuaO6QGtX06Vp4v2xs6QTh4zI+XgQhsDABhi3SSIJorDigdI7F0ARlz1ObVUTGf1ITzXrjczc3giDHSe/tPRTxIgih6Z80KtS4wz41bAYaIXUtzjnwBTTRiGpYmwhz5qg1KEV2BIl5gjQqImBNm4F1TUwm5JIix411KdDrNzh/soplkWOlu4s/nNcThBUVQtRbpFFpw2raDLTg6Vk2G0/rsCDCPohFjhFBdrBUGFTWiyC4XROi3iKHy4hdLRXqKqtB4tx36zyPB+B5hcZlpbqwHtuvsGcHnZ10ixwlG3ayVEhNEPYECFFvkSNkhGeMKEvfhcvWvBlYWE+ngmz2fkTjwvmLLET444OFL5ZFjpQNO1sqpCYIwcusH3NuRngAMV4bNW8GpjJrULucufiYJpbVKzupnhoDvHjx5rWI283X6xWL0PSEqLeI22PQ0mnRshlsBhZV1avc6iLHVK/GvNrROHAOhPMgFnF7ffciCGevCVFvkaM1IDtaKlRZVgNDWmUXh7cq9Y7s63iNxbaRdZNW0zhwkpCnm0UOlT27WyoMKutFEIIUEKLeIm4rDZZOi5TVoBAy5uwiZVtQhkNen9SEsi6lVmK6xoIDaNZvIrctBC+CvE1G/NSImNtatbHfCYtrQIjxRSoHywk2TxWqbCuLzcCJDA77T0Q1sYjbJrQXQcjdQA4Hi7jtdlo6HTIYhLckQuR7vdrMuJ1sNgOHjAnxsIiLZRE3NyYvghCanruRRb6mx/p2lgqpy+puRaamZVL3k0n7jYiNrDEhoiKRFS3i5inuRRBC0xOi3iJZfRhqIDib0oojwAUGIavNwCFPEGLyEpvXIm5njbwIQmh6QtRbxM0l2dLpeGVFjqX1/3l6uOBRVp/E9bPbDBxCEF57ie5uEbfTqi4TQhMsxgi3Qy0W5MaWle54IvPdYck/UabLOutmuRk4hCAxN1+3gCBeBIl5T8yFIBwXhiSphT2VL6buZEj7WW4GJiCIW8y1OgnydX2kb1nzhKmsez2pzlVnLkldIpXOdt9pCEFiFoCyI0jMUpxb5InICVNpNRHkNnWYOqD1IJu+pz98Rjckgh80SoQbQTHIcmsRt7C2Xk8QIgtaN3PcYhdZkKurrAYaZ846MtLi4cDJQOtGbl1QzdSvcIvZY3M7z+JFkBh3ALfod1mM5ARKaJCJm1XH3Rv3EZ4cRGBppAi7GC8Nt9wzXgSJcSj7hgZus0aOmlFpDXJM7GJjL+MW30EYH+PRUF1tCLsYPz+37GVeBIlxSXYLMFzX4BXtV4PM7jz7LFXKxSLHGlV2mKIvYRfjKe6WINaLIDGHWtxC1KcYGM82Ncgs8eI+X5WQq4XDT9ZzFFXpV7gfYRdz1sjNjcaLIDHHIt2SnBRGu6aCGmRyMbqcTyhgAoslHJu1hoIt0HT1RYRdzGnVXWT/ER7aehEk5mC9W5osDyBStqFBJtBbVZuEK2pyXJnSnirbFnYxAUF2FgZHeujpRRBi1VpDs7glWvQAImUbGmT2IUgLnVrcjpqmVrRo+8IuJqTUjiKIS356L4IQmt56Is0tVW9RsOsqp0HmvD7v0illuhon2Js1jm1KnUq3LexighK6rd55ESRmnd8t2XvpUUjYQEV7IIRcYjPQeuQgoeU+TQdnUmtY2y8Li2M9NPAiSEz81JGIUK4BjskAbBlbXm05U36vpVJTygo/TnfOMOq7nfAgAn9pcSEIWsgQ66N9JNIYC5blBM+3S4/U4Aa20WQ4IWH7tTYt/CZJAWuE+W2FyfEeitdJkPNkBKkEWi0aYFKBnZTIyFZsBk6EjfCbS3+3Jmdyu2l4EsSaBeh8EaRO9+9Ec3bmZjXAh+j/7Jags9ZsBg4hSEx6v601t070wNyTINY8chfIiKr2BjywimpDBDlfFb8QVXlwpVZtBg4hSEyC2C01t1w8FzwJYs1EeqGM8J44zvOwfHMiCJ60C5dvaaYWWrUZOIQgMSnGv6S5dbIH5p4EseayvkhGrOlhRM5tiCCcx8Aj1UsOEm57eTWWezvCb17p+JhRzy2EkUuKOk+CWFex7pcRCxoNb1RxDW6Ml/NENl4vzIjAMjIiDFeQsVbXmc2E0zc8QPIkCJtV5AmxyDtliDWmr6X9Wss674GQoGhB4WU9florBmU7F4anqo1Nje1sJJymGOuMW9yTIKz1s+ZvEbdHoaXTqso674F8QoNOzOCREmGIdwCBCS2ykLAiKHdp8STIPtLmq0aNbpYhixrrNKa44x5Iq28kgwZU+K2iv11iHPAXNacIQ+UingTBWxWvVavMKYOsyXesfdRS3mkP5Ezhs2EtBtTcaeQxganCa3Uv1d0IgkIyiPdjwrRYxC0St6XTKsoKjwvUT5mVugdV/+MacGsSyyrMS9qHsMP7mczJHKWwyHrCyy23izdB2L20BoP7uQwitEvrRIN8JxM80jACNvNRbvVDiuwur2olnr5vFGbWaPADjfcmyCLq6ZYIqL8oo7jbtkpK7oEsL0yubhUgBmMiP87dvTNcCYL9Moyz0PjPWORhTYb5LRVyLyscYmKF9cxyC76cO07j6SfsdtX/PzRCd/ebSgqC7CnDDowwbmOR5IyIellW0SB/QIo9EqHc1cJh+Yh6ragi3Ahjy7eHNdr+U8LNPTNYCoLEhGlhcJ+RgRyvbIVooJnk04zGzFD5jwoHa64VYzf5FhduRH8hCoxV3EL99HfsThAal5ExH+tUdYtGYUXXu7wwYLHC6nINOe7z1qUp7Qkznho/1GVdtOGG8h5hZ40PPRSaVASJOSaJsuyazi1DrSm3hhpadQENNu/QvEsXFTf3iKId5lZOmOE/tUmEXm4Zpcb2nYQg4SlysX5XizA2u+y3ETbwFL1I9YpuWI1MIO9BWAqv2I1m9ojeoZuqNU1boWFNSRDOQMRGFWf9//5CFmRaSAN+h1T7RAH1Wu/VXAADbiickCTAhVWSJmJKRpDwFOEjNWZFhh1k3sfrSBlgHaBxy2vAyRs/7F2a1NmE6yF3yMiKsMKHD18+q/xOFeZJiV9qgrC38ZDV6lDeLdd1ZP/R1TTgRYJ5c35mCQ3ujdEdtaCisOJM0N26iK1mleSRJJMSJDxF2NvY0Gp5KM8Emh5Zt7ZqBfdA9pZtMftFtdnl3bFwIjsyq3ZELrEKGbPmS/Xt0VOmCoLgvEhubuvGDzo2Mn2YBn7YKbhrNbDLWmdE28oLp+tk01KRdq0rDM+JrFu4WnKChKfIRvo9vbBWMxe8SUAsFlm3lmoa+G3U8aDIfjgfkp7AzaGuFiNLdiqMYj0u6Lmyo8eVECSQhHft2MNRB2tCAWgjRINPboqdxlH29/p/uK/Hfpc1wv5hSgofbnjf0RXz3UFSoPcLw6eG9ePx9yoJEhPfqN/GNQQKeyvZiybAoD2gdWQD+dJHVoQNUUpIiT1shW8QRm6BqYsMQmUECU+RWC/Nni3LaYJVneuvCI4zldEkYFXmY2MqniTdtzI31qIKwgVfO45DvCfSrLuEYZG9pcjm/75apQQJJCm6gTaekTxecWnOemlUE2Hsyco7pbN38Di3SVBFQ8KEwAtsHJPxN1beJxzx1apM6iAIbuDskpPXMEZ+o0rLCKhbYyqnrjPOHsjIbwYKE1L03aSrTJatWhxZKydIeIrsqN8yOeR4kqwgknw39YS3tq/JMHZzdPHcn3hWG63lhcmlqvN5a72+8jcKw8VL1I+uWgtBAknKBnUm1OnauX24azKsKL0uDyOyu/SLORkXPaA5VRQWRJa8jCd+Cb0ImPfh1BuCg/SrjSCBJGWCGvRsckv5W2IQ/79q3x7IpRrUVT3abGIb4ZvjKun+qRL6c75jYeEYczKzRLevVK2bIJw+ZMWHVL9l5GSBSKKa2iXsgawsRXC2fKF2hWpQIPhXEfBtUsnuPysMU2bnGqperQQJT5EF9EvAOYIclBHcFlave4dak+Ms6XFInXe9MiCWrSv7N1AbU8q2o/rbC8PjHNop1UTtBAkkWUm/vKuWFSKqrCZgHyjbUGx9TZAPqf+HY+s3uZ5sjz1qPdbsbPaMsiBIIEnMGe5B88ktgUqTJ2xVuosYbPxN1bWQQ5/TdIPB2TMLyYYggST4L+HH5CEced28rtUPDwOa0IbIwfLtmbre4KAv0esX1ZhxECoLyYoggST76neyEzrPqx38n3CM68QRARHjXWqO9NNEYPcQXo9J8UDgjmwkO4IEkuyt3/0dUSKhI3GTRnJVyRHHvzUlcpDQhic9B548ZIYaWUzjU4mHrkXhLAnSNwgkYoxxiR4PAzaciPw93QJQV/YVBEQMwjlN0bW4Iy74VkGOLFNgZEuQQBLeb3FT8BQGGL8efKQ6KYiAyLGdiuIVwO64l+CTt1TOY5E1QQJJPq1fNos8PgJ7A8t77p4aGJdUwV6zJcd2wvkNArrFHnYbZNYV+gPfh1m/9mZPkECS+fRLKoBJzpMIj2AyohKTqZMxCIgc3t+CvR72F+YsxmQvjSBIIMlb9DtFF86A3nK4GiTlAK70Iy8iBm7pxBDgaIKn4FvFU6PnzOnZdpK2GkOQnvUavC3076N1vcYZEdJY76jBu9C53cY0J2x5jeVmsZku77mBd8OqwveJxgCSAIRKbNdA8srFRuCHE3TI986mGsiRinYoTNeT3Szdvj0BpkcKz50TtJu8Se+7RHKF+zvQoOLMtm2CTgnJs5MGlY/TVks44AWOSyQwlOBuLK1fm6DtSppsNEFASAPMTi7vyzGB6YaBfIMKbNdGz1zhRgAFYuJuOAyEyL9/M2CXJOp6pE7mao0nSCAJ50pwM1/ajECxCrS9T447vcXUf6WUiPF6/dce4bJWL1Kepwbp9Dgs1XhpBUF6o9B3mi/VwBwfiNLIu2LY7COKemxMqmG48kqKS09rUsi1iiDhaUJgMs4lxMZ8HTYJ2IHfTZPgtGEFc/l7OCfPB3iZkDsTmYO7CJ7T03Ox2UuP1hGk72myhv5N5JRUiUE5KryFJsW9XoPh3Y6IwSrfsbpSfID31D1QGLCh2EppLUHC0wS/IQZvr4Sjd7baxm2F1MVZiIjBK9QBEDihQqQtYIWq1acnW02QvqcJsaqm6BobDtRz/rBUul+dB7REDHKM76KLg2dzeBo3pq19ZafncYSEqpZreiQIEp4muM3voIuB9d6F740C3yd8BJ+iCVRZ+jgRg4xWpFxgdYp8LKmE3XBikdUWhieVYYPaHRmC9D1N5ta/T9W1ZEKwmUDbaiIlP8kocqyjvg7R9e6E9nAyk4xYjVmY8MJi5AjSR5R19W98ulItedIVoYhY9nTP2CtiEOUcd/2PeE2GcdrBuZDVryNkw0sJ+8m26ZElCCMSPma5+8Ykr7cMKmFW8RZ+1FJpvLLSGQ/bg3SViXVbRA2esntJZ7L1jqyMNEH6niZkWiVl2iKJZ0I0UUJoHb6f1k+sI8vXhE26J3E/jS7xJ50AAAI7SURBVGi+I0jfMGkSrq7/xN17UuLRw3eMpWGSlE4o0mlOFeDDP3VoVU5Z8jo4ct8ZEw1AR5Bx0NGk3D1MyrLhUCfCnsNZvN+foEmJ/9JMIh1wO0cPVt5SC09PXgGzCrmT2ugi7XcEGYBSmKA8TVK/0qABr16sEj0evotYriVdm2eAhPEsJZciKRqISdXJOAh0BBkyLTRhWSViV7qKcJjsyq+mK9U+Tc9avi92EDFu7lgxMQIdQQrOEBGFHIPH6CqTRqxgb8mKEXuKdNpnihwvJ+ulRQ13BDEOpojyOVVhafhDxqp1Fic/+1G6cCwcyf2MWPA7gkQiJ6Kwd8J+RIoz3JFajVuNMxoHiBhPejY6Km11BCkx0iIJq1ysNOEgmPqD2qIpTwyWaw8WMQi52kkkAh1BIoHrrxY28VjxWtOhubJNsGQLMbKMdVvWuKrrdwRxRDz4R+H2zgd9lfIXdXaOLpaKs4uQXiUQ3n11BPFGVO2JKKSUO0wX8btSC8G9IcbIuKCnBrS//Y4gidAWSTh/sraur+iaJ0E3RA3ZQ8R4KEHbXZMBgY4gFUwFkYXMr/hTeRDlGtoSMUhX1kliBDqCJAa4v3kRhV3yybpi9lBuUj2iqdxeocoj31VHkBqmQCAKy8NFssLiFsIZ8Gk1qDryXXYEqXEKiCjsn+CUOGkcNfCTmixiEP60k5oQ6AhSE/C9bkPAhR313/hIEZXk+7r4+L6yZtW67oVAR5BMpoGIQlplklni+t5JJgj8FR3kf1+WXR7KAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 7:
-/*!************************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages.json?{"type":"style"} ***!
-  \************************************************************************************/
+/***/ 63:
+/*!**************************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/sort_list.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "navigationBarTitleText": "基础架构", "enablePullDownRefresh": true }, "pages/requestTest/requestTest": {}, "pages/slideShowHide/slideShowHide": {}, "pages/slideHIdeShow/slideHIdeShow": {}, "pages/home/home": {}, "components/banner/banner": {}, "pages/androidTest/androidTest": {}, "pages/componentShow/componentShow": {}, "pages/nvueTest/nvueTest": {}, "pages/person/person": {}, "pages/shoppingCart/shoppingCart": {}, "pages/photo/photo": {}, "pages/otherPage/otherPage": {}, "components/pay/wxpay": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "吴同岳", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8", "navigationStyle": "custom" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _sort_list_data = {
+  swiperListData: function swiperListData() {
+    return [{
+      id: 1,
+      img: '/static/images/home/swiper/1.png' },
+
+    {
+      id: 2,
+      img: '/static/images/home/swiper/2.png' },
+
+    {
+      id: 3,
+      img: '/static/images/home/swiper/3.png' }];
+
+  },
+  gridRoundList: function gridRoundList() {
+    return [{
+      id: 1,
+      name: '官方自营',
+      badge: '准新机',
+      img: '/static/images/home/grid-icon/25.png' },
+    {
+      id: 2,
+      name: '用户寄卖',
+      badge: '已验机',
+      img: '/static/images/home/grid-icon/26.png' },
+    {
+      id: 3,
+      name: '个人闲置',
+      badge: '',
+      img: '/static/images/home/grid-icon/27.png' },
+    {
+      id: 4,
+      name: '手机保卖',
+      badge: '',
+      img: '/static/images/home/grid-icon/28.png' },
+    {
+      id: 5,
+      name: '电脑数码',
+      badge: '',
+      img: '/static/images/home/grid-icon/29.png' }];
+
+  },
+  gridSmList: function gridSmList() {
+    return [{
+      id: 1,
+      name: '苹果',
+      img: '/static/images/home/grid-icon/30.png' },
+    {
+      id: 2,
+      name: '华为',
+      img: '/static/images/home/grid-icon/31.png' },
+    {
+      id: 3,
+      name: '小米',
+      img: '/static/images/home/grid-icon/32.png' },
+    {
+      id: 4,
+      name: 'vivo',
+      img: '/static/images/home/grid-icon/33.png' },
+    {
+      id: 5,
+      name: 'oppo',
+      img: '/static/images/home/grid-icon/34.png' },
+    {
+      id: 6,
+      name: '魅族',
+      img: '/static/images/home/grid-icon/35.png' },
+    {
+      id: 7,
+      name: '寄卖优选',
+      img: '/static/images/home/grid-icon/36.png' },
+    {
+      id: 8,
+      name: '验机特惠',
+      img: '/static/images/home/grid-icon/37.png' },
+    {
+      id: 9,
+      name: '直播特卖',
+      img: '/static/images/home/grid-icon/38.png' },
+    {
+      id: 10,
+      name: '更多分类',
+      img: '/static/images/home/grid-icon/39.png' }];
+
+  },
+  goodsSortListData: function goodsSortListData() {
+    return [{
+      id: 1,
+      quv: true,
+      autarky: true,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['全新', '全网通', '64G'],
+      price: '2999',
+      cost_price: '6999',
+      discount: ['已降90元', '赠'],
+      style: ['7天无理由', '当天发货', '180天质保'],
+      img: '/static/images/home/goods/1.png' },
+    {
+      id: 2,
+      quv: true,
+      autarky: false,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['无拆修', '完美外观', '电池耐用'],
+      price: '1699',
+      cost_price: '6999',
+      discount: ['赠'],
+      style: ['7天无理由', '24h发货', '30天质保'],
+      img: '/static/images/home/goods/2.png' },
+    {
+      id: 3,
+      quv: true,
+      autarky: false,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['无拆修', '完美外观', '电池耐用'],
+      price: '1699',
+      cost_price: '6999',
+      discount: [],
+      style: ['7天无理由', '24h发货', '30天质保'],
+      img: '/static/images/home/goods/3.png' },
+    {
+      id: 4,
+      quv: true,
+      autarky: true,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['全新', '全网通', '64G'],
+      price: '2999',
+      cost_price: '6999',
+      discount: ['已降90元', '赠'],
+      style: ['7天无理由', '当天发货', '180天质保'],
+      img: '/static/images/home/goods/4.png' },
+    {
+      id: 5,
+      quv: true,
+      autarky: false,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['无拆修', '完美外观', '电池耐用'],
+      price: '1699',
+      cost_price: '6999',
+      discount: ['赠'],
+      style: ['7天无理由', '24h发货', '30天质保'],
+      img: '/static/images/home/goods/5.png' },
+    {
+      id: 6,
+      quv: true,
+      autarky: false,
+      title: '商品标题，商品标题，商品标题，商品标题',
+      type: ['无拆修', '完美外观', '电池耐用'],
+      price: '1699',
+      cost_price: '6999',
+      discount: [],
+      style: ['7天无理由', '24h发货', '30天质保'],
+      img: '/static/images/home/goods/6.png' }];
+
+  } };var _default =
+
+
+_sort_list_data;exports.default = _default;
+
+/***/ }),
+
+/***/ 7:
+/*!***********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/pages.json?{"type":"style"} ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/app/index": { "navigationBarTitleText": "基础架构", "enablePullDownRefresh": false }, "pages/home/sort": {}, "pages/home/search": {}, "pages/home/sort_list": {}, "pages/goods/reward": {}, "pages/goods/goods": {}, "pages/goods/second_hand": {}, "pages/goods/second_terrace": {}, "pages/goods/my_cart": {}, "pages/goods/settlement": {}, "pages/goods/pay": {}, "pages/status/pay_status": {}, "pages/news/notice": {}, "pages/news/details": {}, "pages/news/chat": {}, "pages/my/footmark": {}, "pages/my/login": {}, "pages/real_name/index": {}, "pages/real_name/form": {}, "pages/order/list": {}, "pages/order/whereabouts": {}, "pages/order/details": {}, "pages/order/appraise": {}, "pages/order/view_appraise": {}, "pages/order/add_appraise": {} }, "globalStyle": { "navigationStyle": "custom" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!***********************************************************************************!*\
-  !*** C:/Users/wutongyue/Documents/HBuilderProjects/no/pages.json?{"type":"stat"} ***!
-  \***********************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/pages.json?{"type":"stat"} ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "__UNI__9BE2053" };exports.default = _default;
+
+/***/ }),
+
+/***/ 80:
+/*!**********************************************************************************************!*\
+  !*** C:/Users/wutongyue/Documents/HBuilderProjects/myHypermarket/static/zaiui/data/goods.js ***!
+  \**********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _goods_data = {
+  bannerListData: function bannerListData() {
+    return [{
+      url: '/static/images/home/goods/1.png' },
+    {
+      url: '/static/images/home/goods/4.png' },
+    {
+      url: '/static/images/home/goods/5.png' },
+    {
+      url: '/static/images/home/goods/6.png' },
+    {
+      url: '/static/images/home/goods/9.png' },
+    {
+      url: '/static/images/home/goods/10.png' },
+    {
+      url: '/static/images/home/goods/11.png' }];
+
+  },
+  goodsList: function goodsList() {
+    return [
+    {
+      mold: true,
+      price: '2280',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/1.png' },
+
+    {
+      mold: false,
+      price: '5049',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/2.png' },
+
+    {
+      mold: true,
+      price: '2980',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/3.png' },
+
+    {
+      mold: true,
+      price: '2280',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/4.png' },
+
+    {
+      mold: true,
+      price: '5049',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/5.png' },
+
+    {
+      mold: true,
+      price: '2980',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/6.png' },
+
+    {
+      mold: true,
+      price: '2280',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/7.png' },
+
+    {
+      mold: true,
+      price: '5049',
+      title: '商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题，商品标题',
+      img: '/static/images/home/goods/8.png' }];
+
+
+  } };var _default =
+
+
+_goods_data;exports.default = _default;
 
 /***/ })
 

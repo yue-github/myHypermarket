@@ -1,0 +1,1 @@
+<view class="{{['cu-bar bg-white zaiui-welcome-tip data-v-53028ffb',Show?'show':'']}}"><view class="text-center text-black text-lg data-v-53028ffb"><text class="cuIcon-emoji data-v-53028ffb"></text><text class="margin-left-xs data-v-53028ffb">{{Content}}</text></view></view>
