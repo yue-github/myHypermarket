@@ -42,7 +42,12 @@
 								<block v-for="(items,indexs) in sortList" :key="indexs">
 									<view class="cu-item">
 										<view class="grid-icon">
+											<!-- #ifndef MP-WEIXIN -->
 											<image class="icon" :src="items.img" lazy-load mode="widthFix"/>
+											<!-- #endif -->
+											<!-- #ifdef MP-WEIXIN -->
+											<image class="icon" :src="items.img" mode="widthFix"/>
+											<!-- #endif -->
 										</view>
 										<text class="text-black">{{items.name}}</text>
 									</view>
