@@ -354,7 +354,7 @@
 					<!--标题-->
 					<view class="text-black text-center margin-tb text-lg zaiui-title-bar">
 						<text>{{modalTitle}}</text>
-						<text class="cuIcon-close close-icon" @tap="hideModal"></text>
+						<text class="cuIcon-close close-icon" @tap="hideMyModal"></text>
 					</view>
 					
 					<!--内容区域-->
@@ -481,7 +481,7 @@
 						</view>
 						
 						<!--公共按钮-->
-						<view class="zaiui-footer-fixed">
+						<view class="zaiui-footer-fixed" style="z-index:100;background:#fff">
 							<view class="flex flex-direction">
 								<button class="cu-btn bg-red lg">确定</button>
 							</view>
@@ -514,7 +514,7 @@
 				interval: 2000,
 				duration: 500,
 				circular:true,
-				bannerCur: 0, bannerList: [], bottomModal: false, modalTitle: '', modalType: 'promotion', selectType: '',
+				bannerCur: 0, bannerList: [], bottomModal: false, modalTitle: 'loading...', modalType: 'promotion', selectType: 'loading...',
 				goodsList: [],
 				modalObj:{
 					type:"bottom",// left right top bottom center
@@ -555,28 +555,28 @@
 				this.modalObj.height ="900upx";
 				this.modalObj.transition = "slider";
 				this.modalObj.type = "bottom";
-				this.showModal();
+				this.showMyModal();
 			},
 			promotionTap() {
-				this.modalTitle = "促销优惠";
-				this.modalType = 'promotion';
-				this.showModal();
+					this.modalTitle = "促销优惠";
+					this.modalType = 'promotion';
+					this.showMyModal();
 			},
 			selectTap(type) {
 				this.selectType = type;
 				this.modalTitle = "选择规格";
 				this.modalType = 'select';
-				this.showModal();
+				this.showMyModal();
 			},
-			showModal() {
+			showMyModal() {
 				// this.bottomModal = true;
-				this.$refs.luPopupWrapper.show();
+				this.$refs.luPopupWrapper.show(true);
 			},
-			hideModal(e) {
+			hideMyModal(e) {
 				// this.bottomModal = false;
-				this.modalTitle = "";
-				this.modalType = '';
-				this.$refs.luPopupWrapper.close();
+				// this.modalTitle = "";
+				// this.modalType = '';
+				this.$refs.luPopupWrapper.close(true);
 			},
 			myCartTap(){
 				uni.navigateTo({

@@ -646,7 +646,7 @@ var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 
       interval: 2000,
       duration: 500,
       circular: true,
-      bannerCur: 0, bannerList: [], bottomModal: false, modalTitle: '', modalType: 'promotion', selectType: '',
+      bannerCur: 0, bannerList: [], bottomModal: false, modalTitle: 'loading...', modalType: 'promotion', selectType: 'loading...',
       goodsList: [],
       modalObj: {
         type: "bottom", // left right top bottom center
@@ -687,28 +687,28 @@ var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 
       this.modalObj.height = "900upx";
       this.modalObj.transition = "slider";
       this.modalObj.type = "bottom";
-      this.showModal();
+      this.showMyModal();
     },
     promotionTap: function promotionTap() {
       this.modalTitle = "促销优惠";
       this.modalType = 'promotion';
-      this.showModal();
+      this.showMyModal();
     },
     selectTap: function selectTap(type) {
       this.selectType = type;
       this.modalTitle = "选择规格";
       this.modalType = 'select';
-      this.showModal();
+      this.showMyModal();
     },
-    showModal: function showModal() {
+    showMyModal: function showMyModal() {
       // this.bottomModal = true;
-      this.$refs.luPopupWrapper.show();
+      this.$refs.luPopupWrapper.show(true);
     },
-    hideModal: function hideModal(e) {
+    hideMyModal: function hideMyModal(e) {
       // this.bottomModal = false;
-      this.modalTitle = "";
-      this.modalType = '';
-      this.$refs.luPopupWrapper.close();
+      // this.modalTitle = "";
+      // this.modalType = '';
+      this.$refs.luPopupWrapper.close(true);
     },
     myCartTap: function myCartTap() {
       uni.navigateTo({

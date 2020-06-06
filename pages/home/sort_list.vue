@@ -46,7 +46,8 @@
 		<!--小图标导航-->
 		<view class="zaiui-grid-sm-box">
 			<view class="cu-list grid col-5 no-border">
-				<block v-for="(item,index) in gridSmList" :key="index" v-if="index < 10">
+				<!-- 优化建议：v-for与v-if不要连着用 -->
+				<block v-for="(item,index) in smallGridSmList" :key="index" v-if="index < 10">
 					<view class="cu-item">
 						<view class="grid-icon">
 							<image class="icon" :src="item.img" mode="widthFix"/>
@@ -205,6 +206,13 @@
 		data() {
 			return {
 				swiperIndex: 0, swiperList: [], gridRoundList: [], gridSmList: [], goodsTab: ['推荐','官方自营'], TabCur: 0, goodsSortListData: [],
+			}
+		},
+		computed:{
+			smallGridSmList(){
+				return this.gridSmList.filter((v,i) => {
+					return i < 10;
+				})
 			}
 		},
 		onLoad() {

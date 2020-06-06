@@ -6,11 +6,10 @@
 		</bar-title>
 		
 		<view class="padding bg-white">
-			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
-			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
-			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
-			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
-			<image src="/static/images/reward/duanwu.jpg" mode="widthFix"/>
+			<block v-for="(item,index) in [1,2,3]">
+				<image src="/static/images/reward/duanwu.jpg" mode="widthFix" @click="goHome"/>
+			</block>
+			
 		</view>
 		
 	</view>
@@ -35,6 +34,14 @@
 			    duration: 0
 			});
 		},
+		methods:{
+			goHome(){
+				uni.reLaunch({
+					url:'/pages/app/index'
+				})
+			}
+			
+		}
 	}
 </script>
 

@@ -328,6 +328,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var _sort_list = _interopRequireDefault(__webpack_require__(/*! @/static/zaiui/data/sort_list.js */ 63));
 var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var barSearchTitle = function barSearchTitle() {__webpack_require__.e(/*! require.ensure | components/zaiui-common/basics/bar-search-title */ "components/zaiui-common/basics/bar-search-title").then((function () {return resolve(__webpack_require__(/*! @/components/zaiui-common/basics/bar-search-title */ 288));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var goodsSortList = function goodsSortList() {__webpack_require__.e(/*! require.ensure | components/zaiui-common/list/goods-sort-list */ "components/zaiui-common/list/goods-sort-list").then((function () {return resolve(__webpack_require__(/*! @/components/zaiui-common/list/goods-sort-list */ 295));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);}; //工具函数
 var _default = {
@@ -339,6 +340,13 @@ var _default = {
       swiperIndex: 0, swiperList: [], gridRoundList: [], gridSmList: [], goodsTab: ['推荐', '官方自营'], TabCur: 0, goodsSortListData: [] };
 
   },
+  computed: {
+    smallGridSmList: function smallGridSmList() {
+      return this.gridSmList.filter(function (v, i) {
+        return i < 10;
+      });
+    } },
+
   onLoad: function onLoad() {
     this.swiperList = _sort_list.default.swiperListData();
     this.gridRoundList = _sort_list.default.gridRoundList();

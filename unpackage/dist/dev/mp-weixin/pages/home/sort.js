@@ -191,6 +191,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
 var _sort_vue = _interopRequireDefault(__webpack_require__(/*! @/static/zaiui/data/sort_vue.js */ 46));
 var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //
 //
@@ -252,13 +257,14 @@ var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 
 //
 //
 //
+//
+//
+//
+//
+//
 //虚拟数据
 //工具函数
-var _default = { data: function data() {return { list: [], tabCur: 0, mainCur: 0, verticalNavTop: 0, load: true, sortList: [] };}, onLoad: function onLoad() {var list = [{}];for (var i = 0; i < 26; i++) {list[i] = {};list[i].name = String.fromCharCode(65 + i);list[i].id = i;}this.list = list;this.listCur = list[0];this.sortList = _sort_vue.default.sortListData();}, onReady: function onReady() {_tools.default.setBarColor(true);uni.pageScrollTo({ scrollTop: 0, duration: 0 });}, methods: { BackPage: function BackPage() {uni.navigateBack();}, TabSelect: function TabSelect(e) {this.tabCur = e.currentTarget.dataset.id;this.mainCur = e.currentTarget.dataset.id;this.verticalNavTop = (e.currentTarget.dataset.id - 1) * 50;}, VerticalMain: function VerticalMain(e) {var _this = this;var that = this;var tabHeight = 0;if (this.load) {var _loop = function _loop(i) {var view = uni.createSelectorQuery().select("#main-" + _this.list[i].id);view.fields({ size: true }, function (data) {_this.list[i].top = tabHeight;tabHeight = tabHeight + data.height;_this.list[i].bottom = tabHeight;}).exec();};for (var i = 0; i < this.list.length; i++) {_loop(i);}this.load = false;}var scrollTop = e.detail.scrollTop + 10;for (var _i = 0; _i < this.list.length; _i++) {if (scrollTop > this.list[_i].top && scrollTop < this.list[_i].bottom) {this.verticalNavTop = (this.list[_i].id - 1) * 50;this.tabCur = this.list[_i].id;console.log(scrollTop);return false;}}
-    },
-    searchTap: function searchTap() {
-      uni.navigateTo({
-        url: "/pages/home/search" });
+var _default = { data: function data() {return { lazyLoad: true, list: [], tabCur: 0, mainCur: 0, verticalNavTop: 0, load: true, sortList: [] };}, onLoad: function onLoad() {var list = [{}];for (var i = 0; i < 26; i++) {list[i] = {};list[i].name = String.fromCharCode(65 + i);list[i].id = i;}this.list = list;this.listCur = list[0];this.sortList = _sort_vue.default.sortListData();}, onReady: function onReady() {_tools.default.setBarColor(true);uni.pageScrollTo({ scrollTop: 0, duration: 0 });}, methods: { BackPage: function BackPage() {uni.navigateBack();}, TabSelect: function TabSelect(e) {this.tabCur = e.currentTarget.dataset.id;this.mainCur = e.currentTarget.dataset.id;this.verticalNavTop = (e.currentTarget.dataset.id - 1) * 50;}, VerticalMain: function VerticalMain(e) {var _this = this;var that = this;var tabHeight = 0;if (this.load) {var _loop = function _loop(i) {var view = uni.createSelectorQuery().select("#main-" + _this.list[i].id);view.fields({ size: true }, function (data) {_this.list[i].top = tabHeight;tabHeight = tabHeight + data.height;_this.list[i].bottom = tabHeight;}).exec();};for (var i = 0; i < this.list.length; i++) {_loop(i);}this.load = false;}var scrollTop = e.detail.scrollTop + 10;for (var _i = 0; _i < this.list.length; _i++) {if (scrollTop > this.list[_i].top && scrollTop < this.list[_i].bottom) {this.verticalNavTop = (this.list[_i].id - 1) * 50;this.tabCur = this.list[_i].id;console.log(scrollTop);return false;}}}, searchTap: function searchTap() {uni.navigateTo({ url: "/pages/home/search" });
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

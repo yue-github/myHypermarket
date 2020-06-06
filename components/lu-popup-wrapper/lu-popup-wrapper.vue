@@ -150,9 +150,6 @@
 </script>
 
 <style lang="scss">
-	lu-popup-wrapper{
-		position: fixed;
-	}
 	.lu-popup-wrapper{
 		position: fixed;
 		left: 0;
@@ -167,6 +164,7 @@
 		align-items: center;
 		display: none;
 		overflow:hidden;
+		z-index:100000000000;
 		&.lu-popup-active{
 			display: flex;
 			z-index:88888888;

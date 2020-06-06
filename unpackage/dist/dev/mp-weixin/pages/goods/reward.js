@@ -147,6 +147,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var _tools = _interopRequireDefault(__webpack_require__(/*! @/utils/tools.js */ 12));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var barTitle = function barTitle() {__webpack_require__.e(/*! require.ensure | components/zaiui-common/basics/bar-title */ "components/zaiui-common/basics/bar-title").then((function () {return resolve(__webpack_require__(/*! @/components/zaiui-common/basics/bar-title */ 302));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);}; //工具函数
 var _default = {
   components: {
@@ -163,7 +165,13 @@ var _default = {
       scrollTop: 0,
       duration: 0 });
 
-  } };exports.default = _default;
+  },
+  methods: {
+    goHome: function goHome() {
+      uni.reLaunch({
+        url: '/pages/app/index' });
+
+    } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -43,7 +43,7 @@
 									<view class="cu-item">
 										<view class="grid-icon">
 											<!-- #ifndef MP-WEIXIN -->
-											<image class="icon" :src="items.img" lazy-load mode="widthFix"/>
+											<image class="icon" :src="items.img" :lazy-load="lazyLoad" mode="widthFix"/>
 											<!-- #endif -->
 											<!-- #ifdef MP-WEIXIN -->
 											<image class="icon" :src="items.img" mode="widthFix"/>
@@ -69,6 +69,7 @@
 	export default {
 		data() {
 			return {
+				lazyLoad:true,
 				list: [], tabCur: 0, mainCur: 0, verticalNavTop: 0, load: true, sortList: [],
 			}
 		},

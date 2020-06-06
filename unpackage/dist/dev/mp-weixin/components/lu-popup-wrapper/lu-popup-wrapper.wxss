@@ -24,9 +24,6 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-lu-popup-wrapper {
-  position: fixed;
-}
 .lu-popup-wrapper {
   position: fixed;
   left: 0;
@@ -50,6 +47,7 @@ lu-popup-wrapper {
           align-items: center;
   display: none;
   overflow: hidden;
+  z-index: 100000000000;
 }
 .lu-popup-wrapper.lu-popup-active {
   display: -webkit-box;

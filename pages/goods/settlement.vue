@@ -227,7 +227,6 @@
 		}
 	}
 </script>
-
 <style lang="scss">
 	/* #ifdef APP-PLUS */
 		@import "../../static/colorui/main.css";
