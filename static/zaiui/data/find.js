@@ -16,7 +16,7 @@ let _find_data = {
 		},{
 			id: 2,
 			avatar: '/static/images/avatar/2.jpg',
-			username: '仔仔ZaiZ',
+			username: '岳23',
 			time: '2小时前',
 			text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
 			text_btn: false,
@@ -29,7 +29,7 @@ let _find_data = {
 		},{
 			id: 3,
 			avatar: '/static/images/avatar/3.jpg',
-			username: '仔仔ZaiZ',
+			username: '23岳',
 			time: '1年前',
 			follow: false,
 			text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
@@ -42,7 +42,7 @@ let _find_data = {
 		},{
 			id: 4,
 			avatar: '/static/images/avatar/4.jpg',
-			username: '仔仔ZaiZ',
+			username: '你好',
 			time: '1年前',
 			follow: false,
 			text: '测试的测试测试的测试测试的测试测试测试的test,demo,1231321ce测试的...',
@@ -75,7 +75,7 @@ let _find_data = {
 		return [{
 			id: 1,
 			avatar: '/static/images/avatar/1.jpg',
-			username: '仔仔',
+			username: '蓝之静云',
 			time: '1小时前',
 			follow: false,
 			text: '测试的测试测试测试的test,demo,1231321ce测试的...',

@@ -28,7 +28,7 @@
 						<view class="cu-avatar round lg" style="background-image:url(/static/images/avatar/1.jpg);"/>
 						<view class="content text-xl">
 							<view class="text-white">
-								<text class="margin-right">仔仔</text>
+								<text class="margin-right">蓝之静云</text>
 								<text class="text-sm" @tap="loginTap">切换未登陆页面</text>
 							</view>
 							<view class="text-white-bg text-sm">

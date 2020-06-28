@@ -70,7 +70,7 @@
 								<text class="cuIcon-male"></text>
 							</text>
 						</view>
-						<view class="text-gray text-sm text-cut">欢迎使用本模板</view>
+						<view class="text-gray text-sm text-cut">欢迎你欢迎你</view>
 						<view class="text-gray text-sm">4小时前</view>
 					</view>
 					<view class="action">
@@ -89,12 +89,12 @@
 					</view>
 					<view class="content">
 						<view class="text-black">
-							<text class="margin-right-xs">仔仔22</text>
+							<text class="margin-right-xs">岳23</text>
 							<text class="cu-tag bg-pink sm radius">
 								<text class="cuIcon-female"></text>
 							</text>
 						</view>
-						<view class="text-gray text-sm text-cut">希望打个赏哦~</view>
+						<view class="text-gray text-sm text-cut">希望见你一面~</view>
 						<view class="text-gray text-sm">6小时前</view>
 					</view>
 					<view class="action">
